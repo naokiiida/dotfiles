@@ -1,11 +1,3 @@
-autoload -Uz vcs_info
-setopt prompt_subst
-precmd () { vcs_info }
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr '%F{red}*%f'
-zstyle ':vcs_info:*' stagedstr '%F{green}*%f'
-zstyle ':vcs_info:*' formats ' (%F{blue}%b%u%c%f)'
-PS1='%F{magenta}%n%f@%F{cyan}%m%f %1~ $vcs_info_msg_0_ %# '
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
