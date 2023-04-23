@@ -1,5 +1,11 @@
 # User specific aliases and functions
 export CLICOLOR=1
+# show hidden files
+alias l.='ls -d .*'
+# all files with / at the end of directories
+alias la='ls -aF'
+# make the dir command work kinda like in windows (long format) with human readable size values
+alias dir='ls -hl'
 # make grep highlight results using color
 alias grep='grep --color=auto'
 
