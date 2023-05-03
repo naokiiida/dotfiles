@@ -30,3 +30,5 @@ eval "$(starship init zsh)"
 # explicit locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+# bitwarden cli
+eval "$(bw completion --shell zsh); compdef _bw bw;"
