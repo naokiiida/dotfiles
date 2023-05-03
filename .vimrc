@@ -120,7 +120,8 @@ augroup END
 
 " More Vimscripts code goes here.
 " Set the color scheme.
-    colorscheme molokai
+    "colorscheme molokai
+    autocmd vimenter * ++nested colorscheme gruvbox
 " }}}
 
 
