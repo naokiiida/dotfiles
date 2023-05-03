@@ -26,7 +26,7 @@ compinit -i
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-eval "$(starship init zsh)"
+source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
 # explicit locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
