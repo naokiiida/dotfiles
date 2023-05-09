@@ -126,6 +126,8 @@ augroup END
     autocmd vimenter * ++nested colorscheme gruvbox
 " }}}
 
+" Set the font for vim gui.
+set guifont=MesloLGS\ Nerd\ Font\ Propo
 
 " STATUS LINE ------------------------------------------------------------ {{{
 
