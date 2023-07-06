@@ -1,5 +1,6 @@
 export MAIL=niida@student.42tokyo.jp
 export USER=niida
+export GROUP=2020
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
@@ -69,4 +70,3 @@ bindkey '\e[3~' delete-char
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey ' '  magic-space
-
