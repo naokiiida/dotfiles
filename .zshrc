@@ -1,6 +1,7 @@
 export MAIL=niida@student.42tokyo.jp
 export USER=niida
 export GROUP=2020
+export PATH="/Users/niida/Library/Python/3.9/bin:$PATH"
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
@@ -19,6 +20,12 @@ alias h="history"
 alias hg="history -1000 | grep -i"
 alias ,="cd .."
 alias m="less"
+alias cW="cc -Wall -Werror -Wextra -fsanitize=address -g3 *.c && ./a.out"
+alias cw="cc -Wall -Wextra -Werror -fsanitize=address -g3"
+alias cwa="cc -Wall -Wextra -Werror -fsanitize=address -g3 *.c && ./a.out"
+
+# Clear all cash for storage spaces
+alias sweep="rm -Rfv /Library/Caches/* ~/Library/Caches/* 2> /dev/null"
 
 # GIT
 # Do this: git config --global url.ssh://git@github.com/.insteadOf https://github.com
