@@ -26,7 +26,12 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+set backup
+
+set backupdir=$HOME/.vim/backup
+
 nnoremap <esc><esc> :noh<return><esc>
+vmap <C-c> :w !pbcopy<CR>
 
 " STATUS LINE ------------------------------------------------------------ {{{
 
