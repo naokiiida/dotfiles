@@ -30,6 +30,9 @@ set backup
 
 set backupdir=$HOME/.vim/backup
 
+set undofile
+set undodir=$HOME/.vim/undo
+
 nnoremap <esc><esc> :noh<return><esc>
 vmap <C-c> :w !pbcopy<CR>
 
