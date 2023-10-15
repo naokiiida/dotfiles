@@ -22,6 +22,9 @@ set cursorline
 " Highlight cursor line underneath the cursor vertically.
 set cursorcolumn
 
+" Disable expandtab and set specific tabstop for Makefiles
+autocmd FileType make,c,cpp setlocal noexpandtab tabstop=4 shiftwidth=4
+
 " Set shift width to 4 spaces.
 set shiftwidth=2
 
