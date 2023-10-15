@@ -44,5 +44,5 @@ eval "$(bw completion --shell zsh); compdef _bw bw;"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #vi mode
-bindkey -v
 export KEYTIMEOUT=1
+source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
