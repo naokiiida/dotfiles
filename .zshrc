@@ -20,9 +20,10 @@ alias h="history"
 alias hg="history -1000 | grep -i"
 alias ,="cd .."
 alias m="less"
-alias cW="cc -Wall -Werror -Wextra -fsanitize=address -g3 *.c && ./a.out"
-alias cw="cc -Wall -Wextra -Werror -fsanitize=address -g3"
-alias cwa="cc -Wall -Wextra -Werror -fsanitize=address -g3 *.c && ./a.out"
+alias cw="cc -Wall -Wextra -Werror"
+alias cwa="cc -Wall -Werror -Wextra *.c && ./a.out"
+alias cwf="cc -Wall -Wextra -Werror -fsanitize=address -g3"
+alias cwfa="cc -Wall -Wextra -Werror -fsanitize=address -g3 *.c && ./a.out"
 
 # Clear all cash for storage spaces
 alias sweep="rm -Rfv /Library/Caches/* ~/Library/Caches/* 2> /dev/null"
