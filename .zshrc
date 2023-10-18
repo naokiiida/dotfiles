@@ -73,7 +73,7 @@ typeset -U path                 # keep duplicates out of the path
 path+=(.)                       # append current directory to path (controversial)
 
 # BINDKEY
-bindkey -e
+source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 bindkey '\e[3~' delete-char
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
