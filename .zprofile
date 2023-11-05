@@ -4,7 +4,7 @@ export PATH=$PATH:/goinfre/niida/Visual\ Studio\ Code\ -\ Insiders.app/Contents/
 alias codi="/goinfre/niida/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code --extensions-dir /sgoinfre/niida/.vscode-insiders"
 # alias code-insiders="/sgoinfre/niida/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code --extensions-dir /sgoinfre/niida/.vscode-insiders"
 
-alias code="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code --extensions-dir /sgoinfre/niida/.vscode"
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code --extensions-dir /sgoinfre/niida/.vscode"
 
 # Added by Toolbox App
 #export PATH="$PATH:/Users/niida/Library/Application Support/JetBrains/Toolbox/scripts"
