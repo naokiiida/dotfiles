@@ -16,6 +16,9 @@ syntax on
 " Add numbers to each line on the left-hand side.
 set number
 
+" Highlight search term
+set hlsearch
+
 " Enable auto completion menu after pressing TAB.
 set wildmenu
 
