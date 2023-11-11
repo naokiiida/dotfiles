@@ -36,6 +36,7 @@ function gc() { git clone ssh://git@github.com/"$*" }
 function gg() { git commit -m "$*" }
 
 # More suitable for .zshenv
+VISUAL=mvim
 EDITOR=vim
 PROMPT='%n@%m %3~
 %(!.#.$)%(?.. [%?]) '
