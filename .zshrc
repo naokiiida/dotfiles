@@ -24,6 +24,7 @@ alias cw="cc -Wall -Wextra -Werror"
 alias cwa="cc -Wall -Werror -Wextra *.c && ./a.out"
 alias cwf="cc -Wall -Wextra -Werror -fsanitize=address -g3"
 alias cwfa="cc -Wall -Wextra -Werror -fsanitize=address -g3 *.c && ./a.out"
+alias pip-upgrade="pip install -U \$(pip freeze | cut -d'=' -f1)"
 
 # Clear all cash for storage spaces
 alias sweep="rm -Rfv /Library/Caches/* ~/Library/Caches/* 2> /dev/null"
@@ -36,7 +37,6 @@ function gc() { git clone ssh://git@github.com/"$*" }
 function gg() { git commit -m "$*" }
 
 # More suitable for .zshenv
-VISUAL=mvim
 EDITOR=vim
 PROMPT='%n@%m %3~
 %(!.#.$)%(?.. [%?]) '
