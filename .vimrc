@@ -127,6 +127,14 @@ augroup END
     let g:gruvbox_contrast_dark='hard'
     let g:gruvbox_contrast_light='hard'
     autocmd vimenter * ++nested colorscheme gruvbox
+
+" Use System Appearance
+let output =  system("defaults read -g AppleInterfaceStyle")
+if v:shell_error != 0
+    set background=light
+else
+    set background=dark
+endif
 " }}}
 
 " Set the font for vim gui.
