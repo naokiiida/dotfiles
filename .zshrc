@@ -46,3 +46,11 @@ eval "$(bw completion --shell zsh); compdef _bw bw;"
 #vi mode
 export KEYTIMEOUT=1
 source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+# pnpm
+export PNPM_HOME="/Users/naokiiida/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
