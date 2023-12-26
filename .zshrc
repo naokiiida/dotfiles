@@ -24,7 +24,7 @@ alias cw="cc -Wall -Wextra -Werror"
 alias cwa="cc -Wall -Werror -Wextra *.c && ./a.out"
 alias cwf="cc -Wall -Wextra -Werror -fsanitize=address -g3"
 alias cwfa="cc -Wall -Wextra -Werror -fsanitize=address -g3 *.c && ./a.out"
-alias pip-upgrade="pip install -U \$(pip freeze | cut -d'=' -f1)"
+alias pip-upgrade="pip install -U \$(pip list -o | awk 'NR>2 {print $1}')"
 
 # Clear all cash for storage spaces
 alias sweep="rm -Rfv /Library/Caches/* ~/Library/Caches/* 2> /dev/null"
@@ -79,3 +79,5 @@ bindkey '\e[3~' delete-char
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey ' '  magic-space
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
