@@ -16,16 +16,8 @@ alias dir='ls -hl'
 # make grep highlight results using color
 alias grep='grep --color=auto'
 
-#brew shell completion
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
-fi
-autoload -U compinit
-compinit -i
+#custom directories
+alias 42='cd /Users/naokiiida/Documents/42/42Tokyo'
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -34,11 +26,8 @@ compinit -i
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
-# explicit locale
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 # bitwarden cli
-eval "$(bw completion --shell zsh); compdef _bw bw;"
+#eval "$(bw completion --shell zsh); compdef _bw bw;"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -46,11 +35,3 @@ eval "$(bw completion --shell zsh); compdef _bw bw;"
 #vi mode
 export KEYTIMEOUT=1
 source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-# pnpm
-export PNPM_HOME="/Users/naokiiida/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
