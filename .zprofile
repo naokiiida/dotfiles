@@ -21,5 +21,14 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# zig
+export ZIG_HOME="/Users/naokiiida/Applications/zig-macos-x86_64-0.11.0"
+case ":$PATH:" in
+  *":$ZIG_HOME:"*) ;;
+  *) export PATH="$ZIG_HOME:$PATH" ;;
+esac
+# zig end
+
+
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
