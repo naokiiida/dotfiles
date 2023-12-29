@@ -17,7 +17,7 @@ alias dir='ls -hl'
 alias grep='grep --color=auto'
 
 #custom directories
-alias 42='cd /Users/naokiiida/Documents/42/42Tokyo'
+alias 42="cd '/Users/naokiiida/Documents/42/42cursus'"
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -28,6 +28,8 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
 # bitwarden cli
 #eval "$(bw completion --shell zsh); compdef _bw bw;"
+#wezterm cli
+source $HOME/.config/wezterm/_wezterm.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
