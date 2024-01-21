@@ -81,7 +81,8 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " PLUGINS ---------------------------------------------------------------- {{{
 
 " Plugin code goes here.
-
+let g:user42 = 'niida'
+let g:mail42 = 'niida@student.42tokyo.jp'
 " }}}
 
 
