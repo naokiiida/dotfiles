@@ -45,3 +45,5 @@ esac
 
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
