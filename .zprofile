@@ -2,6 +2,7 @@
 export KEYTIMEOUT=1
 source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 export VISUAL=mvim
+export MANPAGER="nvim +Man!"
 # explicit locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

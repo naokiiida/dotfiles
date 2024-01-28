@@ -19,6 +19,7 @@ alias grep='grep --color=auto'
 #custom directories
 alias 42="cd '/Users/naokiiida/Documents/42/42cursus'"
 
+alias vim=nvim
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # tabtab source for packages
@@ -28,3 +29,6 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+find_man() {
+    man $1 | grep -- $2
+}
