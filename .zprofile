@@ -1,4 +1,6 @@
+#vi mode
 export KEYTIMEOUT=1
+source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 export VISUAL=mvim
 # explicit locale
 export LC_ALL=en_US.UTF-8
@@ -42,7 +44,10 @@ case ":$PATH:" in
 esac
 # zig end
 
-
+# bitwarden cli
+#eval "$(bw completion --shell zsh); compdef _bw bw;"
+#wezterm cli
+source $HOME/.config/wezterm/_wezterm.zsh
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
