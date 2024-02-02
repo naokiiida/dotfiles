@@ -21,6 +21,7 @@ local act = wezterm.action
 config.keys = {
 	{ key = "d", mods = "SUPER", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 	{ key = "D", mods = "SUPER", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
+	{ key = "k", mods = "SUPER", action = act.ClearScrollback 'ScrollbackAndViewport' },
 }
 
 -- and finally, return the configuration to wezterm
