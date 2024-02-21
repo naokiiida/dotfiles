@@ -1,3 +1,5 @@
+[includeIf "gitdir:~/42Tokyo/"]
+  path = ~/.config/gitconfig/user42.gitconfig
 [init]
 	defaultBranch = main
 [diff]
