@@ -1,0 +1,21 @@
+#helix doesn't handle .clang-format or other external style specifications, so they only matter if you're using an external formatter that looks for them
+#https://github.com/helix-editor/helix/issues/4556
+
+# [language-server.clangd]
+# command = 'clangd'
+# args = ['--function-arg-placeholders', '--completion-style=detailed', '--clang-tidy', '--log=verbose']
+# [[language]]
+# name = 'c'
+# #formatter = { command = 'clang-format', args = ['--style=/home/niida/Documents/.clang-format'] }
+# formatter = { command = 'clang-format', args = ['--style=file'] }
+# auto-format = true
+# language-servers = ['clangd', 'typos']
+
+#https://github.com/helix-editor/helix/issues/9562
+
+[[language]]
+name = 'c'
+#formatter = { command = 'clang-format', args = ['--style=/home/niida/Documents/.clang-format'] }
+formatter = { command = 'c_formatter_42' }
+auto-format = false
+language-servers = ['clangd']
