@@ -1,4 +1,4 @@
-[includeIf "gitdir:~/42Tokyo/"]
+[include]
   path = ~/.config/gitconfig/user42.gitconfig
 [init]
 	defaultBranch = main
@@ -12,3 +12,8 @@
 	editor = vim
 [alias]
 	hist = log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(red)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --graph --date=short
+  switch = checkout
+  st = status
+  ci = commit
+  br = branch
+  co = checkout

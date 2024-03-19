@@ -10,4 +10,4 @@ alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/co
 #export PATH="$PATH:/Users/niida/Library/Application Support/JetBrains/Toolbox/scripts"
 
 export PATH=/goinfre/niida/MacVim.app/Contents/bin/:$PATH
-export MANPATH="`manpath`:$HOME/42tokyo/minishell/ext/share/man"
+export MANPATH="`manpath`:$HOME/Documents/42cursus/minishell/ext/share/man"

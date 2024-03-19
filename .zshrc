@@ -12,7 +12,11 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 lsflags="-GF"
 export CLICOLOR=1
 
+autoload -Uz colors && colors
+function color() {set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2)}
+
 # Aliases
+alias grep='grep --color=auto'
 alias ls="ls ${lsflags}"
 alias ll="ls ${lsflags} -l"
 alias la="ls ${lsflags} -la"
@@ -25,11 +29,21 @@ alias cwa="cc -Wall -Werror -Wextra *.c && ./a.out"
 alias cwf="cc -Wall -Wextra -Werror -fsanitize=address -g3"
 alias cwfa="cc -Wall -Wextra -Werror -fsanitize=address -g3 *.c && ./a.out"
 alias pip-upgrade="pip install -U \$(pip list -o | awk 'NR>2 {print $1}')"
+alias make="make -j 6"
+alias 42="cd ~/Documents/42cursus"
+alias minishell="cd ~/Documents/42cursus/minishell"
 
 # Clear all cash for storage spaces
 alias sweep="rm -Rfv /Library/Caches/* ~/Library/Caches/* 2> /dev/null"
 
 # GIT
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+# RPROMPT='${vcs_info_msg_0_}'
+# PROMPT='${vcs_info_msg_0_}%# '
+zstyle ':vcs_info:git:*' formats '%b'
 # Do this: git config --global url.ssh://git@github.com/.insteadOf https://github.com
 alias gd="git diff"
 alias gs="git status 2>/dev/null"
@@ -38,7 +52,7 @@ function gg() { git commit -m "$*" }
 
 # More suitable for .zshenv
 EDITOR=vim
-PROMPT='%n@%m %3~
+PROMPT='%n@%m (${vcs_info_msg_0_}) %3~
 %(!.#.$)%(?.. [%?]) '
 
 # History settings
