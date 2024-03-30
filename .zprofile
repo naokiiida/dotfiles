@@ -7,6 +7,9 @@ export MANPAGER="nvim +Man!"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# parallel make
+export MAKEFLAGS='-j 8'
+
 #XDG Base Directory for cli Applications
 if [ -z "$XDG_CONFIG_HOME" ] ; then
     export XDG_CONFIG_HOME="$HOME/.config"
@@ -53,3 +56,5 @@ source $HOME/.config/wezterm/_wezterm.zsh
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+#docker compose
+eval "$(docker completion zsh); compdef _docker docker;"
