@@ -1,8 +1,3 @@
-#vi mode
-export KEYTIMEOUT=1
-source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
-export VISUAL=mvim
-export MANPAGER="nvim +Man!"
 # explicit locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -40,18 +35,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# zig
-export ZIG_HOME="/Users/naokiiida/Applications/zig-macos-x86_64-0.11.0"
-case ":$PATH:" in
-  *":$ZIG_HOME:"*) ;;
-  *) export PATH="$ZIG_HOME:$PATH" ;;
-esac
-# zig end
-
-# bitwarden cli
-#eval "$(bw completion --shell zsh); compdef _bw bw;"
-#wezterm cli
-source $HOME/.config/wezterm/_wezterm.zsh
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 

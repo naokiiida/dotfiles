@@ -19,7 +19,6 @@ alias grep='grep --color=auto'
 #custom directories
 alias 42="cd '/Users/naokiiida/Documents/42/42cursus'"
 
-alias vim=nvim
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # tabtab source for packages
