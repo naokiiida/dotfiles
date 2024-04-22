@@ -1,0 +1,11 @@
+#theme = material_deep_ocean
+#theme = "base16_default"
+theme = "dracula"
+
+[editor]
+mouse = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
