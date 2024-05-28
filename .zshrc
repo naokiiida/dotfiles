@@ -43,3 +43,10 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+
+# bun completions
+[ -s "/Users/naokiiida/.bun/_bun" ] && source "/Users/naokiiida/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
