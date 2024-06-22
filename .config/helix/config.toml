@@ -1,6 +1,7 @@
 #theme = material_deep_ocean
-#theme = "base16_default"
-theme = "dracula"
+#theme = "catppuccin_latte"
+#theme = "dracula"
+theme = "catppuccin_latte"
 
 [editor]
 mouse = false
