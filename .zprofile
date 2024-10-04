@@ -1,34 +1,22 @@
-# explicit locale
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export VISUAL=vim
-
-# parallel make
-export MAKEFLAGS='-j 8'
-
-#XDG Base Directory for cli Applications
-if [ -z "$XDG_CONFIG_HOME" ] ; then
-    export XDG_CONFIG_HOME="$HOME/.config"
-fi
-if [ -z "$XDG_DATA_HOME" ] ; then
-    export XDG_DATA_HOME="$HOME/.local/share"
-fi
-if [ -z "$XDG_CACHE_HOME" ] ; then
-    export XDG_CACHE_HOME="/Users/naokiiida/Library/Caches/XDG-cache"
+if [ -f ~/.profile ]; then
+  source ~/.profile
 fi
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 #brew shell completion
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
   autoload -Uz compinit
   compinit
 fi
 autoload -U compinit
 compinit -i
+
+# bun completions
+[ -s "/Users/naokiiida/.bun/_bun" ] && source "/Users/naokiiida/.bun/_bun"
 
 # pnpm
 export PNPM_HOME="/Users/naokiiida/Library/pnpm"

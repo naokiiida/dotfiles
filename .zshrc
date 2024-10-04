@@ -1,5 +1,6 @@
 export KEYTMEOUT=1
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -7,8 +8,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # User specific aliases and functions
-export CLICOLOR=1
+
 # show hidden files
 alias l.='ls -d .*'
 # all files with / at the end of directories
@@ -18,50 +23,27 @@ alias dir='ls -hl'
 # make grep highlight results using color
 alias grep='grep --color=auto'
 
-#custom directories
+# custom directories
 alias 42="cd '/Users/naokiiida/Documents/42/42cursus'"
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 find_man() {
     man $1 | grep -- $2
 }
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
-# bun completions
-[ -s "/Users/naokiiida/.bun/_bun" ] && source "/Users/naokiiida/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-###-begin-pnpm-completion-###
-if type compdef &>/dev/null; then
-  _pnpm_completion () {
-    local reply
-    local si=$IFS
-
-    IFS=$'\n' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" SHELL=zsh pnpm completion-server -- "${words[@]}"))
-    IFS=$si
-
-    if [ "$reply" = "__tabtab_complete_files__" ]; then
-      _files
-    else
-      _describe 'values' reply
-    fi
-  }
-  compdef _pnpm_completion pnpm
-fi
-###-end-pnpm-completion-###
+p() {
+  if [[ -f bun.lockb ]]; then
+    command bun "$@"
+  elif [[ -f pnpm-lock.yaml ]]; then
+    command pnpm "$@"
+  elif [[ -f deno.json ]]; then
+    command deno "$@"
+  elif [[ -f yarn.lock ]]; then
+    command pnpm import
+  elif [[ -f package-lock.json ]]; then
+    command pnpm import
+  else
+    command pnpm "$@"
+  fi
+}
