@@ -1,0 +1,38 @@
+[user]
+	name = niida
+	email = 54788301+naokiiida@users.noreply.github.com
+[core]
+	autocrlf = input
+	safecrlf = true
+	editor = vim
+	quotepath = off
+[alias]
+	sw = switch
+	ci = commit
+	st = status
+	br = branch
+	li = log --oneline
+	rf = log --simplify-by-decoration --oneline
+	hist = log --pretty=format:'%Cblue%h %ad%Creset %s%C(auto)%d [%an]' --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	dft = difftool
+	difft = difftool
+	dlog = "-c diff.external=difft log -p --ext-diff"
+    ipatch = "!f() { git apply $1 && git add -p --filter=difft; }; f"
+[init]
+	defaultBranch = main
+# [diff]
+# 	tool = vimdiff
+# 	guitool = gvimdiff
+[merge]
+	tool = vimdiff
+	guitool = gvimdiff
+[diff]
+        tool = difftastic
+[difftool]
+        prompt = false
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+        difftool = true
