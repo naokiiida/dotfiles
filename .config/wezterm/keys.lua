@@ -12,6 +12,7 @@ local keys = {
 	{ key = "^", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
 	{ key = "_", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
 	{ key = "+", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+	{ key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
   -- { key = 'j', mods = 'SUPER', action = wezterm.action.TogglePaneZoomState, },
   {
 		key = 'j', mods = 'SUPER',
@@ -32,7 +33,15 @@ local keys = {
         end
     end),
 	},
-
+  {
+    key = '%',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.SplitPane {
+      direction = 'Down',
+      command = { args = { 'top' } },
+      size = { Percent = 50 },
+    },
+  },
 }
 
 return keys
