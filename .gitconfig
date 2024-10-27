@@ -6,6 +6,7 @@
 	safecrlf = true
 	editor = vim
 	quotepath = off
+    pager = delta
 [alias]
 	sw = switch
 	ci = commit
@@ -20,19 +21,37 @@
 	difft = difftool
 	dlog = "-c diff.external=difft log -p --ext-diff"
     ipatch = "!f() { git apply $1 && git add -p --filter=difft; }; f"
+	ds = -c delta.features=side-by-side diff
+	dl = -c delta.line-numbers=true diff
 [init]
 	defaultBranch = main
 # [diff]
 # 	tool = vimdiff
 # 	guitool = gvimdiff
 [merge]
-	tool = vimdiff
-	guitool = gvimdiff
+	# tool = vimdiff
+	# guitool = gvimdiff
+    conflictstyle = diff3
 [diff]
-        tool = difftastic
+    tool = difftastic
+    colorMoved = default
 [difftool]
         prompt = false
 [difftool "difftastic"]
         cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-        difftool = true
+# [pager]
+#         difftool = true
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+    hyperlinks = true
+    hyperlinks-file-link-format = "zed://file/{path}:{line}"
+    # hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+    # hyperlinks-file-link-format = "idea://open?file={path}&line={line}"
+    # hyperlinks-file-link-format = "pycharm://open?file={path}&line={line}"

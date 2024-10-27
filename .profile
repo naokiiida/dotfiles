@@ -1,7 +1,8 @@
 # explicit locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export VISUAL=vim
+export VISUAL=hx
+export EDITOR=hx
 export MANPAGER='less -s -M +Gg'
 export CLICOLOR=1
 
