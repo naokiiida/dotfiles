@@ -1,7 +1,7 @@
 #theme = material_deep_ocean
 #theme = "catppuccin_latte"
-#theme = "dracula"
-theme = "catppuccin_latte"
+theme = "dracula"
+
 
 [editor]
 mouse = false
@@ -13,3 +13,13 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[keys.normal]
+C-g = [
+    ":write-all",
+    ":new",
+    ":insert-output lazygit",
+    ":buffer-close!",
+    ":redraw",
+    ":reload-all"
+]
