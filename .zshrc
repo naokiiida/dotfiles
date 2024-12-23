@@ -1,5 +1,5 @@
 export KEYTMEOUT=1
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -55,4 +55,35 @@ y() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+
+# sets the window title using xterm escape codes
+function title {
+  echo -en "\033]0;$@\a"
+}
+
+# wraps helix in a function that sets the title with the args provided to hx
+# this is typically the file name/directory
+# this does not restore the title after leaving hx
+function hx {
+  title $@
+  command hx $@
+}
+
+# runs before every command in zsh and sets the title to the name of the command
+# (the hx command overwrites after with its own title call)
+preexec() {
+  title $1
+}
+
+# runs before going back to the prompt in zsh (after a command)
+# sets the title to be "zsh" when just at the prompt
+precmd () {
+  title zsh
+}
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }

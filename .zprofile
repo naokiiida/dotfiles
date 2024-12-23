@@ -2,37 +2,6 @@ if [ -f ~/.profile ]; then
   source ~/.profile
 fi
 
-
-#brew shell completion
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-autoload -U compinit
-compinit -i
-
-# bun completions
-[ -s "/Users/naokiiida/.bun/_bun" ] && source "/Users/naokiiida/.bun/_bun"
-
-# pnpm
-export PNPM_HOME="/Users/naokiiida/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# Added by OrbStack: command-line tools and integration
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-
-source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
-#docker compose
-eval "$(docker completion zsh); compdef _docker docker;"
-
 # Sensible, short .zshrc
 # Gist page: git.io/vSBRk
 # Raw file:  curl -L git.io/sensible-zshrc
@@ -61,3 +30,21 @@ setopt autocd                   # cd to a folder just by typing it's name
 
 # PATH
 typeset -U path                 # keep duplicates out of the path
+
+#brew shell completion
+if type /opt/homebrew/bin/brew &>/dev/null
+then
+  FPATH=/opt/homebrew/share/zsh-completions:$FPATH
+  source <(/opt/homebrew/bin/fzf --zsh)
+  eval "$(/opt/homebrew/bin/tailscale completion zsh); compdef _tailscale tailscale;"
+  source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+fi
+
+# bun completions
+[ -s "/Users/naokiiida/.bun/_bun" ] && source "/Users/naokiiida/.bun/_bun"
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+#docker compose
+eval "$(/usr/local/bin/docker completion zsh); compdef _docker docker;"

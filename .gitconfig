@@ -4,7 +4,7 @@
 [core]
 	autocrlf = input
 	safecrlf = true
-	editor = vim
+	editor = hx
 	quotepath = off
     pager = delta
 [alias]
