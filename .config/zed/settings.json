@@ -1,0 +1,66 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Tokyo Night"
+  },
+  "vim_mode": true,
+  "format_on_save": "off",
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "buffer_font_family": "UDEV Gothic 35NFLG",
+  "terminal": {
+    "font_family": "UDEV Gothic 35NFLG"
+  },
+  "lsp": {
+    "c-norminette": {
+      "initialization_options": {
+        "path": "/Users/naokiiida/Documents/42/inject_42h_macos_x86_64",
+        "name": "niida",
+        "email": "niida@student.42tokyo.jp",
+        "offset": 9 // timezone offset to UTC. positive for +, negative for -
+      }
+    }
+  },
+  "languages": {
+    "C": {
+      "show_inline_completions": false,
+      "tab_size": 4,
+      "hard_tabs": true,
+      "formatter": {
+        "external": {
+          "command": "c_formatter_42",
+          // "arguments": ["{buffer_path}"],
+          // "output": "ignore"
+        }
+      }
+    },
+    // "cpp": {
+    //   "formatter": {
+    //     "external": {
+    //       "command": "c_formatter_42",
+    //       "arguments": ["{buffer_path}"]
+    //     }
+    //   }
+    // },
+    "HTML": {
+      "language_servers": ["vscode-html-language-server", "superhtml"],
+      "formatter": { "language_server": { "name": "superhtml" } }
+    }
+  }
+}
