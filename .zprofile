@@ -37,6 +37,7 @@ then
   FPATH=/opt/homebrew/share/zsh-completions:$FPATH
   source <(/opt/homebrew/bin/fzf --zsh)
   eval "$(/opt/homebrew/bin/tailscale completion zsh); compdef _tailscale tailscale;"
+  eval "$(/opt/homebrew/bin/rbw gen-completions zsh); compdef _rbw rbw;"
   source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 fi
 

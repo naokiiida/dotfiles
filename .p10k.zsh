@@ -51,14 +51,14 @@
     background_jobs         # presence of background jobs
     # direnv                  # direnv status (https://direnv.net/)
     # asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
-    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
+    # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     # anaconda                # conda environment (https://conda.io/)
     # pyenv                   # python environment (https://github.com/pyenv/pyenv)
     # goenv                   # go environment (https://github.com/syndbg/goenv)
     # nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
     # nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
     # nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
-    node_version          # node.js version
+    # node_version          # node.js version
     # go_version            # go version (https://golang.org)
     # rust_version          # rustc version (https://www.rust-lang.org)
     # dotnet_version        # .NET version (https://dotnet.microsoft.com)
@@ -91,7 +91,7 @@
     # nnn                     # nnn shell (https://github.com/jarun/nnn)
     # lf                      # lf shell (https://github.com/gokcehan/lf)
     # xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
-    vim_shell               # vim shell indicator (:sh)
+    # vim_shell               # vim shell indicator (:sh)
     # midnight_commander      # midnight commander shell (https://midnight-commander.org/)
     # nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
     # vpn_ip                # virtual private network indicator
@@ -569,7 +569,7 @@
   ###############[ asdf: asdf version manager (https://github.com/asdf-vm/asdf) ]###############
   # Default asdf color. Only used to display tools for which there is no color override (see below).
   # Tip:  Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_FOREGROUND.
-  typeset -g POWERLEVEL9K_ASDF_FOREGROUND=66
+  # typeset -g POWERLEVEL9K_ASDF_FOREGROUND=66
 
   # There are four parameters that can be used to hide asdf tools. Each parameter describes
   # conditions under which a tool gets hidden. Parameters can hide tools but not unhide them. If at
@@ -598,20 +598,20 @@
   #
   # Note: If this parameter is set to (shell local global), it won't hide tools.
   # Tip:  Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_SOURCES.
-  typeset -g POWERLEVEL9K_ASDF_SOURCES=(shell local global)
+  # typeset -g POWERLEVEL9K_ASDF_SOURCES=(shell local global)
 
   # If set to false, hide tool versions that are the same as global.
   #
   # Note: The name of this parameter doesn't reflect its meaning at all.
   # Note: If this parameter is set to true, it won't hide tools.
   # Tip:  Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_PROMPT_ALWAYS_SHOW.
-  typeset -g POWERLEVEL9K_ASDF_PROMPT_ALWAYS_SHOW=false
+  # typeset -g POWERLEVEL9K_ASDF_PROMPT_ALWAYS_SHOW=false
 
   # If set to false, hide tool versions that are equal to "system".
   #
   # Note: If this parameter is set to true, it won't hide tools.
   # Tip: Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_SHOW_SYSTEM.
-  typeset -g POWERLEVEL9K_ASDF_SHOW_SYSTEM=true
+  # typeset -g POWERLEVEL9K_ASDF_SHOW_SYSTEM=true
 
   # If set to non-empty value, hide tools unless there is a file matching the specified file pattern
   # in the current directory, or its parent directory, or its grandparent directory, and so on.
@@ -624,118 +624,118 @@
   # directory, in `..`, in `../..` and so on.
   #
   #   typeset -g POWERLEVEL9K_ASDF_NODEJS_SHOW_ON_UPGLOB='*.js|package.json'
-  typeset -g POWERLEVEL9K_ASDF_SHOW_ON_UPGLOB=
+  # typeset -g POWERLEVEL9K_ASDF_SHOW_ON_UPGLOB=
 
   # Ruby version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_RUBY_FOREGROUND=168
+  # typeset -g POWERLEVEL9K_ASDF_RUBY_FOREGROUND=168
   # typeset -g POWERLEVEL9K_ASDF_RUBY_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_RUBY_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Python version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_PYTHON_FOREGROUND=37
+  # typeset -g POWERLEVEL9K_ASDF_PYTHON_FOREGROUND=37
   # typeset -g POWERLEVEL9K_ASDF_PYTHON_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_PYTHON_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Go version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_GOLANG_FOREGROUND=37
+  # typeset -g POWERLEVEL9K_ASDF_GOLANG_FOREGROUND=37
   # typeset -g POWERLEVEL9K_ASDF_GOLANG_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_GOLANG_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Node.js version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_NODEJS_FOREGROUND=70
+  # typeset -g POWERLEVEL9K_ASDF_NODEJS_FOREGROUND=70
   # typeset -g POWERLEVEL9K_ASDF_NODEJS_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_NODEJS_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Rust version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_RUST_FOREGROUND=37
+  # typeset -g POWERLEVEL9K_ASDF_RUST_FOREGROUND=37
   # typeset -g POWERLEVEL9K_ASDF_RUST_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_RUST_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # .NET Core version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_DOTNET_CORE_FOREGROUND=134
+  # typeset -g POWERLEVEL9K_ASDF_DOTNET_CORE_FOREGROUND=134
   # typeset -g POWERLEVEL9K_ASDF_DOTNET_CORE_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_DOTNET_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Flutter version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_FLUTTER_FOREGROUND=38
+  # typeset -g POWERLEVEL9K_ASDF_FLUTTER_FOREGROUND=38
   # typeset -g POWERLEVEL9K_ASDF_FLUTTER_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_FLUTTER_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Lua version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_LUA_FOREGROUND=32
+  # typeset -g POWERLEVEL9K_ASDF_LUA_FOREGROUND=32
   # typeset -g POWERLEVEL9K_ASDF_LUA_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_LUA_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Java version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_JAVA_FOREGROUND=32
+  # typeset -g POWERLEVEL9K_ASDF_JAVA_FOREGROUND=32
   # typeset -g POWERLEVEL9K_ASDF_JAVA_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_JAVA_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Perl version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_PERL_FOREGROUND=67
+  # typeset -g POWERLEVEL9K_ASDF_PERL_FOREGROUND=67
   # typeset -g POWERLEVEL9K_ASDF_PERL_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_PERL_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Erlang version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_ERLANG_FOREGROUND=125
+  # typeset -g POWERLEVEL9K_ASDF_ERLANG_FOREGROUND=125
   # typeset -g POWERLEVEL9K_ASDF_ERLANG_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_ERLANG_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Elixir version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_ELIXIR_FOREGROUND=129
+  # typeset -g POWERLEVEL9K_ASDF_ELIXIR_FOREGROUND=129
   # typeset -g POWERLEVEL9K_ASDF_ELIXIR_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_ELIXIR_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Postgres version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_POSTGRES_FOREGROUND=31
+  # typeset -g POWERLEVEL9K_ASDF_POSTGRES_FOREGROUND=31
   # typeset -g POWERLEVEL9K_ASDF_POSTGRES_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_POSTGRES_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # PHP version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_PHP_FOREGROUND=99
+  # typeset -g POWERLEVEL9K_ASDF_PHP_FOREGROUND=99
   # typeset -g POWERLEVEL9K_ASDF_PHP_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_PHP_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Haskell version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_HASKELL_FOREGROUND=172
+  # typeset -g POWERLEVEL9K_ASDF_HASKELL_FOREGROUND=172
   # typeset -g POWERLEVEL9K_ASDF_HASKELL_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_HASKELL_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Julia version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_JULIA_FOREGROUND=70
+  # typeset -g POWERLEVEL9K_ASDF_JULIA_FOREGROUND=70
   # typeset -g POWERLEVEL9K_ASDF_JULIA_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_JULIA_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   ##########[ nordvpn: nordvpn connection status, linux only (https://nordvpn.com/) ]###########
   # NordVPN connection indicator color.
-  typeset -g POWERLEVEL9K_NORDVPN_FOREGROUND=39
+  # typeset -g POWERLEVEL9K_NORDVPN_FOREGROUND=39
   # Hide NordVPN connection indicator when not connected.
-  typeset -g POWERLEVEL9K_NORDVPN_{DISCONNECTED,CONNECTING,DISCONNECTING}_CONTENT_EXPANSION=
-  typeset -g POWERLEVEL9K_NORDVPN_{DISCONNECTED,CONNECTING,DISCONNECTING}_VISUAL_IDENTIFIER_EXPANSION=
+  # typeset -g POWERLEVEL9K_NORDVPN_{DISCONNECTED,CONNECTING,DISCONNECTING}_CONTENT_EXPANSION=
+  # typeset -g POWERLEVEL9K_NORDVPN_{DISCONNECTED,CONNECTING,DISCONNECTING}_VISUAL_IDENTIFIER_EXPANSION=
   # Custom icon.
   # typeset -g POWERLEVEL9K_NORDVPN_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #################[ ranger: ranger shell (https://github.com/ranger/ranger) ]##################
   # Ranger shell color.
-  typeset -g POWERLEVEL9K_RANGER_FOREGROUND=178
+  # typeset -g POWERLEVEL9K_RANGER_FOREGROUND=178
   # Custom icon.
   # typeset -g POWERLEVEL9K_RANGER_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ######################[ nnn: nnn shell (https://github.com/jarun/nnn) ]#######################
   # Nnn shell color.
-  typeset -g POWERLEVEL9K_NNN_FOREGROUND=72
+  # typeset -g POWERLEVEL9K_NNN_FOREGROUND=72
   # Custom icon.
   # typeset -g POWERLEVEL9K_NNN_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ######################[ lf: lf shell (https://github.com/gokcehan/lf) ]#######################
   # lf shell color.
-  typeset -g POWERLEVEL9K_LF_FOREGROUND=72
+  # typeset -g POWERLEVEL9K_LF_FOREGROUND=72
   # Custom icon.
   # typeset -g POWERLEVEL9K_LF_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ##################[ xplr: xplr shell (https://github.com/sayanarijit/xplr) ]##################
   # xplr shell color.
-  typeset -g POWERLEVEL9K_XPLR_FOREGROUND=72
+  # typeset -g POWERLEVEL9K_XPLR_FOREGROUND=72
   # Custom icon.
   # typeset -g POWERLEVEL9K_XPLR_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -747,7 +747,7 @@
 
   ######[ midnight_commander: midnight commander shell (https://midnight-commander.org/) ]######
   # Midnight Commander shell color.
-  typeset -g POWERLEVEL9K_MIDNIGHT_COMMANDER_FOREGROUND=178
+  # typeset -g POWERLEVEL9K_MIDNIGHT_COMMANDER_FOREGROUND=178
   # Custom icon.
   # typeset -g POWERLEVEL9K_MIDNIGHT_COMMANDER_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1032,33 +1032,33 @@
 
   ###############[ dotnet_version: .NET version (https://dotnet.microsoft.com) ]################
   # .NET version color.
-  typeset -g POWERLEVEL9K_DOTNET_VERSION_FOREGROUND=134
+  # typeset -g POWERLEVEL9K_DOTNET_VERSION_FOREGROUND=134
   # Show .NET version only when in a .NET project subdirectory.
-  typeset -g POWERLEVEL9K_DOTNET_VERSION_PROJECT_ONLY=true
+  # typeset -g POWERLEVEL9K_DOTNET_VERSION_PROJECT_ONLY=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_DOTNET_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #####################[ php_version: php version (https://www.php.net/) ]######################
   # PHP version color.
-  typeset -g POWERLEVEL9K_PHP_VERSION_FOREGROUND=99
+  # typeset -g POWERLEVEL9K_PHP_VERSION_FOREGROUND=99
   # Show PHP version only when in a PHP project subdirectory.
-  typeset -g POWERLEVEL9K_PHP_VERSION_PROJECT_ONLY=true
+  # typeset -g POWERLEVEL9K_PHP_VERSION_PROJECT_ONLY=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_PHP_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ##########[ laravel_version: laravel php framework version (https://laravel.com/) ]###########
   # Laravel version color.
-  typeset -g POWERLEVEL9K_LARAVEL_VERSION_FOREGROUND=161
+  # typeset -g POWERLEVEL9K_LARAVEL_VERSION_FOREGROUND=161
   # Custom icon.
   # typeset -g POWERLEVEL9K_LARAVEL_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ####################[ java_version: java version (https://www.java.com/) ]####################
   # Java version color.
-  typeset -g POWERLEVEL9K_JAVA_VERSION_FOREGROUND=32
+  # typeset -g POWERLEVEL9K_JAVA_VERSION_FOREGROUND=32
   # Show java version only when in a java project subdirectory.
-  typeset -g POWERLEVEL9K_JAVA_VERSION_PROJECT_ONLY=true
+  # typeset -g POWERLEVEL9K_JAVA_VERSION_PROJECT_ONLY=true
   # Show brief version.
-  typeset -g POWERLEVEL9K_JAVA_VERSION_FULL=false
+  # typeset -g POWERLEVEL9K_JAVA_VERSION_FULL=false
   # Custom icon.
   # typeset -g POWERLEVEL9K_JAVA_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1076,24 +1076,24 @@
 
   #############[ rbenv: ruby version from rbenv (https://github.com/rbenv/rbenv) ]##############
   # Rbenv color.
-  typeset -g POWERLEVEL9K_RBENV_FOREGROUND=168
+  # typeset -g POWERLEVEL9K_RBENV_FOREGROUND=168
   # Hide ruby version if it doesn't come from one of these sources.
-  typeset -g POWERLEVEL9K_RBENV_SOURCES=(shell local global)
+  # typeset -g POWERLEVEL9K_RBENV_SOURCES=(shell local global)
   # If set to false, hide ruby version if it's the same as global:
   # $(rbenv version-name) == $(rbenv global).
-  typeset -g POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW=false
+  # typeset -g POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW=false
   # If set to false, hide ruby version if it's equal to "system".
-  typeset -g POWERLEVEL9K_RBENV_SHOW_SYSTEM=true
+  # typeset -g POWERLEVEL9K_RBENV_SHOW_SYSTEM=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_RBENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #######################[ rvm: ruby version from rvm (https://rvm.io) ]########################
   # Rvm color.
-  typeset -g POWERLEVEL9K_RVM_FOREGROUND=168
+  # typeset -g POWERLEVEL9K_RVM_FOREGROUND=168
   # Don't show @gemset at the end.
-  typeset -g POWERLEVEL9K_RVM_SHOW_GEMSET=false
+  # typeset -g POWERLEVEL9K_RVM_SHOW_GEMSET=false
   # Don't show ruby- at the front.
-  typeset -g POWERLEVEL9K_RVM_SHOW_PREFIX=false
+  # typeset -g POWERLEVEL9K_RVM_SHOW_PREFIX=false
   # Custom icon.
   # typeset -g POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1105,76 +1105,76 @@
 
   ##########[ luaenv: lua version from luaenv (https://github.com/cehoffman/luaenv) ]###########
   # Lua color.
-  typeset -g POWERLEVEL9K_LUAENV_FOREGROUND=32
+  # typeset -g POWERLEVEL9K_LUAENV_FOREGROUND=32
   # Hide lua version if it doesn't come from one of these sources.
-  typeset -g POWERLEVEL9K_LUAENV_SOURCES=(shell local global)
+  # typeset -g POWERLEVEL9K_LUAENV_SOURCES=(shell local global)
   # If set to false, hide lua version if it's the same as global:
   # $(luaenv version-name) == $(luaenv global).
-  typeset -g POWERLEVEL9K_LUAENV_PROMPT_ALWAYS_SHOW=false
+  # typeset -g POWERLEVEL9K_LUAENV_PROMPT_ALWAYS_SHOW=false
   # If set to false, hide lua version if it's equal to "system".
-  typeset -g POWERLEVEL9K_LUAENV_SHOW_SYSTEM=true
+  # typeset -g POWERLEVEL9K_LUAENV_SHOW_SYSTEM=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_LUAENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ###############[ jenv: java version from jenv (https://github.com/jenv/jenv) ]################
   # Java color.
-  typeset -g POWERLEVEL9K_JENV_FOREGROUND=32
+  # typeset -g POWERLEVEL9K_JENV_FOREGROUND=32
   # Hide java version if it doesn't come from one of these sources.
-  typeset -g POWERLEVEL9K_JENV_SOURCES=(shell local global)
+  # typeset -g POWERLEVEL9K_JENV_SOURCES=(shell local global)
   # If set to false, hide java version if it's the same as global:
   # $(jenv version-name) == $(jenv global).
-  typeset -g POWERLEVEL9K_JENV_PROMPT_ALWAYS_SHOW=false
+  # typeset -g POWERLEVEL9K_JENV_PROMPT_ALWAYS_SHOW=false
   # If set to false, hide java version if it's equal to "system".
-  typeset -g POWERLEVEL9K_JENV_SHOW_SYSTEM=true
+  # typeset -g POWERLEVEL9K_JENV_SHOW_SYSTEM=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_JENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ###########[ plenv: perl version from plenv (https://github.com/tokuhirom/plenv) ]############
   # Perl color.
-  typeset -g POWERLEVEL9K_PLENV_FOREGROUND=67
+  # typeset -g POWERLEVEL9K_PLENV_FOREGROUND=67
   # Hide perl version if it doesn't come from one of these sources.
-  typeset -g POWERLEVEL9K_PLENV_SOURCES=(shell local global)
+  # typeset -g POWERLEVEL9K_PLENV_SOURCES=(shell local global)
   # If set to false, hide perl version if it's the same as global:
   # $(plenv version-name) == $(plenv global).
-  typeset -g POWERLEVEL9K_PLENV_PROMPT_ALWAYS_SHOW=false
+  # typeset -g POWERLEVEL9K_PLENV_PROMPT_ALWAYS_SHOW=false
   # If set to false, hide perl version if it's equal to "system".
-  typeset -g POWERLEVEL9K_PLENV_SHOW_SYSTEM=true
+  # typeset -g POWERLEVEL9K_PLENV_SHOW_SYSTEM=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_PLENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ###########[ perlbrew: perl version from perlbrew (https://github.com/gugod/App-perlbrew) ]############
   # Perlbrew color.
-  typeset -g POWERLEVEL9K_PERLBREW_FOREGROUND=67
+  # typeset -g POWERLEVEL9K_PERLBREW_FOREGROUND=67
   # Show perlbrew version only when in a perl project subdirectory.
-  typeset -g POWERLEVEL9K_PERLBREW_PROJECT_ONLY=true
+  # typeset -g POWERLEVEL9K_PERLBREW_PROJECT_ONLY=true
   # Don't show "perl-" at the front.
-  typeset -g POWERLEVEL9K_PERLBREW_SHOW_PREFIX=false
+  # typeset -g POWERLEVEL9K_PERLBREW_SHOW_PREFIX=false
   # Custom icon.
   # typeset -g POWERLEVEL9K_PERLBREW_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ############[ phpenv: php version from phpenv (https://github.com/phpenv/phpenv) ]############
   # PHP color.
-  typeset -g POWERLEVEL9K_PHPENV_FOREGROUND=99
+  # typeset -g POWERLEVEL9K_PHPENV_FOREGROUND=99
   # Hide php version if it doesn't come from one of these sources.
-  typeset -g POWERLEVEL9K_PHPENV_SOURCES=(shell local global)
+  # typeset -g POWERLEVEL9K_PHPENV_SOURCES=(shell local global)
   # If set to false, hide php version if it's the same as global:
   # $(phpenv version-name) == $(phpenv global).
-  typeset -g POWERLEVEL9K_PHPENV_PROMPT_ALWAYS_SHOW=false
+  # typeset -g POWERLEVEL9K_PHPENV_PROMPT_ALWAYS_SHOW=false
   # If set to false, hide php version if it's equal to "system".
-  typeset -g POWERLEVEL9K_PHPENV_SHOW_SYSTEM=true
+  # typeset -g POWERLEVEL9K_PHPENV_SHOW_SYSTEM=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_PHPENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #######[ scalaenv: scala version from scalaenv (https://github.com/scalaenv/scalaenv) ]#######
   # Scala color.
-  typeset -g POWERLEVEL9K_SCALAENV_FOREGROUND=160
+  # typeset -g POWERLEVEL9K_SCALAENV_FOREGROUND=160
   # Hide scala version if it doesn't come from one of these sources.
-  typeset -g POWERLEVEL9K_SCALAENV_SOURCES=(shell local global)
+  # typeset -g POWERLEVEL9K_SCALAENV_SOURCES=(shell local global)
   # If set to false, hide scala version if it's the same as global:
   # $(scalaenv version-name) == $(scalaenv global).
-  typeset -g POWERLEVEL9K_SCALAENV_PROMPT_ALWAYS_SHOW=false
+  # typeset -g POWERLEVEL9K_SCALAENV_PROMPT_ALWAYS_SHOW=false
   # If set to false, hide scala version if it's equal to "system".
-  typeset -g POWERLEVEL9K_SCALAENV_SHOW_SYSTEM=true
+  # typeset -g POWERLEVEL9K_SCALAENV_SHOW_SYSTEM=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_SCALAENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1544,7 +1544,7 @@
 
   #####################################[ wifi: wifi speed ]#####################################
   # WiFi color.
-  typeset -g POWERLEVEL9K_WIFI_FOREGROUND=68
+  # typeset -g POWERLEVEL9K_WIFI_FOREGROUND=68
   # Custom icon.
   # typeset -g POWERLEVEL9K_WIFI_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1587,9 +1587,9 @@
   # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS. It displays an icon and orange text greeting the user.
   #
   # Type `p10k help segment` for documentation and a more sophisticated example.
-  function prompt_example() {
-    p10k segment -f 208 -i '⭐' -t 'hello, %n'
-  }
+  # function prompt_example() {
+  #   p10k segment -f 208 -i '⭐' -t 'hello, %n'
+  # }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
@@ -1603,12 +1603,12 @@
   #
   # Usually, you should either not define instant_prompt_* or simply call prompt_* from it. If
   # instant_prompt_* is not defined for a segment, the segment won't be shown in instant prompt.
-  function instant_prompt_example() {
-    # Since prompt_example always makes the same `p10k segment` calls, we can call it from
-    # instant_prompt_example. This will give us the same `example` prompt segment in the instant
-    # and regular prompts.
-    prompt_example
-  }
+  # function instant_prompt_example() {
+  #   # Since prompt_example always makes the same `p10k segment` calls, we can call it from
+  #   # instant_prompt_example. This will give us the same `example` prompt segment in the instant
+  #   # and regular prompts.
+  #   prompt_example
+  # }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
   # typeset -g POWERLEVEL9K_EXAMPLE_FOREGROUND=208
@@ -1633,13 +1633,13 @@
   #   - verbose: Enable instant prompt and print a warning when detecting console output during
   #              zsh initialization. Choose this if you've never tried instant prompt, haven't
   #              seen the warning, or if you are unsure what this all means.
-  typeset -g POWERLEVEL9K_INSTANT_PROMPT=verbose
+  typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
   # Hot reload allows you to change POWERLEVEL9K options after Powerlevel10k has been initialized.
   # For example, you can type POWERLEVEL9K_BACKGROUND=red and see your prompt turn red. Hot reload
   # can slow down prompt by 1-2 milliseconds, so it's better to keep it turned off unless you
   # really need it.
-  typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
+  typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=off
 
   # If p10k is already loaded, reload configuration.
   # This works even with POWERLEVEL9K_DISABLE_HOT_RELOAD=true.

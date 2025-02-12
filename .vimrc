@@ -123,18 +123,33 @@ augroup cursor_off
 augroup END
 
 " More Vimscripts code goes here.
-" Set the color scheme.
+" Set the color scheme. -----------------------------
 "    let g:gruvbox_contrast_dark='hard'
 "    let g:gruvbox_contrast_light='hard'
 "    autocmd vimenter * ++nested colorscheme gruvbox
 
+" tokyo night colorscheme ----------------------------
+set termguicolors
+set rtp+=/Users/naokiiida/Documents/4_clone/tokyonight.nvim/extras/vim
+colorscheme tokyonight
+
+" dracula color scheme https://draculatheme.com/vim ---
+" if v:version < 802
+"     packadd! dracula
+" endif
+" syntax enable
+" colorscheme dracula
+
 " Use System Appearance
 let output =  system("defaults read -g AppleInterfaceStyle")
 if v:shell_error != 0
-    set background=light
+  colorscheme tokyonight-day
+  " set background=light
 else
-    set background=dark
+  colorscheme tokyonight
+  " set background=dark
 endif
+
 " }}}
 
 " Set the font for vim gui.
@@ -158,3 +173,4 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 " Show the status on the second to last line.
 set laststatus=2
 " }}}
+

@@ -38,3 +38,4 @@ esac
 
 # For Flutter Dev
 export CHROME_EXECUTABLE="/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev"
+. "$HOME/.cargo/env"

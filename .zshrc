@@ -87,3 +87,22 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
+ 
+theme_switch() {
+  local helix_light='catppuccin_latte'
+  local helix_dark='dracula'
+
+  local STYLE=$(defaults read NSGlobalDomain AppleInterfaceStyle 2>/dev/null)
+  if [[ "$STYLE" == "Dark" ]]; then
+    print "$STYLE mode detected."
+    sed -i '' "s/^theme = \".*\"/theme = \"$helix_dark\"/" ~/.config/helix/config.toml
+  else
+    print "Light mode detected."
+    sed -i '' "s/^theme = \".*\"/theme = \"$helix_light\"/" ~/.config/helix/config.toml
+  fi
+  pkill -USR1 hx
+}
+alias dark=theme_switch
+export PATH=$PATH:/Users/naokiiida/.local/bin
+
+alias gsh='gcloud beta interactive'

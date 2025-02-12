@@ -18,9 +18,21 @@ name = 'c'
 #formatter = { command = 'clang-format', args = ['--style=/home/niida/Documents/.clang-format'] }
 formatter = { command = 'c_formatter_42' }
 auto-format = false
-[language-server.clangd.config]
-    fallbackFlags = [ "--std=c99" ]
+language-servers = ['clangd', 'typos']
 
+[[language]]
+name = 'cpp'
+#formatter = { command = 'clang-format', args = ['--style=/home/niida/Documents/.clang-format'] }
+formatter = { command = 'c_formatter_42' }
+auto-format = false
+language-servers = ['clangd', 'typos']
+[language-server.clangd]
+command = 'clangd'
+args = ['--function-arg-placeholders', '--completion-style=detailed', '--clang-tidy', '--log=verbose']
+# config = {
+#     c = { fallbackFlags = ["--std=c99"] },
+#     cpp = { fallbackFlags = ["--std=c++98"] }
+# }
 [[language-server.vscode-json-language-server.config.json.schemas]]
 fileMatch = ["tsconfig.json", "tsconfig.*.json"]
 url = "https://json.schemastore.org/tsconfig.json"

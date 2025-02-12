@@ -9,8 +9,8 @@
 {
   "assistant": {
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "provider": "copilot_chat",
+      "model": "o3-mini"
     },
     "version": "2"
   },
@@ -22,7 +22,7 @@
   "vim_mode": true,
   "format_on_save": "off",
   "ui_font_size": 14,
-  "buffer_font_size": 12,
+  "buffer_font_size": 12.0,
   "buffer_font_family": "UDEV Gothic 35NFLG",
   "terminal": {
     "font_family": "UDEV Gothic 35NFLG"
@@ -30,12 +30,17 @@
   "lsp": {
     "c-norminette": {
       "initialization_options": {
-        "path": "/Users/naokiiida/Documents/42/inject_42h_macos_x86_64",
+        "path": "/usr/local/bin/inject_42h",
         "name": "niida",
         "email": "niida@student.42tokyo.jp",
         "offset": 9 // timezone offset to UTC. positive for +, negative for -
       }
     }
+  },
+  "file_types": {
+    "C": ["*.h"],
+    "TOML": ["MyLockFile"],
+    "Dockerfile": ["Dockerfile*"]
   },
   "languages": {
     "C": {
@@ -44,7 +49,7 @@
       "hard_tabs": true,
       "formatter": {
         "external": {
-          "command": "c_formatter_42",
+          "command": "c_formatter_42"
           // "arguments": ["{buffer_path}"],
           // "output": "ignore"
         }
