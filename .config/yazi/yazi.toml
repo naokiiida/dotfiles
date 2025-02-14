@@ -1,0 +1,9 @@
+[manager]
+show_hidden = true
+
+[opener]
+edit = [
+	{ run = '$EDITOR "$@"', block = true, for = "unix" },
+	{ run = "%EDITOR% %*",  block = true, for = "windows" },
+	{ run = 'zed "$@"', block = false, orphan = true, for = "unix" }
+]
