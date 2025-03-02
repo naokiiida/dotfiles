@@ -4,7 +4,7 @@ theme = "dracula"
 
 
 [editor]
-mouse = false
+# mouse = false
 
 [editor.cursor-shape]
 insert = "bar"
