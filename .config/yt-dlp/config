@@ -1,0 +1,42 @@
+# Save all videos here
+-P "/Users/naokiiida/Movies/"
+-o "%(playlist)s/%(title)s/%(title)s [%(id)s].%(ext)s"
+
+# 1080p Premium Enhanced Bitrate
+--extractor-args "youtube:player_client=default,ios"
+
+# Download and merge the best video-only format and the best audio-only format,
+# or download the best combined format if video-only format is not available
+-f bv+ba/b
+
+# # Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
+# --restrict-filenames
+
+# Write thumbnail
+--write-thumbnail
+
+# Convert thumbnails to other format jpg png webp
+--convert-thumbnails jpg
+
+# Download all the available subtitles
+--write-subs
+--sub-langs all,-live_chat
+--no-write-auto-subs
+
+# Convert Subs to srt
+--convert-subs srt
+
+# Remux the video into another container
+--remux-video mp4
+
+# merge subtitles into video file
+--embed-subs
+
+# Embed metadata to the video file. Also adds chapters to file
+--embed-metadata
+
+# Do not overwrite existing output files
+--no-overwrites
+
+# Number of fragments of a dash/hlsnative video that should be download concurrently (default is 1)
+--concurrent-fragments 4
