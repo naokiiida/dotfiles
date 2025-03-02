@@ -5,5 +5,6 @@ show_hidden = true
 edit = [
 	{ run = '$EDITOR "$@"', block = true, for = "unix" },
 	{ run = "%EDITOR% %*",  block = true, for = "windows" },
-	{ run = 'zed "$@"', block = false, orphan = true, for = "unix" }
+	{ run = 'zed "$@"', block = false, orphan = true, for = "unix" },
+	{ run = 'code "$@"', block = false, orphan = true, for = "unix" }
 ]

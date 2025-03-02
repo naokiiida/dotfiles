@@ -39,3 +39,9 @@ esac
 # For Flutter Dev
 export CHROME_EXECUTABLE="/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev"
 . "$HOME/.cargo/env"
+
+# fzf with fd
+export FZF_DEFAULT_COMMAND='fd --type file'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# minilibx
+export MANPATH=/Users/naokiiida/Documents/42/42cursus/cub3d/minilibx_mms_20200219/man$MANPATH

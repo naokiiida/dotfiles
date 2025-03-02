@@ -22,9 +22,25 @@ alias la='ls -aF'
 alias dir='ls -hl'
 # make grep highlight results using color
 alias grep='grep --color=auto'
+# keka archiver
+alias brotli='keka brotli'
+alias kwet='keka kwet'
+alias lrzip='keka lrzip'
+alias lz4='keka lz4'
+alias lzip='keka lzip'
+alias pbzip2='keka pbzip2'
+alias pigz='keka pigz'
+alias plzip='keka plzip'
+alias snzip='keka snzip'
+alias tar='keka tar'
+alias unar='keka unar'
+alias unrar='keka unrar'
+alias xz='keka xz'
+alias zstd='keka zstd'
 
 # custom directories
 alias 42="cd '/Users/naokiiida/Documents/42/42cursus'"
+alias work="cd '/Users/naokiiida/Documents/2_work'"
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
