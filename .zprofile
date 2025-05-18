@@ -31,15 +31,85 @@ setopt autocd                   # cd to a folder just by typing it's name
 # PATH
 typeset -U path                 # keep duplicates out of the path
 
+#SPACESHIP
+  SPACESHIP_PROMPT_ORDER=(
+    user           # Username section
+    dir            # Current directory section
+    host           # Hostname section
+    git            # Git section (git_branch + git_status + [git_commit](default off))
+    # hg             # Mercurial section (hg_branch  + hg_status)
+    package        # Package version
+    node           # Node.js section
+    bun            # Bun section
+    deno           # Deno section
+    ruby           # Ruby section
+    python         # Python section
+    # red            # Red section
+    # elm            # Elm section
+    # elixir         # Elixir section
+    # xcode          # Xcode section
+    # swift          # Swift section
+    # golang         # Go section
+    # perl           # Perl section
+    # php            # PHP section
+    rust           # Rust section
+    # haskell        # Haskell Stack section
+    # scala          # Scala section
+    # kotlin         # Kotlin section
+    # java           # Java section
+    # lua            # Lua section
+    # dart           # Dart section
+    # julia          # Julia section
+    # crystal        # Crystal section
+    docker         # Docker section
+    docker_compose # Docker section
+    # aws            # Amazon Web Services section
+    gcloud         # Google Cloud Platform section
+    # azure          # Azure section
+    venv           # virtualenv section
+    # conda          # conda virtualenv section
+    uv             # uv virtualenv section
+    # dotnet         # .NET section
+    # ocaml          # OCaml section
+    # vlang          # V section
+    zig            # Zig section
+    # purescript     # PureScript section
+    # erlang         # Erlang section
+    # gleam          # Gleam section
+    # kubectl        # Kubectl context section
+    ansible        # Ansible section
+    # terraform      # Terraform workspace section
+    # pulumi         # Pulumi stack section
+    # ibmcloud       # IBM Cloud section
+    nix_shell      # Nix shell
+    # gnu_screen     # GNU Screen section
+    exec_time      # Execution time
+    async          # Async jobs indicator
+    line_sep       # Line break
+    # battery        # Battery level and status
+    jobs           # Background jobs indicator
+    exit_code      # Exit code section
+    sudo           # Sudo indicator
+    char           # Prompt character
+  )
+
+  SPACESHIP_RPROMPT_ORDER=(
+    time           # Time stamps section
+  )
+
 #brew shell completion
 if type /opt/homebrew/bin/brew &>/dev/null
 then
   FPATH=/opt/homebrew/share/zsh-completions:$FPATH
+  # source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+  source /opt/homebrew/opt/spaceship/spaceship.zsh
+  ZVM_INIT_MODE=sourcing
+  source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
   source <(/opt/homebrew/bin/fzf --zsh)
   eval "$(/opt/homebrew/bin/tailscale completion zsh); compdef _tailscale tailscale;"
   eval "$(/opt/homebrew/bin/rbw gen-completions zsh); compdef _rbw rbw;"
-  source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
   eval "$(/opt/homebrew/bin/zoxide init zsh)"
+  eval "$(/opt/homebrew/bin/uv generate-shell-completion zsh); compdef _uv uv"
 fi
 
 # bun completions
@@ -50,3 +120,7 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
 #docker compose
 eval "$(/usr/local/bin/docker completion zsh); compdef _docker docker;"
+eval "$(/Users/naokiiida/Library/pnpm/wmill completions zsh); compdef _wmill wmill;"
+SPACESHIP_GCLOUD_SHOW=false
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_EXIT_CODE_SHOW=true

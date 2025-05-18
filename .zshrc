@@ -1,16 +1,16 @@
 export KEYTMEOUT=1
-source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 # User specific aliases and functions
 
@@ -43,6 +43,7 @@ alias 42="cd '/Users/naokiiida/Documents/42/42cursus'"
 alias work="cd '/Users/naokiiida/Documents/2_work'"
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ldot='/opt/homebrew/bin/lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 find_man() {
     man $1 | grep -- $2
@@ -122,3 +123,13 @@ alias dark=theme_switch
 export PATH=$PATH:/Users/naokiiida/.local/bin
 
 alias gsh='gcloud beta interactive'
+
+alias gam="/Users/naokiiida/bin/gam7/gam"
+
+# Added by Windsurf
+export PATH="/Users/naokiiida/.codeium/windsurf/bin:$PATH"
+
+gcloud() {
+  export SPACESHIP_GCLOUD_SHOW=true
+  /opt/homebrew/bin/gcloud "$@"
+}
