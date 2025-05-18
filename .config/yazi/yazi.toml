@@ -1,10 +1,21 @@
 [manager]
-show_hidden = true
+sort_by = "mtime"
+sort_reverse = true
+# show_hidden = true
 
 [opener]
 edit = [
 	{ run = '$EDITOR "$@"', block = true, for = "unix" },
 	{ run = "%EDITOR% %*",  block = true, for = "windows" },
 	{ run = 'zed "$@"', block = false, orphan = true, for = "unix" },
+	{ run = 'cursor "$@"', block = false, orphan = true, for = "unix" },
 	{ run = 'code "$@"', block = false, orphan = true, for = "unix" }
+]
+
+[open]
+prepend_rules = [
+	{ name = "*.json", use = "edit" },
+
+	# Multiple openers for a single rule
+	{ name = "*.html", use = [ "open", "edit" ] },
 ]
