@@ -15,10 +15,14 @@
 # @raycast.authorURL https://raycast.com/naokiiida
 
 url=$1
-# url="https://docs.google.com/spreadsheets/d/1VPNAMe7NaO9sfsr0-tMu3lIPz1C63sXmQKS1uaGqxK4/edit?gid=0#gid=0"
-# url="https://script.google.com/home/projects/<UID>/edit"
-# echo "Google Sheet URL: "$1""
-id=$(sed -E 's#.*/(spreadsheets/d/|projects/)([^/]+)/.*#\2#' <<< "$url")
+# Extract UID from different Google URLs
+# Examples:
+# "https://docs.google.com/spreadsheets/d/<UID>/edit?gid=0#gid=0"
+# "https://script.google.com/home/projects/<UID>/edit"
+# "https://script.google.com/d/<UID>/edit?usp=sharing"
+# "https://drive.google.com/drive/folders/<UID>?usp=share_link"
+
+# Extract the UID from the URL using a more comprehensive regex pattern
+id=$(sed -E 's#.*/((d/|projects/|folders/|spreadsheets/d/)([^/?#]+)).*#\3#' <<< "$url")
 echo $id
 echo -n $id | pbcopy
-# echo $id | tee /dev/tty | pbcopy

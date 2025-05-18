@@ -7,6 +7,7 @@
 
 # Optional parameters:
 # @raycast.icon 🗜️
+# @raycast.argument1 { "type": "text", "placeholder": "PDF_PATH" }
 
 # Documentation:
 # @raycast.description compress pdf with ghostscript
