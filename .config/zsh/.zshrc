@@ -9,7 +9,8 @@ export KEYTMEOUT=1
 
 
 # # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
 # POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 # User specific aliases and functions
@@ -41,9 +42,12 @@ alias zstd='keka zstd'
 # custom directories
 alias 42="cd '/Users/naokiiida/Documents/42/42cursus'"
 alias work="cd '/Users/naokiiida/Documents/2_work'"
+alias vault="cd /Users/naokiiida/Documents/Vault"
+alias d1="cd /Users/naokiiida/Documents/1_personal"
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ldot='/opt/homebrew/bin/lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias g1='git clone --depth=1'
 
 find_man() {
     man $1 | grep -- $2
@@ -64,6 +68,9 @@ p() {
     command pnpm "$@"
   fi
 }
+
+alias npm=pnpm
+
 
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -104,7 +111,7 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
- 
+
 theme_switch() {
   local helix_light='catppuccin_latte'
   local helix_dark='dracula'
@@ -133,3 +140,37 @@ gcloud() {
   export SPACESHIP_GCLOUD_SHOW=true
   /opt/homebrew/bin/gcloud "$@"
 }
+
+alias yn="open -na Ghostty.app --args -e /opt/homebrew/bin/yazi"
+alias gl="lazygit"
+rcat() {
+ /opt/homebrew/bin/rg --json -C 2 "$@" | delta
+}
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/naokiiida/.lmstudio/bin"
+# End of LM Studio CLI section
+
+function git-clone-folder() {
+  local repo_url=$1
+  local folder_path=$2
+  local repo_name=$(basename "$repo_url" .git)
+
+  if [[ -z "$repo_url" || -z "$folder_path" ]]; then
+    echo "Usage: git-clone-folder <repository-url> <folder-path>"
+    return 1
+  fi
+
+  git clone --no-checkout "$repo_url" "$repo_name" && \
+  cd "$repo_name" && \
+  git sparse-checkout init && \
+  echo "$folder_path/" > .git/info/sparse-checkout && \
+  git checkout
+}
+
+alias gitf="git-clone-folder"
+
+
+# Task Master aliases added on 6/24/2025
+alias tm='task-master'
+alias taskmaster='task-master'

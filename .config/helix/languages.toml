@@ -23,7 +23,7 @@ language-servers = ['clangd', 'typos']
 [[language]]
 name = 'cpp'
 #formatter = { command = 'clang-format', args = ['--style=/home/niida/Documents/.clang-format'] }
-formatter = { command = 'c_formatter_42' }
+# formatter = { command = 'c_formatter_42' }
 auto-format = false
 language-servers = ['clangd', 'typos']
 [language-server.clangd]

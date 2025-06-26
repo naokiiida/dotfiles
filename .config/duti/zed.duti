@@ -6,6 +6,7 @@ dev.zed.Zed com.docker.dockerfile all
 dev.zed.Zed public.yaml all
 dev.zed.Zed public.tsx all
 dev.zed.Zed public.typescript all
+dev.zed.Zed com.microsoft.typescript all
 dev.zed.Zed public.json all
 dev.zed.Zed org.json.jsonc all
 dev.zed.Zed org.go.source all

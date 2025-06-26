@@ -5,7 +5,7 @@ set nocompatible
 filetype on
 
 " Enable plugins and load plugin for the detected file type.
-filetype plugin on
+filetype plugin off
 
 " Load an indent file for the detected file type.
 filetype indent on
@@ -174,3 +174,24 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 set laststatus=2
 " }}}
 
+
+" MERGE ------------------------------------------------------------ {{{
+" Make mapleader default explicit
+let mapleader = '\'
+
+" Toggle diff view on the left, center, or right windows
+nmap <silent> <leader>dl :call difftoggle#DiffToggle(1)<cr>
+nmap <silent> <leader>dm :call difftoggle#DiffToggle(2)<cr>
+nmap <silent> <leader>dr :call difftoggle#DiffToggle(3)<cr>
+" Refresh the diff
+nmap <silent> <leader>du :diffupdate<cr>
+" Toggle ignoring whitespace
+nmap <silent> <leader>dw :call iwhitetoggle#IwhiteToggle()<CR>
+
+" Find merge conflict markers
+map <leader>dc /\v^[<=>]{7}( .*\|$)<cr>
+
+" Use a (usually) better diff algorithm.
+" set diffopt+=algorithm:patience
+" set diffopt+=indent-heuristic
+" }}}

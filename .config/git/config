@@ -1,7 +1,8 @@
 [user]
 	name = niida
 	email = 54788301+naokiiida@users.noreply.github.com
-	signingkey = .ssh/id_ed25519.pub
+	# signingkey = ~/.ssh/github.pub #this key only for signing, has no Auth permission
+	signingkey = ~/.ssh/id_ed25519.pub #this key is used for Auth and signing
 [core]
 	autocrlf = input
 	safecrlf = true
@@ -31,14 +32,13 @@
 	wtr = git worktree remove
 [init]
 	defaultBranch = main
-# [diff]
-# 	tool = vimdiff
-# 	guitool = gvimdiff
 [merge]
 	# tool = vimdiff
 	# guitool = gvimdiff
-    conflictstyle = diff3
+    conflictstyle = zdiff3 #follow delta recommendation
 [diff]
+# 	tool = vimdiff
+# 	guitool = gvimdiff
     tool = difftastic
     colorMoved = default
 [difftool]
@@ -67,3 +67,16 @@
 	format = ssh
 [commit]
 	gpgsign = true
+[advice]
+    addEmptyPathspec = false
+    pushNonFastForward = false
+    statusHints = false
+[status]
+    branch = true
+    short = true
+    showStash = true
+    showUntrackedFiles = all  # show individual untracked files
+[push]
+    autoSetupRemote = true  # easier to push new branches
+    default = current  # push only current branch by default
+    followTags = true  # push also tags

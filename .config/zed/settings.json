@@ -7,14 +7,312 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "ssh_connections": [
+    {
+      "host": "fmva77hr",
+      "projects": [
+        {
+          "paths": ["/home/niida/applications"]
+        },
+        {
+          "paths": ["/home/niida/applications/traefik"]
+        },
+        {
+          "paths": ["/home/niida/applications/windmill-helm-charts"]
+        }
+      ]
+    },
+    {
+      "host": "syi",
+      "projects": [
+        {
+          "paths": ["/opt/serv"]
+        }
+      ]
+    }
+  ],
   "icon_theme": "Zed (Default)",
   "features": {
     "edit_prediction_provider": "zed"
   },
-  "assistant": {
+  "agent": {
+    "profiles": {
+      "karakeep": {
+        "name": "Karakeep",
+        "tools": {
+          "open": true,
+          "copy_path": true,
+          "create_directory": true,
+          "create_file": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "terminal": true,
+          "thinking": true,
+          "web_search": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {
+                    "clasp": {
+                        "tools": {
+                            "pull_files": false,
+                            "push_files": false,
+                            "list_projects": false,
+                            "create_project": false,
+                            "clone_project": false
+                        }
+                    }
+                }
+      },
+      "clasp": {
+        "name": "clasp",
+        "tools": {
+          "copy_path": true,
+          "create_directory": true,
+          "delete_path": true,
+          "open": true,
+          "now": true,
+          "move_path": true,
+          "list_directory": true,
+          "grep": true,
+          "find_path": true,
+          "edit_file": true,
+          "diagnostics": true,
+          "read_file": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "clasp": {
+            "tools": {
+              "push_files": true,
+              "pull_files": true,
+              "list_projects": true,
+              "create_project": true,
+              "clone_project": true
+            }
+          }
+        }
+      },
+      "minimal": {
+        "name": "Minimal",
+        "tools": {
+          "thinking": false
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      },
+      "fast-write": {
+        "name": "Fast Write",
+        "tools": {
+          "open": true,
+          "copy_path": true,
+          "create_directory": true,
+          "create_file": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "terminal": true,
+          "thinking": true,
+          "web_search": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {
+                    "karakeep Docs": {
+                        "tools": {
+                            "fetch_generic_url_content": false,
+                            "fetch_karakeep_documentation": false,
+                            "search_karakeep_code": false,
+                            "search_karakeep_documentation": false
+                        }
+                    },
+                    "clasp": {
+                        "tools": {
+                            "push_files": false,
+                            "pull_files": false,
+                            "list_projects": false,
+                            "create_project": false,
+                            "clone_project": false
+                        }
+                    },
+                    "mcp-server-brave-search": {
+                        "tools": {
+                            "brave_local_search": false,
+                            "brave_web_search": false
+                        }
+                    },
+                    "mcp-server-context7": {
+                        "tools": {
+                            "get-library-docs": false,
+                            "resolve-library-id": false
+                        }
+                    },
+                    "mcp-server-puppeteer": {
+                        "tools": {
+                            "puppeteer_click": false,
+                            "puppeteer_evaluate": false,
+                            "puppeteer_fill": false,
+                            "puppeteer_navigate": false,
+                            "puppeteer_hover": false,
+                            "puppeteer_screenshot": false,
+                            "puppeteer_select": false
+                        }
+                    },
+                    "Raycast Docs": {
+                        "tools": {
+                            "search_extensions_documentation": false,
+                            "search_extensions_code": false,
+                            "fetch_generic_url_content": false,
+                            "fetch_extensions_documentation": false
+                        }
+                    },
+                    "Cockpit Docs": {
+                        "tools": {
+                            "search_cockpit_documentation": false,
+                            "search_cockpit_code": false,
+                            "fetch_generic_url_content": false,
+                            "fetch_cockpit_documentation": false
+                        }
+                    }
+                }
+      },
+      "docs": {
+        "name": "Docs",
+        "tools": {
+          "terminal": true,
+          "edit_file": false,
+          "thinking": true,
+          "diagnostics": false,
+          "fetch": true,
+          "list_directory": false,
+          "now": false,
+          "open": false,
+          "find_path": false,
+          "read_file": false,
+          "grep": false,
+          "symbol_info": true,
+          "create_file": true,
+          "create_directory": false,
+          "copy_path": false,
+          "contents": true,
+          "code_symbols": true,
+          "code_actions": true,
+          "batch_tool": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "Cockpit Docs": {
+            "tools": {
+              "search_cockpit_documentation": true,
+              "search_cockpit_code": true,
+              "fetch_generic_url_content": true,
+              "fetch_cockpit_documentation": true
+            }
+          },
+          "Context7": {
+            "tools": {
+              "resolve-library-id": true,
+              "get-library-docs": true
+            }
+          },
+          "mcp-server-brave-search": {
+            "tools": {
+              "brave_local_search": true,
+              "brave_web_search": true
+            }
+          },
+          "mcp-server-context7": {
+            "tools": {
+              "get-library-docs": true,
+              "resolve-library-id": true
+            }
+          }
+        }
+      },
+      "browser-tools": {
+        "name": "BrowserTools",
+        "tools": {
+          "terminal": true,
+          "symbol_info": true,
+          "open": true,
+          "copy_path": true,
+          "code_symbols": true,
+          "code_actions": true,
+          "batch_tool": true,
+          "contents": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      },
+      "e-2-e": {
+        "name": "E2E",
+        "tools": {
+          "edit_file": true,
+          "thinking": true,
+          "code_symbols": true,
+          "contents": true,
+          "copy_path": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "open": true,
+          "find_path": true,
+          "read_file": true,
+          "terminal": true,
+          "symbol_info": true,
+          "grep": true,
+          "code_actions": true,
+          "batch_tool": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "mcp-server-puppeteer": {
+            "tools": {
+              "puppeteer_click": true,
+              "puppeteer_evaluate": true,
+              "puppeteer_fill": true,
+              "puppeteer_hover": true,
+              "puppeteer_navigate": true,
+              "puppeteer_screenshot": true,
+              "puppeteer_select": true
+            }
+          }
+        }
+      }
+    },
+    "always_allow_tool_actions": true,
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    },
+    "default_profile": "fast-write",
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "model": "claude-sonnet-4"
     },
     "version": "2"
   },
@@ -44,32 +342,78 @@
   "file_types": {
     "C": ["*.h"],
     "TOML": ["MyLockFile"],
-    "Dockerfile": ["Dockerfile*"]
+    "Dockerfile": ["Dockerfile*"],
+    "gotmpl": ["*.gotmpl"],
+    "Helm": [
+      "**/templates/**/*.tpl",
+      "**/templates/**/*.yaml",
+      "**/templates/**/*.yml",
+      "**/helmfile.d/**/*.yaml",
+      "**/helmfile.d/**/*.yml",
+      "helmfile*.yml",
+      "helmfile*.yaml"
+    ],
+    "YAML": ["*.yaml", ".clang*"]
   },
   "languages": {
+    // "Python": {
+    //   "language_servers": ["pyrefly", "!pyright", "!pylsp"]
+    // },
+    "YAML": {
+      "tab_size": 2,
+      "hard_tabs": false
+    },
     "C": {
       "show_edit_predictions": false,
       "tab_size": 4,
-      "hard_tabs": true,
-      "formatter": {
-        "external": {
-          "command": "c_formatter_42"
-          // "arguments": ["{buffer_path}"],
-          // "output": "ignore"
-        }
-      }
+      "hard_tabs": true
     },
-    // "cpp": {
-    //   "formatter": {
-    //     "external": {
-    //       "command": "c_formatter_42",
-    //       "arguments": ["{buffer_path}"]
-    //     }
+    "CPP": {
+      "tab_size": 4,
+      "hard_tabs": true
+    }
+    // "HTML": {
+    //   "language_servers": ["vscode-html-language-server", "superhtml"],
+    //   // "formatter": { "language_server": { "name": "superhtml" } }
+    // }
+  },
+  "context_servers": {
+    "clasp": {
+      "command": {
+        "path": "clasp",
+        "args": ["mcp"],
+        "env": null
+      },
+      "settings": {}
+    },
+    // "browser-tools-context-server": {
+    //   "settings": {
+    //     "port": 3025,
+    //     "host": "127.0.0.1"
     //   }
     // },
-    "HTML": {
-      "language_servers": ["vscode-html-language-server", "superhtml"],
-      "formatter": { "language_server": { "name": "superhtml" } }
+    "mcp-server-brave-search": {
+      "settings": {
+        "brave_api_key": "BSAjH1gzDsqCIM-HmrF-5XDdgjsj8KO"
+      }
+    },
+    "karakeep Docs": {
+      "command": {
+        "path": "bunx",
+        "args": ["mcp-remote", "https://gitmcp.io/karakeep-app/karakeep"]
+      }
+    },
+    "Raycast Docs": {
+      "command": {
+        "path": "bunx",
+        "args": ["mcp-remote", "https://gitmcp.io/raycast/extensions"]
+      }
+    },
+    "Cockpit Docs": {
+      "command": {
+        "path": "bunx",
+        "args": ["mcp-remote", "https://gitmcp.io/cockpit-project/cockpit"]
+      }
     }
   }
 }

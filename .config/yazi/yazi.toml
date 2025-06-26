@@ -1,4 +1,4 @@
-[manager]
+[mgr]
 sort_by = "mtime"
 sort_reverse = true
 # show_hidden = true
@@ -9,7 +9,13 @@ edit = [
 	{ run = "%EDITOR% %*",  block = true, for = "windows" },
 	{ run = 'zed "$@"', block = false, orphan = true, for = "unix" },
 	{ run = 'cursor "$@"', block = false, orphan = true, for = "unix" },
-	{ run = 'code "$@"', block = false, orphan = true, for = "unix" }
+	{ run = 'windsurf "$@"', block = false, orphan = true, for = "unix" },
+	{ run = 'code "$@"', block = false, orphan = true, for = "unix" },
+	{ run = 'glow -t "$0"', block = true}
+]
+
+view = [
+	{ run = 'glow -p "$0"', block = true}
 ]
 
 [open]
@@ -18,4 +24,14 @@ prepend_rules = [
 
 	# Multiple openers for a single rule
 	{ name = "*.html", use = [ "open", "edit" ] },
+	{ name = "*.md", use = "view" },
 ]
+
+# append_rules = [
+# 	{ name = "*/", use = [ "edit", "view" ]}
+# ]
+
+# [plugin]
+# prepend_previewers = [
+# 	{ name = "*.md", run  = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=light "$1"' }
+# ]
