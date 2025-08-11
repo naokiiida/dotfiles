@@ -84,11 +84,11 @@ roots = ["deno.json", "deno.jsonc", "package.json"]
 auto-format = true
 language-servers = ["deno-lsp"]
 
-[[language]]
-name = "javascript"
-roots = ["deno.json", "deno.jsonc", "package.json"]
-auto-format = true
-language-servers = ["deno-lsp"]
+# [[language]]
+# name = "javascript"
+# roots = ["deno.json", "deno.jsonc", "package.json"]
+# auto-format = true
+# language-servers = ["deno-lsp"]
 
 # [[language]]
 # name = "json"

@@ -71,9 +71,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export MANPATH=/Users/naokiiida/Documents/42/42cursus/cub3d/minilibx_mms_20200219/man$MANPATH
 
 #DOCKER COMPOSE
-export COMPOSE_FILE="Dockerfile:docker-compose.yml:compose.yml:compose.yaml:docker-compose.yaml"
+# export COMPOSE_FILE="docker-compose.yml:compose.yml:compose.yaml:docker-compose.yaml"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/naokiiida/.lmstudio/bin"
 # End of LM Studio CLI section
 # . "/Users/naokiiida/.local/share/cargo/env"
+
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"

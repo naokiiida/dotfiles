@@ -1,6 +1,7 @@
 #theme = material_deep_ocean
 #theme = "catppuccin_latte"
-theme = "dracula"
+theme = "catppuccin_mocha"
+# theme = "dracula"
 
 
 [editor]
@@ -15,7 +16,11 @@ select = "underline"
 hidden = false
 
 [keys.normal]
-C-g = [
+Cmd-s = ":write"
+
+[keys.normal."space"]
+# Lazygit
+i = [
     ":write-all",
     ":new",
     ":insert-output lazygit",
@@ -23,3 +28,7 @@ C-g = [
     ":redraw",
     ":reload-all"
 ]
+
+[keys.insert]
+"A-x" = "normal_mode"     # Maps Alt-X to enter normal mode
+j = { k = "normal_mode" } # Maps `jk` to exit insert mode

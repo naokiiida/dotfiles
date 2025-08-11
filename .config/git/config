@@ -1,8 +1,9 @@
 [user]
 	name = niida
 	email = 54788301+naokiiida@users.noreply.github.com
-	# signingkey = ~/.ssh/github.pub #this key only for signing, has no Auth permission
-	signingkey = ~/.ssh/id_ed25519.pub #this key is used for Auth and signing
+	signingkey = ~/.ssh/sign.pub #this key only for signing, has no Auth permission, no passphrase
+	# signingkey = ~/.ssh/github.pub #this key only for signing, has no Auth permission, has passphrase
+	# signingkey = ~/.ssh/id_ed25519.pub #this key is used for Auth only
 [core]
 	autocrlf = input
 	safecrlf = true
@@ -33,7 +34,7 @@
 [init]
 	defaultBranch = main
 [merge]
-	# tool = vimdiff
+	tool = vimdiff1
 	# guitool = gvimdiff
     conflictstyle = zdiff3 #follow delta recommendation
 [diff]
@@ -80,3 +81,5 @@
     autoSetupRemote = true  # easier to push new branches
     default = current  # push only current branch by default
     followTags = true  # push also tags
+[mergetool "vimdiff1"]
+	hideResolved = true
