@@ -13,6 +13,7 @@ _pure_set_default pure_color_dark black
 
 # Prompt
 _pure_set_default pure_symbol_prompt "❯"
+
 _pure_set_default pure_symbol_reverse_prompt "❮" # used for VI mode
 _pure_set_default pure_color_prompt_on_error pure_color_danger
 _pure_set_default pure_color_prompt_on_success pure_color_success
@@ -113,3 +114,9 @@ _pure_set_default pure_symbol_k8s_prefix "☸" # ☸️
 _pure_set_default pure_color_k8s_prefix pure_color_info
 _pure_set_default pure_color_k8s_context pure_color_success
 _pure_set_default pure_color_k8s_namespace pure_color_primary
+
+_pure_set_default pure_enable_yazi true
+_pure_set_default pure_symbol_yazi_prefix "󰚈"
+# if test -n "$YAZI_LEVEL"
+#     set -g pure_show_system_time true
+# end
