@@ -29,7 +29,7 @@ set -x BUNDLE_USER_PLUGIN "$XDG_DATA_HOME"/bundl
 set -x GEM_HOME "$XDG_DATA_HOME"/gem
 set -x GEM_SPEC_CACHE "$XDG_CACHE_HOME"/gem
 set -x GOPATH "$XDG_DATA_HOME"/go
-defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME"/hammerspoon/init.lua
+# defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME"/hammerspoon/init.lua # Run this once manually, not on every shell startup
 set -x IPYTHONDIR "$XDG_CONFIG_HOME/ipython"
 set -x JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME"/jupyter
 set -x LESSHISTFILE "$XDG_STATE_HOME"/less/history
@@ -39,9 +39,7 @@ set -x ZDOTDIR "$HOME"/.config/zsh
 set -x RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 set -x SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 set -x VAGRANT_HOME "$XDG_DATA_HOME"/vagrant
-
-# homebrew configuration
-eval "$(/opt/homebrew/bin/brew shellenv)"
+set -x WAKATIME_HOME $XDG_CONFIG_HOME/wakatime
 
 # LLVM and C configuration
 set -x PATH /opt/homebrew/opt/llvm/bin $PATH
