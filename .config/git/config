@@ -6,7 +6,7 @@
 	# signingkey = ~/.ssh/id_ed25519.pub #this key is used for Auth only
 [core]
 	autocrlf = input
-	safecrlf = true
+	safecrlf = warn
 	editor = hx
 	quotepath = off
     pager = delta
@@ -34,9 +34,14 @@
 [init]
 	defaultBranch = main
 [merge]
-	tool = vimdiff1
+	tool = vimdiff
 	# guitool = gvimdiff
     conflictstyle = zdiff3 #follow delta recommendation
+[mergetool "vimdiff"]
+	hideResolved = true
+	layout = "LOCAL, REMOTE + MERGED + LOCAL, MERGED, REMOTE"
+# [mergetool "vimdiff1"]
+# 	hideResolved = true
 [diff]
 # 	tool = vimdiff
 # 	guitool = gvimdiff
@@ -81,5 +86,3 @@
     autoSetupRemote = true  # easier to push new branches
     default = current  # push only current branch by default
     followTags = true  # push also tags
-[mergetool "vimdiff1"]
-	hideResolved = true
