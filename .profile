@@ -39,6 +39,7 @@ export ZDOTDIR="$HOME"/.config/zsh
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
 export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
 # homebrew configuration
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -56,7 +57,8 @@ export GOPATH="/Users/naokiiida/go"
 # export BUN_INSTALL="$HOME/.bun"
 # export PATH="$PATH:$BUN_INSTALL/bin"
 # pnpm
-export PNPM_HOME="/Users/naokiiida/Library/pnpm"
+# export PNPM_HOME="/Users/naokiiida/Library/pnpm"
+export PNPM_HOME="/Users/naokiiida/.local/share/pnpm"
 export PATH="$PATH:$PNPM_HOME"
 # pnpm end
 
