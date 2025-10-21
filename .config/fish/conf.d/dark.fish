@@ -23,6 +23,11 @@ function switch_symlinks
     end
 end
 
+function set_glow_yazi_theme
+    set -l theme $argv[1]
+    cat /Users/naokiiida/.config/yazi/yazi.toml | string replace -r '(run\s*=\s*'\''piper -- CLICOLOR_FORCE=1 glow -w=\$w -s=)\w+' "\$1$theme"
+end
+
 function set_helix_theme
     set -l theme $argv[1]
     sed -i '' "s/^theme = \".*\"/theme = \"$theme\"/" /Users/naokiiida/.config/helix/config.toml
@@ -53,7 +58,7 @@ function set_fish_theme
 end
 
 function theme_switch
-    set -l STYLE (defaults read NSGlobalDomain AppleInterfaceStyle ^/dev/null)
+    set -l STYLE (defaults read NSGlobalDomain AppleInterfaceStyle 2>/dev/null)
     if test "$STYLE" = Dark
         echo "$STYLE mode detected."
         set_helix_theme $theme_dark_name
@@ -61,6 +66,7 @@ function theme_switch
         source_fzf_theme $theme_dark_name
         set_fish_theme $theme_dark_name
         set_claude_theme dark
+        set_glow_yazi_theme dark
     else
         echo "Light mode detected."
         set_helix_theme $theme_light_name
@@ -68,6 +74,7 @@ function theme_switch
         source_fzf_theme $theme_light_name
         set_fish_theme $theme_light_name
         set_claude_theme light
+        set_glow_yazi_theme light
     end
 end
 
@@ -79,12 +86,14 @@ function update_theme --on-variable macOS_Theme
         source_fzf_theme $theme_dark_name
         set_fish_theme $theme_dark_name
         set_claude_theme dark
+        set_glow_yazi_theme dark
     else
         set_helix_theme $theme_light_name
         switch_symlinks $theme_map_light
         source_fzf_theme $theme_light_name
         set_fish_theme $theme_light_name
         set_claude_theme light
+        set_glow_yazi_theme light
     end
 end
 
