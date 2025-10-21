@@ -14,4 +14,4 @@ function p
     end
 end
 
-alias npm='pnpm'
+alias npm pnpm

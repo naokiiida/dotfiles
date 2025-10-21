@@ -27,6 +27,7 @@ function git-clone-folder
         return 1
     end
 
+    echo "Sparse-checkout $folder_path"
     git -C "$repo_name" sparse-checkout set "$folder_path"
     or begin
         echo "Failed to set sparse-checkout folder."

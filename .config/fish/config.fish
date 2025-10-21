@@ -10,18 +10,14 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 # uv
 fish_add_path "/Users/naokiiida/.local/share/../bin"
 
-# Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/naokiiida/.lmstudio/bin
-# End of LM Studio CLI section
+fish_add_path --append /Users/naokiiida/.lmstudio/bin
 
 # opencode
 fish_add_path /Users/naokiiida/.opencode/bin
 
 # pnpm
 set -gx PNPM_HOME "/Users/naokiiida/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
+fish_add_path --append $PNPM_HOME
 # pnpm end
 
 source (wmill completions fish | psub)

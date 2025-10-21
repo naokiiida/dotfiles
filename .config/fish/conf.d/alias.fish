@@ -33,7 +33,7 @@ alias dyt="cd /Users/naokiiida/Movies/NA"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ldot='/opt/homebrew/bin/lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias g1='git clone --depth=1'
-alias gl="lazygit"
+alias gi="lazygit"
 
 alias gsh='gcloud beta interactive'
 alias gam="/Users/naokiiida/bin/gam7/gam"
@@ -43,5 +43,3 @@ alias adb='HOME="$XDG_DATA_HOME"/android adb'
 # Task Master aliases added on 6/24/2025
 alias tm='task-master'
 alias taskmaster='task-master'
-
-# alias npm='pnpm'
