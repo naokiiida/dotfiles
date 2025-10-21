@@ -1,5 +1,5 @@
 # Save all videos here
--P "/Users/naokiiida/Movies/"
+-P "/Users/naokiiida/Movies/yt-dlp"
 -o "%(playlist)s/%(title)s/%(title)s [%(id)s].%(ext)s"
 
 # 1080p Premium Enhanced Bitrate
@@ -40,3 +40,10 @@
 
 # Number of fragments of a dash/hlsnative video that should be download concurrently (default is 1)
 --concurrent-fragments 4
+
+# Append video to playlist
+--exec "echo \"%(filepath)s\" >> /Users/naokiiida/Movies/yt-dlp/watchlist.m3u"
+
+# Create a .m3u8 playlist file, appending new videos to maintain play order and user edits
+--exec 'if [ "%(playlist)s" != "NA" ]; then M3U_FILE="/Users/naokiiida/Movies/yt-dlp/%(playlist)s/%(playlist)s.m3u8"; if ! [ -f "$M3U_FILE" ]; then echo "#EXTM3U" > "$M3U_FILE"; fi; grep -qF -- "%(filepath)s" "$M3U_FILE" || echo "%(filepath)s" >> "$M3U_FILE"; fi'
+
