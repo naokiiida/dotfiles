@@ -18,20 +18,40 @@ view = [
 	{ run = 'glow -p "$0"', block = true}
 ]
 
+play = [
+	{ run = 'iina --no-stdin "$@"', orphan = true, for = "unix"},
+	{ run = 'afplay "$@"', orphan = true, for = "unix"},
+	{ run = 'ffplay "$@"', orphan = true, for = "unix"}
+]
+
 [open]
 prepend_rules = [
 	{ name = "*.json", use = "edit" },
 
 	# Multiple openers for a single rule
 	{ name = "*.html", use = [ "open", "edit" ] },
-	{ name = "*.md", use = "view" },
+	{ name = "*.csv", use = [ "open", "edit" ] },
+	{ name = "*.svg", use = [ "open", "edit" ] },
+	# { name = "*.md", use = "view" },
 ]
 
 # append_rules = [
 # 	{ name = "*/", use = [ "edit", "view" ]}
 # ]
 
-# [plugin]
-# prepend_previewers = [
-# 	{ name = "*.md", run  = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=light "$1"' }
-# ]
+[[plugin.prepend_previewers]]
+name = "*.md"
+run  = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=light "$1"'
+
+[[plugin.prepend_previewers]]
+name = "*.2d"
+run  = 'piper -- nu -c "source ~/.config/nushell/autoload/split2d.nu; 2d "$1""'
+
+[[plugin.prepend_previewers]]
+name = "*.mermaid"
+run = "mermaid"
+
+[[plugin.prepend_previewers]]
+name = "*.mmd"
+run = "mermaid"
+
