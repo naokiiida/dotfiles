@@ -28,12 +28,7 @@ alias work="cd '/Users/naokiiida/Documents/2_work'"
 alias vault="cd /Users/naokiiida/Documents/Vault"
 alias d1="cd /Users/naokiiida/Documents/1_personal"
 alias d4="cd /Users/naokiiida/Documents/4_clone"
-alias dyt="cd /Users/naokiiida/Movies/NA"
-
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias ldot='/opt/homebrew/bin/lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias g1='git clone --depth=1'
-alias gi="lazygit"
+alias dyt="cd /Users/naokiiida/Movies/yt-dlp"
 
 alias gsh='gcloud beta interactive'
 alias gam="/Users/naokiiida/bin/gam7/gam"

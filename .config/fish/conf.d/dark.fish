@@ -41,17 +41,17 @@ function set_claude_theme
     set -l theme_value $argv[1]
     set -l config_file ~/.claude.json
 
-    if test $theme_value = "light"
+    if test $theme_value = light
         # Set theme to "light" in config
         if test -f $config_file
-            cat $config_file | jq '.theme = "light"' > $config_file.tmp && mv $config_file.tmp $config_file
+            cat $config_file | jq '.theme = "light"' >$config_file.tmp && mv $config_file.tmp $config_file
         else
-            echo '{"theme": "light"}' | jq . > $config_file
+            echo '{"theme": "light"}' | jq . >$config_file
         end
     else
         # Remove theme property for dark mode
         if test -f $config_file
-            cat $config_file | jq 'del(.theme)' > $config_file.tmp && mv $config_file.tmp $config_file
+            cat $config_file | jq 'del(.theme)' >$config_file.tmp && mv $config_file.tmp $config_file
         end
     end
 end
@@ -97,7 +97,7 @@ end
 
 # Hammerspoon triggers this by setting unverisal variable
 function update_theme --on-variable macOS_Theme
-    "hammerspoon macos theme change triggered"
+    echo "hammerspoon macos theme change triggered"
     if test "$macOS_Theme" = Dark
         set_helix_theme $theme_dark_name
         switch_symlinks $theme_map_dark

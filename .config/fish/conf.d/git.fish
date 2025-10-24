@@ -1,16 +1,3 @@
-# function git-clone-folder
-#     set repo_url $argv[1]
-#     set folder_path $argv[2]
-#     set repo_name (basename $repo_url .git)
-
-#     if test -z "$repo_url" -o -z "$folder_path"
-#         echo "Usage: git-clone-folder <repository-url> <folder-path>"
-#         return 1
-#     end
-
-#     git clone --depth=1 --no-checkout "$repo_url" "$repo_name" && cd "$repo_name" && git sparse-checkout init && echo "$folder_path/" >.git/info/sparse-checkout && git checkout
-# end
-
 function git-clone-folder
     set repo_url $argv[1]
     set folder_path $argv[2]
@@ -42,3 +29,13 @@ function git-clone-folder
 end
 
 alias gitf="git-clone-folder"
+
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ldot='/opt/homebrew/bin/lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias gi="lazygit"
+
+function g1
+    set repo_url $argv[1]
+    set repo_name (basename $repo_url .git)
+    git clone --depth=1 "$repo_url" && cd "$repo_name"
+end
