@@ -7,6 +7,116 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "language_models": {
+    "openai_compatible": {
+      "CLIProxyAPI": {
+        "api_url": "http://localhost:8317/v1",
+        "available_models": [
+          {
+            "name": "gemini-2.5-pro",
+            "display_name": "Gemini 2.5 Pro",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "gemini-2.5-flash",
+            "display_name": "Gemini 2.5 Flash",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gemini-2.5-flash-lite",
+            "display_name": "Gemini 2.5 Flash Lite",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "gemini-2.5-flash-image",
+            "display_name": "Gemini 2.5 Flash Image",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "gemini-2.5-flash-image-preview",
+            "display_name": "Gemini 2.5 Flash Image Preview",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "claude-opus-4-1-20250805",
+            "display_name": "CC: Opus 4.1 (2025-08-05)",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "claude-opus-4-20250514",
+            "display_name": "CC: Opus 4 (2025-05-14)",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "claude-sonnet-4-20250514",
+            "display_name": "CC: Sonnet 4 (2025-05-14)",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "claude-sonnet-4-5-20250929",
+            "display_name": "CC: Sonnet 4.5",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "claude-3-7-sonnet-20250219",
+            "display_name": "CC: 3.7 Sonnet (2025-02-19)",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "claude-3-5-haiku-20241022",
+            "display_name": "CC: 3.5 Haiku (2024-10-22)",
+            "max_tokens": 8000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          }
+        ]
+      },
+      "Claude Code API": {
+        "api_url": "http://0.0.0.0:8080/v1",
+        "available_models": [
+          {
+            "name": "sonnet",
+            "display_name": "Claude Sonnet 4",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          }
+        ]
+      }
+    }
+  },
   "ssh_connections": [
     {
       "host": "fmva77hr",
@@ -21,14 +131,6 @@
           "paths": ["/home/niida/applications/windmill-helm-charts"]
         }
       ]
-    },
-    {
-      "host": "syi",
-      "projects": [
-        {
-          "paths": ["/opt/serv"]
-        }
-      ]
     }
   ],
   "icon_theme": "Zed (Default)",
@@ -36,7 +138,94 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
+    "play_sound_when_agent_done": true,
     "profiles": {
+      "git-iris": {
+        "name": "git-iris",
+        "tools": {
+          "copy_path": true,
+          "create_directory": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "find_path": true,
+          "fetch": true,
+          "grep": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "open": true,
+          "project_notifications": true,
+          "read_file": true,
+          "terminal": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "git-iris": {
+            "tools": {
+              "git_iris_changelog": true,
+              "git_iris_code_review": true,
+              "git_iris_commit": true,
+              "git_iris_release_notes": true
+            }
+          }
+        }
+      },
+      "context-7": {
+        "name": "context7",
+        "tools": {
+          "edit_file": true,
+          "fetch": true,
+          "find_path": true,
+          "grep": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "open": true,
+          "project_notifications": true,
+          "read_file": true,
+          "terminal": true,
+          "thinking": true,
+          "diagnostics": true,
+          "delete_path": true,
+          "create_directory": true,
+          "copy_path": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "mcp-server-brave-search": {
+            "tools": {
+              "brave_local_search": true,
+              "brave_web_search": true
+            }
+          },
+          "mcp-server-context7": {
+            "tools": {
+              "resolve-library-id": true,
+              "get-library-docs": true
+            }
+          }
+        }
+      },
+      "memory": {
+        "name": "memory",
+        "tools": {
+          "contents": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "thinking": true,
+          "web_search": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      },
       "karakeep": {
         "name": "Karakeep",
         "tools": {
@@ -60,16 +249,16 @@
         },
         "enable_all_context_servers": true,
         "context_servers": {
-                    "clasp": {
-                        "tools": {
-                            "pull_files": false,
-                            "push_files": false,
-                            "list_projects": false,
-                            "create_project": false,
-                            "clone_project": false
-                        }
-                    }
-                }
+          "clasp": {
+            "tools": {
+              "pull_files": false,
+              "push_files": false,
+              "list_projects": false,
+              "create_project": false,
+              "clone_project": false
+            }
+          }
+        }
       },
       "clasp": {
         "name": "clasp",
@@ -112,6 +301,7 @@
       "fast-write": {
         "name": "Fast Write",
         "tools": {
+          "project_notifications": true,
           "open": true,
           "copy_path": true,
           "create_directory": true,
@@ -132,63 +322,71 @@
         },
         "enable_all_context_servers": true,
         "context_servers": {
-                    "karakeep Docs": {
-                        "tools": {
-                            "fetch_generic_url_content": false,
-                            "fetch_karakeep_documentation": false,
-                            "search_karakeep_code": false,
-                            "search_karakeep_documentation": false
-                        }
-                    },
-                    "clasp": {
-                        "tools": {
-                            "push_files": false,
-                            "pull_files": false,
-                            "list_projects": false,
-                            "create_project": false,
-                            "clone_project": false
-                        }
-                    },
-                    "mcp-server-brave-search": {
-                        "tools": {
-                            "brave_local_search": false,
-                            "brave_web_search": false
-                        }
-                    },
-                    "mcp-server-context7": {
-                        "tools": {
-                            "get-library-docs": false,
-                            "resolve-library-id": false
-                        }
-                    },
-                    "mcp-server-puppeteer": {
-                        "tools": {
-                            "puppeteer_click": false,
-                            "puppeteer_evaluate": false,
-                            "puppeteer_fill": false,
-                            "puppeteer_navigate": false,
-                            "puppeteer_hover": false,
-                            "puppeteer_screenshot": false,
-                            "puppeteer_select": false
-                        }
-                    },
-                    "Raycast Docs": {
-                        "tools": {
-                            "search_extensions_documentation": false,
-                            "search_extensions_code": false,
-                            "fetch_generic_url_content": false,
-                            "fetch_extensions_documentation": false
-                        }
-                    },
-                    "Cockpit Docs": {
-                        "tools": {
-                            "search_cockpit_documentation": false,
-                            "search_cockpit_code": false,
-                            "fetch_generic_url_content": false,
-                            "fetch_cockpit_documentation": false
-                        }
-                    }
-                }
+          "git-iris": {
+            "tools": {
+              "git_iris_release_notes": false,
+              "git_iris_commit": false,
+              "git_iris_code_review": false,
+              "git_iris_changelog": false
+            }
+          },
+          "karakeep Docs": {
+            "tools": {
+              "fetch_generic_url_content": false,
+              "fetch_karakeep_documentation": false,
+              "search_karakeep_code": false,
+              "search_karakeep_documentation": false
+            }
+          },
+          "clasp": {
+            "tools": {
+              "push_files": false,
+              "pull_files": false,
+              "list_projects": false,
+              "create_project": false,
+              "clone_project": false
+            }
+          },
+          "mcp-server-brave-search": {
+            "tools": {
+              "brave_local_search": true,
+              "brave_web_search": true
+            }
+          },
+          "mcp-server-context7": {
+            "tools": {
+              "get-library-docs": true,
+              "resolve-library-id": true
+            }
+          },
+          "mcp-server-puppeteer": {
+            "tools": {
+              "puppeteer_click": false,
+              "puppeteer_evaluate": false,
+              "puppeteer_fill": false,
+              "puppeteer_navigate": false,
+              "puppeteer_hover": false,
+              "puppeteer_screenshot": false,
+              "puppeteer_select": false
+            }
+          },
+          "Raycast Docs": {
+            "tools": {
+              "search_extensions_documentation": false,
+              "search_extensions_code": false,
+              "fetch_generic_url_content": false,
+              "fetch_extensions_documentation": false
+            }
+          },
+          "Cockpit Docs": {
+            "tools": {
+              "search_cockpit_documentation": false,
+              "search_cockpit_code": false,
+              "fetch_generic_url_content": false,
+              "fetch_cockpit_documentation": false
+            }
+          }
+        }
       },
       "docs": {
         "name": "Docs",
@@ -311,10 +509,9 @@
     },
     "default_profile": "fast-write",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
-    },
-    "version": "2"
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    }
   },
   "theme": {
     "mode": "system",
@@ -330,17 +527,28 @@
     "font_family": "UDEV Gothic 35NFLG"
   },
   "lsp": {
-    "c-norminette": {
-      "initialization_options": {
-        "path": "/usr/local/bin/inject_42h",
-        "name": "niida",
-        "email": "niida@student.42tokyo.jp",
-        "offset": 9 // timezone offset to UTC. positive for +, negative for -
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    },
+    "vtsls": {
+      "settings": {
+        "javascript": { "useAliasesForRenames": false }
       }
     }
+    // "c-norminette": {
+    //   "initialization_options": {
+    //     "path": "/usr/local/bin/inject_42h",
+    //     "name": "niida",
+    //     "email": "niida@student.42tokyo.jp",
+    //     "offset": 9 // timezone offset to UTC. positive for +, negative for -
+    //   }
+    // }
   },
   "file_types": {
     "C": ["*.h"],
+    "C++": ["*.tpp"],
     "TOML": ["MyLockFile"],
     "Dockerfile": ["Dockerfile*"],
     "gotmpl": ["*.gotmpl"],
@@ -368,52 +576,88 @@
       "tab_size": 4,
       "hard_tabs": true
     },
-    "CPP": {
+    "C++": {
       "tab_size": 4,
       "hard_tabs": true
-    }
+    },
+    "JavaScript": { "formatter": { "language_server": { "name": "biome" } } },
+    "TypeScript": { "formatter": { "language_server": { "name": "biome" } } },
+    "TSX": { "formatter": { "language_server": { "name": "biome" } } }
     // "HTML": {
     //   "language_servers": ["vscode-html-language-server", "superhtml"],
     //   // "formatter": { "language_server": { "name": "superhtml" } }
     // }
   },
   "context_servers": {
-    "clasp": {
-      "command": {
-        "path": "clasp",
-        "args": ["mcp"],
-        "env": null
-      },
-      "settings": {}
-    },
+    // "clasp": {
+    //   "source": "custom",
+    //   "command": {
+    //     "path": "clasp",
+    //     "args": ["mcp"],
+    //     "env": null
+    //   },
+    //   "settings": {}
+    // },
     // "browser-tools-context-server": {
     //   "settings": {
     //     "port": 3025,
     //     "host": "127.0.0.1"
     //   }
     // },
+    "browser-tools-context-server": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {}
+    },
     "mcp-server-brave-search": {
+      "source": "extension",
       "settings": {
         "brave_api_key": "BSAjH1gzDsqCIM-HmrF-5XDdgjsj8KO"
       }
     },
-    "karakeep Docs": {
-      "command": {
-        "path": "bunx",
-        "args": ["mcp-remote", "https://gitmcp.io/karakeep-app/karakeep"]
+    // "karakeep Docs": {
+    //   "source": "custom",
+    //   "command": {
+    //     "path": "bunx",
+    //     "args": ["mcp-remote", "https://gitmcp.io/karakeep-app/karakeep"]
+    //   }
+    // },
+    // "Raycast Docs": {
+    //   "source": "custom",
+    //   "command": {
+    //     "path": "bunx",
+    //     "args": ["mcp-remote", "https://gitmcp.io/raycast/extensions"]
+    //   }
+    // },
+    // "Cockpit Docs": {
+    //   "source": "custom",
+    //   "command": {
+    //     "path": "bunx",
+    //     "args": ["mcp-remote", "https://gitmcp.io/cockpit-project/cockpit"]
+    //   }
+    // },
+    "Atlas": {
+      "source": "custom",
+      "command": "node",
+      "args": [
+        "/Users/naokiiida/Documents/4_clone/0_llm/atlas-mcp-server/dist/index.js"
+      ],
+      "env": {
+        "NEO4J_URI": "bolt+s://bolt.taiida.com:7688",
+        "NEO4J_USER": "neo4j",
+        "NEO4J_PASSWORD": "f26d84dc9404d33848dd42997885d18e46e70f131e92ae78278b51232341f7f7",
+        "MCP_LOG_LEVEL": "info",
+        "NODE_ENV": "development",
+        "MCP_TRANSPORT_TYPE": "stdio",
+        "BACKUP_MAX_COUNT": "10",
+        "BACKUP_FILE_DIR": "./atlas-backups",
+        "LOGS_DIR": "./logs"
       }
     },
-    "Raycast Docs": {
-      "command": {
-        "path": "bunx",
-        "args": ["mcp-remote", "https://gitmcp.io/raycast/extensions"]
-      }
-    },
-    "Cockpit Docs": {
-      "command": {
-        "path": "bunx",
-        "args": ["mcp-remote", "https://gitmcp.io/cockpit-project/cockpit"]
-      }
+    "git-iris": {
+      "source": "custom",
+      "command": "/Users/naokiiida/.local/share/cargo/bin/git-iris",
+      "args": ["serve"]
     }
   }
 }
