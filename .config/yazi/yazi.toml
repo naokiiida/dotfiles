@@ -8,8 +8,6 @@ edit = [
 	{ run = '$EDITOR "$@"', block = true, for = "unix" },
 	{ run = "%EDITOR% %*",  block = true, for = "windows" },
 	{ run = 'zed "$@"', block = false, orphan = true, for = "unix" },
-	{ run = 'cursor "$@"', block = false, orphan = true, for = "unix" },
-	{ run = 'windsurf "$@"', block = false, orphan = true, for = "unix" },
 	{ run = 'code "$@"', block = false, orphan = true, for = "unix" },
 	{ run = 'glow -t "$0"', block = true}
 ]

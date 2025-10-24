@@ -636,24 +636,6 @@
     //     "args": ["mcp-remote", "https://gitmcp.io/cockpit-project/cockpit"]
     //   }
     // },
-    "Atlas": {
-      "source": "custom",
-      "command": "node",
-      "args": [
-        "/Users/naokiiida/Documents/4_clone/0_llm/atlas-mcp-server/dist/index.js"
-      ],
-      "env": {
-        "NEO4J_URI": "bolt+s://bolt.taiida.com:7688",
-        "NEO4J_USER": "neo4j",
-        "NEO4J_PASSWORD": "f26d84dc9404d33848dd42997885d18e46e70f131e92ae78278b51232341f7f7",
-        "MCP_LOG_LEVEL": "info",
-        "NODE_ENV": "development",
-        "MCP_TRANSPORT_TYPE": "stdio",
-        "BACKUP_MAX_COUNT": "10",
-        "BACKUP_FILE_DIR": "./atlas-backups",
-        "LOGS_DIR": "./logs"
-      }
-    },
     "git-iris": {
       "source": "custom",
       "command": "/Users/naokiiida/.local/share/cargo/bin/git-iris",
