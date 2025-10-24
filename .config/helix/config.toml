@@ -6,6 +6,10 @@ theme = "catppuccin_mocha"
 
 [editor]
 # mouse = false
+# statusline.right = ["primary-selection-length","spacer","register","spacer","position","separator","total-line-numbers","separator","position-percentage","file-type","file-encoding","file-line-ending"]
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -17,9 +21,13 @@ hidden = false
 
 [keys.normal]
 Cmd-s = ":write"
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+Y = ":yank-diagnostic"
 
 [keys.normal."space"]
 # Lazygit
+# could spawn new ghostty tab instead?
 i = [
     ":write-all",
     ":new",
@@ -29,6 +37,21 @@ i = [
     ":reload-all"
 ]
 
+B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
+
 [keys.insert]
 "A-x" = "normal_mode"     # Maps Alt-X to enter normal mode
 j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+
+[keys.select]
+# # Muscle memory
+"{" = ["extend_to_line_bounds", "goto_prev_paragraph"]
+"}" = ["extend_to_line_bounds", "goto_next_paragraph"]
+0 = "goto_line_start"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+"%" = "match_brackets"
+
+# # Visual-mode specific muscle memory
+i = "select_textobject_inner"
+a = "select_textobject_around"
