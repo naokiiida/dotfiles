@@ -61,28 +61,29 @@ auto-format = false
 [[language]]
 name = "typescript"
 language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
-auto-format = true
+auto-format = false
 
 [[language]]
 name = "tsx"
-auto-format = true
+auto-format = false
 language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
 
 [[language]]
 name = "jsx"
-auto-format = true
+auto-format = false
 language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
 
 [[language]]
 name = "json"
+auto-format = false
 language-servers = [ { name = "vscode-json-language-server", except-features = [ "format" ] }, "biome" ]
 
 
-[[language]]
-name = "typescript"
-roots = ["deno.json", "deno.jsonc", "package.json"]
-auto-format = true
-language-servers = ["deno-lsp"]
+# [[language]]
+# name = "typescript"
+# roots = ["deno.json", "deno.jsonc",]
+# auto-format = true
+# language-servers = ["deno-lsp"]
 
 # [[language]]
 # name = "javascript"
@@ -94,6 +95,11 @@ language-servers = ["deno-lsp"]
 # name = "json"
 # auto-format = true
 # language-servers = ["deno-lsp"]
+
+[[language]]
+name = "html"
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "html"] }
+auto-format = true
 
 [language-server.deno-lsp]
 command = "deno"

@@ -9,17 +9,18 @@ edit = [
 	{ run = "%EDITOR% %*",  block = true, for = "windows" },
 	{ run = 'zed "$@"', block = false, orphan = true, for = "unix" },
 	{ run = 'code "$@"', block = false, orphan = true, for = "unix" },
-	{ run = 'glow -t "$0"', block = true}
+	# { run = 'glow -p "$0"', block = true}
 ]
 
 view = [
-	{ run = 'glow -p "$0"', block = true}
+	{ run = 'glow -p -w 0 "$0"', block = true}
 ]
 
 play = [
 	{ run = 'iina --no-stdin "$@"', orphan = true, for = "unix"},
 	{ run = 'afplay "$@"', orphan = true, for = "unix"},
-	{ run = 'ffplay "$@"', orphan = true, for = "unix"}
+	{ run = 'ffplay "$@"', orphan = true, for = "unix"},
+	{ run = 'ffprobe "$@" | less', orphan = false, for = "unix", block = true}
 ]
 
 [open]
@@ -30,7 +31,7 @@ prepend_rules = [
 	{ name = "*.html", use = [ "open", "edit" ] },
 	{ name = "*.csv", use = [ "open", "edit" ] },
 	{ name = "*.svg", use = [ "open", "edit" ] },
-	# { name = "*.md", use = "view" },
+	{ name = "*.md", use = "view" },
 ]
 
 # append_rules = [

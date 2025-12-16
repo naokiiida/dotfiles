@@ -18,8 +18,13 @@ function switch_symlinks
     for pair in $theme_map
         set -l target (string split "=" $pair)[1]
         set -l source (string split "=" $pair)[2]
-        rm -f $target
-        ln -s $source $target
+        # rm -f $target && ln -s $source $target
+        if test -e $source
+            test -e $target
+            ln -sfn $source $target 2>/dev/null
+        else
+            echo "symlink theme map files doesn't exist. source:[" $source "] target:[" $target "]"
+        end
     end
 end
 
@@ -44,15 +49,39 @@ function set_claude_theme
     if test $theme_value = light
         # Set theme to "light" in config
         if test -f $config_file
-            cat $config_file | jq '.theme = "light"' >$config_file.tmp && mv $config_file.tmp $config_file
+            cat $config_file | jq '.theme = "light"' | sponge $config_file
         else
             echo '{"theme": "light"}' | jq . >$config_file
         end
     else
         # Remove theme property for dark mode
         if test -f $config_file
-            cat $config_file | jq 'del(.theme)' >$config_file.tmp && mv $config_file.tmp $config_file
+            cat $config_file | jq 'del(.theme)' | sponge $config_file
         end
+    end
+end
+
+function set_gemini_theme
+    set -l theme_value $argv[1]
+    set -l config_file ~/.gemini/settings.json
+
+    if test $theme_value = light
+        # Set theme to "ANSI Light" in config
+        if test -f $config_file
+            cat $config_file | jq '.ui.theme = "ANSI Light"' | sponge $config_file
+        else
+            echo '{"ui": {"theme": "ANSI Light"}}' | jq . >$config_file
+        end
+    else if test $theme_value = dark
+        # Set theme to "ANSI" in config
+        if test -f $config_file
+            cat $config_file | jq '.ui.theme = "ANSI"' | sponge $config_file
+        else
+            echo '{"ui": {"theme": "ANSI"}}' | jq . >$config_file
+        end
+    else
+        echo "Usage: set_gemini_theme [light|dark]"
+        return 1
     end
 end
 
@@ -83,6 +112,7 @@ function theme_switch
         source_fzf_theme $theme_dark_name
         set_fish_theme $theme_dark_name
         set_claude_theme dark
+        set_gemini_theme dark
         set_glow_yazi_theme dark
     else
         echo "Light mode detected."
@@ -91,19 +121,20 @@ function theme_switch
         source_fzf_theme $theme_light_name
         set_fish_theme $theme_light_name
         set_claude_theme light
+        set_gemini_theme light
         set_glow_yazi_theme light
     end
 end
 
 # Hammerspoon triggers this by setting unverisal variable
 function update_theme --on-variable macOS_Theme
-    echo "hammerspoon macos theme change triggered"
     if test "$macOS_Theme" = Dark
         set_helix_theme $theme_dark_name
         switch_symlinks $theme_map_dark
         source_fzf_theme $theme_dark_name
         set_fish_theme $theme_dark_name
         set_claude_theme dark
+        set_gemini_theme dark
         set_glow_yazi_theme dark
     else
         set_helix_theme $theme_light_name
@@ -111,6 +142,7 @@ function update_theme --on-variable macOS_Theme
         source_fzf_theme $theme_light_name
         set_fish_theme $theme_light_name
         set_claude_theme light
+        set_gemini_theme light
         set_glow_yazi_theme light
     end
 end

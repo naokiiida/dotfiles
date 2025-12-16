@@ -505,7 +505,7 @@
     "always_allow_tool_actions": true,
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4.1"
+      "model": "gpt-5.1-codex"
     },
     "default_profile": "fast-write",
     "default_model": {
@@ -605,12 +605,10 @@
     //   }
     // },
     "browser-tools-context-server": {
-      "source": "extension",
       "enabled": true,
       "settings": {}
     },
     "mcp-server-brave-search": {
-      "source": "extension",
       "settings": {
         "brave_api_key": "BSAjH1gzDsqCIM-HmrF-5XDdgjsj8KO"
       }
@@ -637,7 +635,6 @@
     //   }
     // },
     "git-iris": {
-      "source": "custom",
       "command": "/Users/naokiiida/.local/share/cargo/bin/git-iris",
       "args": ["serve"]
     }
