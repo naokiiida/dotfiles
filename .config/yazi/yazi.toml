@@ -5,33 +5,33 @@ sort_reverse = true
 
 [opener]
 edit = [
-	{ run = '$EDITOR "$@"', block = true, for = "unix" },
-	{ run = "%EDITOR% %*",  block = true, for = "windows" },
-	{ run = 'zed "$@"', block = false, orphan = true, for = "unix" },
-	{ run = 'code "$@"', block = false, orphan = true, for = "unix" },
-	# { run = 'glow -p "$0"', block = true}
+	{ run = '$EDITOR %s', block = true, for = "unix" },
+	{ run = "%EDITOR% %s",  block = true, for = "windows" },
+	{ run = 'zed %s', block = false, orphan = true, for = "unix" },
+	{ run = 'code %s', block = false, orphan = true, for = "unix" },
+	# { run = 'glow -p %s1', block = true}
 ]
 
 view = [
-	{ run = 'glow -p -w 0 "$0"', block = true}
+	{ run = 'PAGER=moar glow -p -w 0 %s1', block = true}
 ]
 
 play = [
-	{ run = 'iina --no-stdin "$@"', orphan = true, for = "unix"},
-	{ run = 'afplay "$@"', orphan = true, for = "unix"},
-	{ run = 'ffplay "$@"', orphan = true, for = "unix"},
-	{ run = 'ffprobe "$@" | less', orphan = false, for = "unix", block = true}
+	{ run = 'iina --no-stdin %s', orphan = true, for = "unix"},
+	{ run = 'afplay %s', orphan = true, for = "unix"},
+	{ run = 'ffplay %s', orphan = true, for = "unix"},
+	{ run = 'ffprobe %s | less', orphan = false, for = "unix", block = true}
 ]
 
 [open]
 prepend_rules = [
-	{ name = "*.json", use = "edit" },
+	{ url = "*.json", use = "edit" },
 
 	# Multiple openers for a single rule
-	{ name = "*.html", use = [ "open", "edit" ] },
-	{ name = "*.csv", use = [ "open", "edit" ] },
-	{ name = "*.svg", use = [ "open", "edit" ] },
-	{ name = "*.md", use = "view" },
+	{ url = "*.html", use = [ "open", "edit" ] },
+	{ url = "*.csv", use = [ "open", "edit" ] },
+	{ url = "*.svg", use = [ "open", "edit" ] },
+	{ url = "*.md", use = ["view", "edit"] },
 ]
 
 # append_rules = [
@@ -39,18 +39,18 @@ prepend_rules = [
 # ]
 
 [[plugin.prepend_previewers]]
-name = "*.md"
+url = "*.md"
 run  = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=light "$1"'
 
 [[plugin.prepend_previewers]]
-name = "*.2d"
+url = "*.2d"
 run  = 'piper -- nu -c "source ~/.config/nushell/autoload/split2d.nu; 2d "$1""'
 
 [[plugin.prepend_previewers]]
-name = "*.mermaid"
+url = "*.mermaid"
 run = "mermaid"
 
 [[plugin.prepend_previewers]]
-name = "*.mmd"
+url = "*.mmd"
 run = "mermaid"
 

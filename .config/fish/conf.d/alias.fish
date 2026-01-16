@@ -25,6 +25,7 @@ alias zstd='keka zstd'
 # custom directories
 alias 42="cd '/Users/naokiiida/Documents/42/42cursus'"
 alias work="cd '/Users/naokiiida/Documents/2_work'"
+alias gb="cd '/Users/naokiiida/Documents/1_personal/housemaker-catalogue/genbaou-docker'"
 alias vault="cd /Users/naokiiida/Documents/Vault"
 alias d1="cd /Users/naokiiida/Documents/1_personal"
 alias d4="cd /Users/naokiiida/Documents/4_clone"
@@ -38,3 +39,4 @@ alias adb='HOME="$XDG_DATA_HOME"/android adb'
 # Task Master aliases added on 6/24/2025
 alias tm='task-master'
 alias taskmaster='task-master'
+alias gf='gas-fakes --env ~/.config/gas-fakes/.env'

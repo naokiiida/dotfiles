@@ -1,4 +1,4 @@
-set --global pure_version 4.11.3 # For bug report and tag-after-merge workflow
+set --global pure_version 4.14.1 # For bug report and tag-after-merge workflow
 
 # Base colors
 _pure_set_default pure_color_primary blue
@@ -13,7 +13,6 @@ _pure_set_default pure_color_dark black
 
 # Prompt
 _pure_set_default pure_symbol_prompt "❯"
-
 _pure_set_default pure_symbol_reverse_prompt "❮" # used for VI mode
 _pure_set_default pure_color_prompt_on_error pure_color_danger
 _pure_set_default pure_color_prompt_on_success pure_color_success
@@ -34,6 +33,7 @@ _pure_set_default pure_color_git_unpushed_commits pure_color_info
 _pure_set_default pure_color_git_branch pure_color_mute
 _pure_set_default pure_color_git_dirty pure_color_mute
 _pure_set_default pure_color_git_stash pure_color_info
+_pure_set_default pure_show_numbered_git_indicator false
 
 # Remote info (user@hostname) for SSH and containers (Docker/LXC)
 _pure_set_default pure_color_hostname pure_color_mute
@@ -70,7 +70,7 @@ _pure_set_default pure_color_aws_profile pure_color_warning
 # false:            user@hostname (ssh-only), current directory, git, command duration
 _pure_set_default pure_begin_prompt_with_current_directory true
 
-# Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character)
+# Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#show-exit-code-of-last-command-as-a-separate-prompt-character)
 # false - single prompt character, default
 # true - separate prompt character
 _pure_set_default pure_separate_prompt_on_error false
@@ -114,9 +114,3 @@ _pure_set_default pure_symbol_k8s_prefix "☸" # ☸️
 _pure_set_default pure_color_k8s_prefix pure_color_info
 _pure_set_default pure_color_k8s_context pure_color_success
 _pure_set_default pure_color_k8s_namespace pure_color_primary
-
-_pure_set_default pure_enable_yazi true
-_pure_set_default pure_symbol_yazi_prefix "󰚈"
-# if test -n "$YAZI_LEVEL"
-#     set -g pure_show_system_time true
-# end

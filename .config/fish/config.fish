@@ -34,10 +34,6 @@ fish_add_path --append $PNPM_HOME
 # source (wmill completions fish | psub)
 source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
 
-bind -M insert \cx\ce edit_command_buffer
-bind -M default \cx\ce edit_command_buffer
-bind -M visual \cx\ce edit_command_buffer
-
 fish_add_path '/Users/naokiiida/.local/DiscordChatExporter.Cli.osx-arm64'
 fish_add_path /Users/naokiiida/.local/share/gem/bin
 

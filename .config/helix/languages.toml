@@ -164,3 +164,18 @@ shebangs = ["sh", "bash", "dash", "zsh"]
 comment-token = "#"
 language-servers = [ "bash-language-server" ]
 indent = { tab-width = 2, unit = "  " }
+
+
+# Markdown language configuration for auto-continuation and markdown-oxide LSP
+[[language]]
+name = "markdown"
+scope = "source.md"
+injection-regex = "md|markdown"
+file-types = ["md", "markdown", "mkd"]
+comment-tokens = ["-", "+", "*", "1.", ">", "- [ ]"]
+roots = [".moxide.toml", ".git"]
+language-servers = [ "markdown-oxide" ]
+indent = { tab-width = 2, unit = "  " }
+
+[language-server.markdown-oxide]
+command = "markdown-oxide"

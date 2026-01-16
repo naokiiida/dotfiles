@@ -11,6 +11,7 @@ set -g fish_key_bindings fish_hybrid_key_bindings
 # fish sequence: \cx is C-x, \ce is C-e
 bind -M insert \cx\ce edit_command_buffer
 bind -M default \cx\ce edit_command_buffer
+bind -M visual \cx\ce edit_command_buffer
 
 # Bind 'vv' in vi (normal/command) mode to open editor.
 # In fish vi-mode, normal/command mode maps are in the 'default' keymap while insert has insert bindings.

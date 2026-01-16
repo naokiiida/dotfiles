@@ -174,3 +174,5 @@ alias gitf="git-clone-folder"
 # Task Master aliases added on 6/24/2025
 alias tm='task-master'
 alias taskmaster='task-master'
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi

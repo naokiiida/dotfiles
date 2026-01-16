@@ -31,8 +31,8 @@ end
 alias gitf="git-clone-folder"
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias ldot='/opt/homebrew/bin/lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias gi="lazygit"
+alias dotl='/opt/homebrew/bin/lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias gi="/opt/homebrew/bin/lazygit"
 
 function g1
     set repo_url $argv[1]
