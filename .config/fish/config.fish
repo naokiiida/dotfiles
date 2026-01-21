@@ -3,39 +3,20 @@ if status is-interactive
     # fish_vi_key_bindings
 end
 
-# homebrew configuration (manual setup for faster startup)
-fish_add_path --prepend /opt/homebrew/bin /opt/homebrew/sbin
-set -gx HOMEBREW_PREFIX /opt/homebrew
-set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
-set -gx HOMEBREW_REPOSITORY /opt/homebrew
-set -gx MANPATH /opt/homebrew/share/man $MANPATH
-set -gx INFOPATH /opt/homebrew/share/info $INFOPATH
-
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
-source ~/.orbstack/shell/init2.fish 2>/dev/null || :
-
 # bun
-fish_add_path "/Users/naokiiida/Library/Caches/XDG-cache/.bun/bin"
+fish_add_path "$HOME/.bun/bin"
 
-# uv
-fish_add_path "/Users/naokiiida/.local/share/../bin"
-
-fish_add_path --append /Users/naokiiida/.lmstudio/bin
-
-# opencode
-fish_add_path /Users/naokiiida/.opencode/bin
+# uv / pipx
+fish_add_path "$HOME/.local/bin"
 
 # pnpm
-set -gx PNPM_HOME "/Users/naokiiida/.local/share/pnpm"
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 fish_add_path --append $PNPM_HOME
-# pnpm end
 
-# source (wmill completions fish | psub)
-source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+# nix (if installed)
+if test -f '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+    source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+end
 
-fish_add_path '/Users/naokiiida/.local/DiscordChatExporter.Cli.osx-arm64'
-fish_add_path /Users/naokiiida/.local/share/gem/bin
-
-# Added by Antigravity
-fish_add_path /Users/naokiiida/.antigravity/antigravity/bin
+# gem
+fish_add_path "$HOME/.local/share/gem/bin"
