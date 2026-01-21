@@ -1,3 +1,6 @@
+[safe]
+	directory = /opt/serv/boltdiy
+	directory = /opt/serv/ccy_svelte
 [user]
 	name = niida
 	email = 54788301+naokiiida@users.noreply.github.com

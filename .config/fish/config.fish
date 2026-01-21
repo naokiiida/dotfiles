@@ -20,3 +20,13 @@ end
 
 # gem
 fish_add_path "$HOME/.local/share/gem/bin"
+
+# opencode
+fish_add_path "$HOME/.opencode/bin"
+
+# fd with hyperlinks
+alias fd 'fd --hyperlink=auto'
+
+# eza/exa colors
+set -x EXA_COLORS $LS_COLORS
+set -x LS_COLORS ''
