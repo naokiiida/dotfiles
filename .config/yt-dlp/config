@@ -18,6 +18,9 @@
 # Convert thumbnails to other format jpg png webp
 --convert-thumbnails jpg
 
+# Sponsorblock
+--sponsorblock-mark default
+
 # Download all the available subtitles
 --write-subs
 --sub-langs all,-live_chat
@@ -42,7 +45,7 @@
 --concurrent-fragments 4
 
 # Append video to playlist
---exec "echo \"%(filepath)s\" >> /Users/naokiiida/Movies/yt-dlp/watchlist.m3u"
+--exec "echo \"%(filepath)s\" >> /Users/naokiiida/Movies/yt-dlp/watchlist.m3u8"
 
 # Create a .m3u8 playlist file, appending new videos to maintain play order and user edits
 --exec 'if [ "%(playlist)s" != "NA" ]; then M3U_FILE="/Users/naokiiida/Movies/yt-dlp/%(playlist)s/%(playlist)s.m3u8"; if ! [ -f "$M3U_FILE" ]; then echo "#EXTM3U" > "$M3U_FILE"; fi; grep -qF -- "%(filepath)s" "$M3U_FILE" || echo "%(filepath)s" >> "$M3U_FILE"; fi'

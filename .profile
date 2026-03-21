@@ -63,8 +63,12 @@ export PATH="$PATH:$PNPM_HOME"
 # pnpm end
 
 # For Flutter Dev
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 export CHROME_EXECUTABLE="/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev"
+# RUST
 export PATH="$HOME/.cargo/bin:$PATH"
+# DOOM EMACS
+export PATH="$PATH":"$HOME/.config/emacs/bin"
 
 # fzf with fd
 export FZF_DEFAULT_COMMAND='fd --type file'

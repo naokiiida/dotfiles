@@ -40,3 +40,10 @@ alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias tm='task-master'
 alias taskmaster='task-master'
 alias gf='gas-fakes --env ~/.config/gas-fakes/.env'
+
+# tmux + SSH aliases
+alias tsyi='ssh -t syi "tmux attach -t main 2>/dev/null || tmux new -s main"'
+alias ta='tmux attach -t'
+alias tl='tmux list-sessions'
+alias tn='tmux new -s'
+alias tk='tmux kill-session -t'

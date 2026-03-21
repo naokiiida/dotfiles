@@ -1,0 +1,286 @@
+;; ============================================================
+;; Shifted Miryoku — MacBook全行1行上シフト + miryokuサムキー
+;; Kanata version (converted from KMonad)
+;; ============================================================
+;; 前提: macOS設定「F1、F2などのキーを標準のファンクションキーとして使用」= ON
+
+(defcfg
+  process-unmapped-keys yes
+  danger-enable-cmd yes
+  macos-dev-names-include (
+    "Apple Internal Keyboard / Trackpad"
+  )
+)
+
+;; ── Aliases ──
+(defalias
+  ;; ── Home row mods (phys qwerty row → logical home row) ──
+  ;; a=met s=alt d=ctl f=sft  j=sft k=ctl l=alt '=met
+  hr-a (tap-hold-release 200 200 a lmet)
+  hr-s (tap-hold-release 200 200 s lalt)
+  hr-d (tap-hold-release 200 200 d lctl)
+  hr-f (tap-hold-release 200 200 f lsft)
+  hr-j (tap-hold-release 200 200 j rsft)
+  hr-k (tap-hold-release 200 200 k rctl)
+  hr-l (tap-hold-release 200 200 l lalt)
+  hr-q (tap-hold-release 200 200 ; rmet)
+
+  ;; ── Bottom row mods (phys home row → logical bottom row) ──
+  br-z (tap-hold-release 200 200 z (layer-while-held button))
+  br-x (tap-hold-release 200 200 x ralt)
+  br-dt (tap-hold-release 200 200 . ralt)
+  br-sl (tap-hold-release 200 200 / (layer-while-held button))
+
+  ;; ── Thumb keys (phys bottom row → logical thumb row) ──
+  ;; Left:  esc/media  spc/nav  tab/mouse
+  ;; Right: ent/sym  bspc/num  del/fun
+  th-esc (tap-hold-release 200 200 esc (layer-while-held media))
+  th-spc (tap-hold-release 200 200 spc (layer-while-held nav))
+  th-tab (tap-hold-release 200 200 tab (layer-while-held mouse))
+  th-ent (tap-hold-release 200 200 ret (layer-while-held sym))
+  th-bsp (tap-hold-release 200 200 bspc (layer-while-held num))
+  th-del (tap-hold-release 200 200 del (layer-while-held fun))
+
+  ;; ── Extra thumb keys ──
+  th-app (tap-hold-release 200 200 XX (layer-while-held apps))
+  th-wm  (tap-hold-release 200 200 XX (layer-while-held wm))
+  th-btn (tap-hold-release 200 200 XX (layer-while-held button))
+
+  ;; ── Layer switches via tap-dance ──
+  ;; KMonad multi-tap → Kanata tap-dance
+  ;; First tap = noop, second tap = layer-switch
+  sw-tap   (tap-dance 200 (XX (layer-switch tap)))
+  sw-extra (tap-dance 200 (XX (layer-switch extra)))
+  sw-base  (tap-dance 200 (XX (layer-switch base)))
+  sw-num   (tap-dance 200 (XX (layer-switch num)))
+  sw-nav   (tap-dance 200 (XX (layer-switch nav)))
+  sw-sym   (tap-dance 200 (XX (layer-switch sym)))
+  sw-mouse (tap-dance 200 (XX (layer-switch mouse)))
+  sw-media (tap-dance 200 (XX (layer-switch media)))
+  sw-fun   (tap-dance 200 (XX (layer-switch fun)))
+
+  ;; ── IME切り替え ──
+  ;; eisuu (key code 102) / kana (key code 104)
+  lm_ei (tap-hold-release 200 200
+    (cmd bash -c r#"osascript -e 'tell application "System Events" to key code 102'"#)
+    lmet)
+  rm_ka (tap-hold-release 200 200
+    (cmd bash -c r#"osascript -e 'tell application "System Events" to key code 104'"#)
+    rmet)
+
+  ;; ── Clipboard shortcuts ──
+  ;; Kanata uses modifier-key notation: C- = Cmd on macOS? No.
+  ;; On macOS, lmet = Cmd. Use M- prefix for lmet shortcuts.
+  und M-z
+  red M-S-z
+  cpy M-c
+  cut M-x
+  pst M-v
+
+  ;; ── Nav: Opt+arrow (word/paragraph jump) ──
+  a-lft A-left
+  a-dwn A-down
+  a-up  A-up
+  a-rgt A-right
+
+  ;; ── Sym: Programming combo macros ──
+  fat  (macro = S-.)                          ;; =>
+  neq  (macro S-1 = =)                        ;; !==
+  qqm  (macro S-/ S-/)                         ;; ??
+  opc  (macro S-/ .)                           ;; ?.
+  arr  (macro - S-.)                           ;; ->
+  teq  (macro = = =)                           ;; ===
+  damp (macro S-7 S-7)                         ;; &&
+  dorr (macro S-\ S-\)                         ;; ||
+  cmt  (macro / /)                             ;; //
+  tpl  (macro S-4 S-[)                         ;; ${
+  lte  (macro S-, =)                           ;; <=
+  gte  (macro S-. =)                           ;; >=
+
+  ;; ── Apps layer — アプリ起動 / Deeplinks ──
+  app_q (cmd bash -c r#"open 'raycast://extensions/raycast/raycast-ai/search-ai-chat-presets' && open -a Raycast.app"#)
+  app_w (cmd bash -c r#"open 'raycast://extensions/raycast/raycast-ai/search-ai-commands' && open -a Raycast.app"#)
+  app_e (cmd open raycast://extensions/raycast/raycast-ai/send-selection-to-ai-chat)
+  app_r (cmd open raycast://extensions/lardissone/raindrop-io/search)
+  app_t (cmd open -a Timing.app)
+  app_a (cmd open -a Raycast.app)
+  app_s (cmd open -a Safari.app)
+  app_d (cmd open -a Obsidian.app)
+  app_f (cmd open -a Ghostty.app)
+  app_g (cmd open -g raycast://extensions/raycast/google-workspace/search-google-drive-files)
+  app_z (cmd open -a Zed.app)
+  app_x (cmd open -a Bitwarden.app)
+  app_c (cmd open -g raycast://extensions/raycast/snippets/search-snippets)
+  app_v (cmd open raycast://extensions/koinzhang/browser-tabs/index)
+  app_b (cmd open raycast://extensions/skydiver/browsers-profiles/index)
+
+  ;; ── WM layer — ウィンドウ管理 (Raycast) ──
+  wm_h (cmd open -g raycast://extensions/raycast/window-management/left-half)
+  wm_j (cmd open -g raycast://extensions/raycast/window-management/bottom-half)
+  wm_k (cmd open -g raycast://extensions/raycast/window-management/top-half)
+  wm_l (cmd open -g raycast://extensions/raycast/window-management/right-half)
+  wm_f (cmd open -g raycast://extensions/raycast/window-management/toggle-fullscreen)
+  wm_c (cmd open -g raycast://extensions/raycast/window-management/center-half)
+  wm_r (cmd open -g raycast://extensions/raycast/window-management/reasonable-size)
+  wm_w (cmd open -g raycast://extensions/raycast/navigation/switch-windows)
+  wm_d (cmd open -g raycast://extensions/teemu_suvinen/window-layouts/horizontal-30-70)
+
+  ;; ── Mouse button aliases ──
+  ;; KMonad used keypad mouse emulation (#(kp* kp5) etc.)
+  ;; Kanata has native mouse support
+  mlt mltp     ;; mouse left tap
+  mrt mrtp     ;; mouse right tap
+  mmt mmtp     ;; mouse middle tap
+
+  ;; ── Layer lock (physical / key) ──
+  ;; Hold thumb for temporary layer → press / to lock (layer-switch)
+  ;; Release thumb → stay locked. To unlock: @sw-base double-tap in numrow.
+  lk-nav   (layer-switch nav)
+  lk-mouse (layer-switch mouse)
+  lk-media (layer-switch media)
+  lk-num   (layer-switch num)
+  lk-sym   (layer-switch sym)
+  lk-fun   (layer-switch fun)
+  lk-wm    (layer-switch wm)
+  lk-off   (layer-switch base)
+)
+
+;; ── Physical key mapping (59 keys) ──
+;; F-row → numbers, Number-row → qwerty, Qwerty-row → home,
+;; Home-row → bottom, Bottom-row → thumbs, + lmet/rmet
+(defsrc
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  1    2    3    4    5    6    7    8    9    0    -    =
+  q    w    e    r    t    y    u    i    o    p    [    ]
+  a    s    d    f    g    h    j    k    l    ;    '
+  z    x    c    v    b    n    m    ,    .    /
+  lmet                                        rmet
+)
+
+;; ── 1. base — shifted qwerty + home-row mods ──
+;; Physical ] (qrow 12) = f13 (LeaderKey app)
+;; Physical ' (homerow 11) = f16 (dictation toggle)
+;; Physical / (next to Right Shift) = layer lock toggle
+(deflayer base
+  1    2    3    4    5    6    7    8    9    0    -    =
+  q    w    e    r    t    y    u    i    o    p    [    ]
+  @hr-a @hr-s @hr-d @hr-f g    h    @hr-j @hr-k @hr-l @hr-q '    f13
+  @br-z @br-x c    v    b    n    m    ,    @br-dt @br-sl f16
+  @th-app @th-esc @th-spc @th-tab @th-btn @th-wm @th-ent @th-bsp @th-del @lk-off
+  @lm_ei                                       @rm_ka
+)
+
+;; ── 2. extra (same as base) ──
+(deflayer extra
+  1    2    3    4    5    6    7    8    9    0    -    =
+  q    w    e    r    t    y    u    i    o    p    [    ]
+  @hr-a @hr-s @hr-d @hr-f g    h    @hr-j @hr-k @hr-l @hr-q '    f13
+  @br-z @br-x c    v    b    n    m    ,    @br-dt @br-sl f16
+  @th-app @th-esc @th-spc @th-tab @th-btn @th-wm @th-ent @th-bsp @th-del @lk-off
+  @lm_ei                                       @rm_ka
+)
+
+;; ── 3. tap (no mods, pure characters) ──
+(deflayer tap
+  1    2    3    4    5    6    7    8    9    0    -    =
+  q    w    e    r    t    y    u    i    o    p    [    ]
+  a    s    d    f    g    h    j    k    l    ;    '    f13
+  z    x    c    v    b    n    m    ,    .    /    f16
+  _    esc  spc  tab  _    _    ret  bspc del  @lk-off
+  _                                       _
+)
+
+;; ── 4. button (clipboard + mouse buttons) ──
+;; KMonad used #(kp* kp5) etc. for mouse via keypad emulation
+;; Kanata has native mouse button actions: mltp mrtp mmtp
+(deflayer button
+  _    _    _    _    _    _    _    _    _    _    _    _
+  @und @cut @cpy @pst @red @red @pst @cpy @cut @und _    _
+  lmet lalt lctl lsft XX   XX   rsft rctl lalt rmet _    f13
+  @und @cut @cpy @pst @red @red @pst @cpy @cut @und f16
+  _    @mlt @mrt @mmt _    _    @mmt @mrt @mlt @lk-off
+  _                                       _
+)
+
+;; ── 5. nav (Spc hold) — arrows + word jump ──
+(deflayer nav
+  _    _    _    _    _    _    _    _    _    _    _    _
+  XX   @sw-tap @sw-extra @sw-base XX  @red @pst @cpy @cut @und _    _
+  lmet lalt lctl lsft XX   left down up   right XX    _    f13
+  XX   ralt @sw-num @sw-nav XX   @a-lft @a-dwn @a-up @a-rgt XX   f16
+  _    XX   XX   XX   _    _    ret  bspc del  @lk-nav
+  _                                       _
+)
+
+;; ── 6. mouse (Tab hold) — mouse movement + buttons ──
+;; KMonad used kp4/kp2/kp8/kp6 for mouse via keypad emulation
+;; Kanata uses native movemouse-* actions (interval_ms distance_px)
+(deflayer mouse
+  _    _    _    _    _    _    _    _    _    _    _    _
+  XX   @sw-tap @sw-extra @sw-base XX  @red @pst @cpy @cut @und _    _
+  lmet lalt lctl lsft XX   (movemouse-left 50 5) (movemouse-down 50 5) (movemouse-up 50 5) (movemouse-right 50 5) XX   _    f13
+  XX   ralt @sw-sym @sw-mouse XX  XX   XX   XX   XX   XX   f16
+  _    XX   XX   XX   _    _    @mmt @mrt @mlt @lk-mouse
+  _                                       _
+)
+
+;; ── 7. media (Esc hold) — playback + volume ──
+(deflayer media
+  _    _    _    _    _    _    _    _    _    _    _    _
+  XX   @sw-tap @sw-extra @sw-base XX  XX   XX   XX   XX   XX   _    _
+  lmet lalt lctl lsft XX   prev vold volu next XX    _    f13
+  XX   ralt @sw-fun @sw-media XX  XX   XX   XX   XX   XX   f16
+  _    XX   XX   XX   _    _    mute pp   XX   @lk-media
+  _                                       _
+)
+
+;; ── 8. num (Bspc hold) — numpad on left hand ──
+(deflayer num
+  _    _    _    _    _    _    _    _    _    _    _    _
+  [    7    8    9    ]    XX   @sw-base @sw-extra @sw-tap XX _    _
+  ;    4    5    6    =    XX   rsft rctl lalt rmet _    f13
+  grv  1    2    3    \    XX   @sw-num @sw-nav ralt XX   f16
+  _    .    0    -    _    _    XX   XX   XX   @lk-num
+  _                                       _
+)
+
+;; ── 9. sym (Ent hold) — brackets + programming combos ──
+;; Kanata uses S- prefix for shifted keys (e.g. S-[ = {, S-9 = ()
+(deflayer sym
+  _    _    _    _    _    _    _    _    _    _    _    _
+  grv  S-grv [   S-[  S-3  @fat @neq @qqm @opc XX   _    _
+  S-;  S-1  =    S-9  -    @arr @teq @damp @dorr XX  _    f13
+  S-2  S-\  S-7  S-8  S-=  @cmt @tpl @lte @gte  XX   f16
+  _    S-0  S-]  ]    _    _    XX   XX   XX   @lk-sym
+  _                                       _
+)
+
+;; ── 10. fun (Del hold) — F-keys on left hand ──
+(deflayer fun
+  _    _    _    _    _    _    _    _    _    _    _    _
+  f12  f7   f8   f9   sys  XX   @sw-base @sw-extra @sw-tap XX _    _
+  f11  f4   f5   f6   slck XX   rsft rctl lalt rmet _    f13
+  f10  f1   f2   f3   pause XX  @sw-fun @sw-media ralt XX  f16
+  _    menu spc  tab  _    _    XX   XX   XX   @lk-fun
+  _                                       _
+)
+
+;; ── 11. apps — アプリ起動 ──
+(deflayer apps
+  _    _    _    _    _    _    _    _    _    _    _    _
+  @app_q @app_w @app_e @app_r @app_t _  _    _    _    _    _    _
+  @app_a @app_s @app_d @app_f @app_g _  _    _    _    _    _    f13
+  @app_z @app_x @app_c @app_v @app_b _  _    _    _    _    f16
+  _    _    _    _    _    _    _    _    _    @lk-off
+  _                                       _
+)
+
+;; ── 12. wm — ウィンドウ管理 ──
+(deflayer wm
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    @wm_w _    @wm_r _    _    _    _    _    _    _    _
+  _    _    @wm_d @wm_f _    @wm_h @wm_j @wm_k @wm_l _  _    f13
+  _    _    @wm_c _    _    _    _    _    _    _    f16
+  _    _    _    _    _    _    _    _    _    @lk-wm
+  _                                       _
+)

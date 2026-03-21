@@ -91,6 +91,11 @@ language-servers = [ { name = "vscode-json-language-server", except-features = [
 # auto-format = true
 # language-servers = ["deno-lsp"]
 
+
+[[language]]
+name = "json"
+formatter = { command = "jq", args = ["-M", "."] }
+
 # [[language]]
 # name = "json"
 # auto-format = true

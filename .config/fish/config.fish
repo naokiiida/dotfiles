@@ -39,3 +39,8 @@ fish_add_path /Users/naokiiida/.local/share/gem/bin
 
 # Added by Antigravity
 fish_add_path /Users/naokiiida/.antigravity/antigravity/bin
+
+# flutter
+fish_add_path /Users/naokiiida/.pub-cache/bin
+
+fish_add_path /Users/naokiiida/.config/emacs/bin

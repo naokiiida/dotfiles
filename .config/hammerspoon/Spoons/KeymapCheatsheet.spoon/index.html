@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    background: rgba(30,30,30,0.95);
+    color: #eee;
+    padding: 12px;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .tab {
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: #424242;
+    color: #bbb;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .tab:hover { background: #555; }
+  .tab.active { background: #1976d2; color: #fff; }
+  .keyboard { display: flex; flex-direction: column; gap: 4px; }
+  .row {
+    display: flex;
+    gap: 3px;
+    justify-content: flex-start;
+    padding-left: 4px;
+  }
+  .key {
+    min-width: 48px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+  }
+  .key .hold {
+    font-size: 8px;
+    opacity: 0.7;
+    margin-top: 1px;
+  }
+  .key .tap { line-height: 1.2; }
+  .key.fixed {
+    background: #383838;
+    color: #777;
+    border-color: rgba(255,255,255,0.05);
+  }
+  .key.fixed.cmd {
+    background: rgba(102,187,106,0.15);
+    border-color: rgba(102,187,106,0.3);
+    color: #66bb6a;
+  }
+  .key.w60 { min-width: 60px; }
+  .key.w70 { min-width: 70px; }
+  .key.w80 { min-width: 80px; }
+  .key.w100 { min-width: 100px; }
+  .key.space { min-width: 200px; }
+  .legend {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #aaa;
+  }
+  .legend-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+  .title {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="title">Shifted Miryoku Keymap</div>
+<div class="tabs" id="tabs"></div>
+<div id="keyboard"></div>
+<div class="legend" id="legend"></div>
+
+<script>
+const TABS = %s;
+const LAYERS = %s;
+const COLORS = %s;
+const BG_ALPHA = "33";
+
+let currentLayer = "base";
+
+function renderTabs() {
+  const el = document.getElementById("tabs");
+  const parts = [];
+  for (const t of TABS) {
+    const div = document.createElement("div");
+    div.className = t.name === currentLayer ? "tab active" : "tab";
+    div.textContent = t.label;
+    div.addEventListener("click", function() { switchLayer(t.name); });
+    parts.push(div);
+  }
+  el.replaceChildren(...parts);
+}
+
+function mk(tag, cls) {
+  const el = document.createElement(tag);
+  if (cls) el.className = cls;
+  return el;
+}
+
+function fixedKey(text, extra) {
+  const div = mk("div", "key fixed" + (extra ? " " + extra : ""));
+  div.textContent = text;
+  return div;
+}
+
+function cmdKey(tap, sub) {
+  const div = mk("div", "key fixed cmd w70");
+  const t = mk("span", "tap");
+  t.textContent = tap;
+  div.appendChild(t);
+  const h = mk("span", "hold");
+  h.textContent = sub;
+  div.appendChild(h);
+  return div;
+}
+
+function dataKey(k) {
+  const div = mk("div", "key");
+  if (k.l === "" && k.t === "trans") {
+    div.style.background = COLORS.trans + BG_ALPHA;
+    div.style.minWidth = "48px";
+    const s = mk("span", "tap");
+    s.style.color = "#666";
+    s.textContent = "_";
+    div.appendChild(s);
+    return div;
+  }
+  const c = COLORS[k.t] || COLORS.trans;
+  div.style.background = c + BG_ALPHA;
+  const t = mk("span", "tap");
+  t.style.color = c;
+  t.textContent = k.l;
+  div.appendChild(t);
+  if (k.h) {
+    const h = mk("span", "hold");
+    h.style.color = c;
+    h.textContent = k.h;
+    div.appendChild(h);
+  }
+  return div;
+}
+
+function renderKeyboard() {
+  const layer = LAYERS[currentLayer];
+  if (!layer) return;
+  const container = document.getElementById("keyboard");
+  const kb = mk("div", "keyboard");
+
+  // Row 1: Esc + frow (12 data keys)
+  const r1 = mk("div", "row");
+  r1.appendChild(fixedKey("Esc", "w60"));
+  for (const k of layer.frow) r1.appendChild(dataKey(k));
+  kb.appendChild(r1);
+
+  // Row 2: ` + numrow (12 data keys) + Bspc
+  const r2 = mk("div", "row");
+  r2.appendChild(fixedKey("`"));
+  for (const k of layer.numrow) r2.appendChild(dataKey(k));
+  r2.appendChild(fixedKey("Bspc", "w60"));
+  kb.appendChild(r2);
+
+  // Row 3: Tab + qrow (12 data keys) + backslash
+  const r3 = mk("div", "row");
+  r3.appendChild(fixedKey("Tab", "w60"));
+  for (const k of layer.qrow) r3.appendChild(dataKey(k));
+  r3.appendChild(fixedKey("\\"));
+  kb.appendChild(r3);
+
+  // Row 4: Caps + homerow (11 data keys) + Return
+  const r4 = mk("div", "row");
+  r4.appendChild(fixedKey("Caps", "w70"));
+  for (const k of layer.homerow) r4.appendChild(dataKey(k));
+  r4.appendChild(fixedKey("Return", "w70"));
+  kb.appendChild(r4);
+
+  // Row 5: LShift + bottom (10 data keys) + RShift
+  const r5 = mk("div", "row");
+  r5.appendChild(fixedKey("Shift", "w80"));
+  for (const k of layer.bottom) r5.appendChild(dataKey(k));
+  r5.appendChild(fixedKey("Shift", "w80"));
+  kb.appendChild(r5);
+
+  // Row 6: Fn Ctrl Alt Cmd/英数 Space Cmd/かな Alt
+  const r6 = mk("div", "row");
+  r6.appendChild(fixedKey("Fn"));
+  r6.appendChild(fixedKey("Ctrl"));
+  r6.appendChild(fixedKey("Alt"));
+  r6.appendChild(cmdKey("英数", "Cmd"));
+  r6.appendChild(fixedKey("Space", "space"));
+  r6.appendChild(cmdKey("かな", "Cmd"));
+  r6.appendChild(fixedKey("Alt"));
+  kb.appendChild(r6);
+
+  container.replaceChildren(kb);
+}
+
+function renderLegend() {
+  const items = [
+    ["letter","文字/数字"],["mod","Home-row Mod"],["thumb","サムキー"],
+    ["nav","ナビ/矢印"],["media","メディア"],["trans","透過/固定"],
+    ["blocked","ブロック"],["app","アプリ"],["wm","WM"],["special","レイヤーSW"]
+  ];
+  const el = document.getElementById("legend");
+  const parts = [];
+  for (const [t, label] of items) {
+    const d = document.createElement("div");
+    d.className = "legend-item";
+    const sw = document.createElement("div");
+    sw.className = "legend-swatch";
+    sw.style.background = COLORS[t];
+    d.appendChild(sw);
+    d.appendChild(document.createTextNode(label));
+    parts.push(d);
+  }
+  el.replaceChildren(...parts);
+}
+
+function switchLayer(name) {
+  currentLayer = name;
+  renderTabs();
+  renderKeyboard();
+}
+
+renderTabs();
+renderKeyboard();
+renderLegend();
+</script>
+</body>
+</html>

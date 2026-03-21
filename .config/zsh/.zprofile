@@ -109,7 +109,7 @@ then
   ZVM_INIT_MODE=sourcing
   source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
   source <(/opt/homebrew/bin/fzf --zsh)
-  eval "$(/opt/homebrew/bin/tailscale completion zsh); compdef _tailscale tailscale;"
+  # eval "$(/opt/homebrew/bin/tailscale completion zsh); compdef _tailscale tailscale;"
   eval "$(/opt/homebrew/bin/rbw gen-completions zsh); compdef _rbw rbw;"
   eval "$(/opt/homebrew/bin/zoxide init zsh)"
   eval "$(/opt/homebrew/bin/uv generate-shell-completion zsh); compdef _uv uv"

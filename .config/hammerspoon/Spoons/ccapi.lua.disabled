@@ -1,0 +1,14 @@
+function ccapi()
+    local task = hs.task.new("/usr/bin/env", function(exitCode, stdOut, stdErr)
+        if exitCode ~= 0 then
+            print("ccapi failed with exit code: " .. exitCode)
+            if stdErr and stdErr ~= "" then
+                print("stderr: " .. stdErr)
+            end
+        end
+    end, {"bash", "-c", "cd /Users/naokiiida/basic-memory && RUST_LOG=info /Users/naokiiida/.local/share/cargo/bin/ccapi"})
+    task:start()
+end
+
+-- Auto-run on boot
+ccapi()

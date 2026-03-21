@@ -17,9 +17,7 @@ view = [
 ]
 
 play = [
-	{ run = 'iina --no-stdin %s', orphan = true, for = "unix"},
-	{ run = 'afplay %s', orphan = true, for = "unix"},
-	{ run = 'ffplay %s', orphan = true, for = "unix"},
+	{ run = 'mpv %s', orphan = true, for = "unix"},
 	{ run = 'ffprobe %s | less', orphan = false, for = "unix", block = true}
 ]
 
@@ -32,6 +30,7 @@ prepend_rules = [
 	{ url = "*.csv", use = [ "open", "edit" ] },
 	{ url = "*.svg", use = [ "open", "edit" ] },
 	{ url = "*.md", use = ["view", "edit"] },
+	{ url = "*.m3u8", use = ["play", "edit"] },
 ]
 
 # append_rules = [

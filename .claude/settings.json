@@ -1,8 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "DISABLE_AUTOUPDATER": "1"
+    "DISABLE_AUTOUPDATER": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
+  "teammateMode": "tmux",
   "permissions": {
     "allow": [
       "Read",
@@ -11,6 +13,7 @@
       "MultiEdit(./**)",
       "mcp__github__search_repositories",
       "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs",
       "Skill",
       "WebFetch",
       "WebSearch",
@@ -19,10 +22,17 @@
       "LS",
       "Bash(rg:*)",
       "Bash(fd:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
       "Bash(diff:*)",
+      "Bash(dig:*)",
+      "Bash(scutil:*)",
       "Bash(parallel:*)",
       "Bash(uvx:*)",
       "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(touch:*)",
       "Bash(cat:*)",
       "Bash(head:*)",
       "Bash(tail:*)",
@@ -45,15 +55,14 @@
       "Bash(jq:*)",
       "Bash(xcodebuild:*)",
       "Bash(echo:*)",
-      "Bash(git status:*)",
-      "Bash(git log:*)",
-      "Bash(git diff:*)",
-      "Bash(git branch:*)",
+      "Bash(git:*)",
       "Bash(pnpm:*)",
       "Bash(uv run:*)",
       "Bash(mmdc:*)",
       "Bash(gh pr view:*)",
-      "Bash(gh pr list:*)"
+      "Bash(gh pr list:*)",
+      "Bash(gh api:*)",
+      "mcp__pencil"
     ],
     "deny": []
   },
@@ -103,27 +112,88 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "/usr/local/bin/mini-ccstatus",
+    "command": "/usr/local/bin/mini-ccstatus --simple --context-tokens --session-tokens --api-time-ratio --lines-ratio --input-output-ratio",
     "padding": 0
   },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
-    "explanatory-output-style@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": false,
     "learning-output-style@claude-plugins-official": false,
     "swift-lsp@claude-plugins-official": true,
-    "agent-sdk-dev@claude-plugins-official": true,
+    "agent-sdk-dev@claude-plugins-official": false,
     "plugin-dev@claude-plugins-official": true,
     "hookify@claude-plugins-official": false,
     "gitgud@gitgud-marketplace": false,
     "auto-memory@severity1-marketplace": false,
-    "ralph-wiggum@claude-plugins-official": true
+    "pyright-lsp@claude-plugins-official": true,
+    "api-testing-observability@claude-code-workflows": false,
+    "code-review@claude-plugins-official": true,
+    "coding-tutor@every-marketplace": false,
+    "code-refactoring@claude-code-workflows": true,
+    "codebase-cleanup@claude-code-workflows": true,
+    "tdd-workflows@claude-code-workflows": true,
+    "code-simplifier@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "backend-api-security@claude-code-workflows": true,
+    "notion-workspace-plugin@notion-plugin-marketplace": true,
+    "slack@claude-plugins-official": true,
+    "worktrunk@worktrunk": true,
+    "json-lsp@local-marketplace": true
   },
+  "extraKnownMarketplaces": {
+    "worktrunk": {
+      "source": {
+        "source": "github",
+        "repo": "max-sixty/worktrunk"
+      }
+    },
+    "obsidian-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kepano/obsidian-skills"
+      }
+    }
+  },
+  "language": "japanese",
   "sandbox": {
     "enabled": true,
-    "autoAllow": true
+    "autoAllow": true,
+    "permissions": {
+      "network": {
+        "allowedHosts": [
+          "localhost",
+          "127.0.0.1",
+          "[::1]",
+          "host.docker.internal",
+          "github.com",
+          "*.github.com",
+          "api.github.com",
+          "raw.githubusercontent.com",
+          "registry.npmjs.org",
+          "registry.yarnpkg.com",
+          "pypi.org",
+          "files.pythonhosted.org",
+          "hub.docker.com",
+          "registry-1.docker.io",
+          "auth.docker.io",
+          "production.cloudflare.docker.com",
+          "crates.io",
+          "static.crates.io",
+          "index.crates.io",
+          "*.taiida.com"
+        ]
+      },
+      "disk": {
+        "write": [
+          "/var/run/docker.sock",
+          "/Users/naokiiida/.docker"
+        ]
+      }
+    }
   },
+  "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754070234392
   }

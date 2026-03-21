@@ -29,3 +29,13 @@ on   = "!"
 for  = "unix"
 run  = 'shell "$SHELL" --block'
 desc = "Open $SHELL here"
+
+[[mgr.prepend_keymap]]
+on   = [ "b", "d" ]
+run  = "plugin ghostty-split --args=right"
+desc = "Open in Ghostty right split"
+
+[[mgr.prepend_keymap]]
+on   = [ "b", "s" ]
+run  = "plugin ghostty-split --args=down"
+desc = "Open in Ghostty down split"

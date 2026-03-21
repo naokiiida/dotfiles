@@ -1,27 +1,15 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run the `open default settings` command
-// from the command palette or from `Zed` application menu.
 {
+  "edit_predictions": {
+    "provider": "zed"
+  },
   "language_models": {
     "openai_compatible": {
       "CLIProxyAPI": {
         "api_url": "http://localhost:8317/v1",
         "available_models": [
           {
-            "name": "gemini-2.5-pro",
-            "display_name": "Gemini 2.5 Pro",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000
-          },
-          {
-            "name": "gemini-3-pro",
-            "display_name": "Gemini 3 Pro",
+            "name": "claude-opus-4-6",
+            "display_name": "CC: Opus 4.6",
             "max_tokens": 200000,
             "max_output_tokens": 32000,
             "max_completion_tokens": 200000,
@@ -33,54 +21,7 @@
             }
           },
           {
-            "name": "gemini-3-flash",
-            "display_name": "Gemini 3 Flash",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
-            "capabilities": {
-              "tools": true,
-              "images": true,
-              "parallel_tool_calls": true,
-              "prompt_cache_key": false
-            }
-          },
-          {
-            "name": "gemini-2.5-flash",
-            "display_name": "Gemini 2.5 Flash",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
-            "capabilities": {
-              "tools": true,
-              "images": false,
-              "parallel_tool_calls": true,
-              "prompt_cache_key": false
-            }
-          },
-          {
-            "name": "gemini-2.5-flash-lite",
-            "display_name": "Gemini 2.5 Flash Lite",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000
-          },
-          {
-            "name": "gemini-2.5-flash-image",
-            "display_name": "Gemini 2.5 Flash Image",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000
-          },
-          {
-            "name": "gemini-2.5-flash-image-preview",
-            "display_name": "Gemini 2.5 Flash Image Preview",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000
-          },
-          {
-            "name": "claude-opus-4.5",
+            "name": "claude-opus-4-5-20251101",
             "display_name": "CC: Opus 4.5",
             "max_tokens": 200000,
             "max_output_tokens": 32000,
@@ -93,21 +34,7 @@
             }
           },
           {
-            "name": "claude-opus-4-1",
-            "display_name": "CC: Opus 4.1",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000
-          },
-          {
-            "name": "claude-sonnet-4",
-            "display_name": "CC: Sonnet 4",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000
-          },
-          {
-            "name": "claude-sonnet-4-5",
+            "name": "claude-sonnet-4-5-20250929",
             "display_name": "CC: Sonnet 4.5",
             "max_tokens": 200000,
             "max_output_tokens": 32000,
@@ -120,11 +47,133 @@
             }
           },
           {
-            "name": "claude-4-5-haiku",
+            "name": "claude-sonnet-4-20250514",
+            "display_name": "CC: Sonnet 4",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "claude-opus-4-1-20250805",
+            "display_name": "CC: Opus 4.1",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "claude-haiku-4-5-20251001",
             "display_name": "CC: Haiku 4.5",
             "max_tokens": 8000,
             "max_output_tokens": 32000,
             "max_completion_tokens": 200000
+          },
+          {
+            "name": "gemini-2.5-pro",
+            "display_name": "Gemini 2.5 Pro",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "gemini-3-pro-preview",
+            "display_name": "Gemini 3 Pro",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "gemini-3.1-pro-preview",
+            "display_name": "Gemini 3.1 Pro Preview",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "gemini-3-flash-preview",
+            "display_name": "Gemini 3 Flash Preview",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "Gemini Flash Latest",
+            "display_name": "Gemini Flash Latest",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "Gemini Flash-Lite Latest",
+            "display_name": "Gemini Flash-Lite Latest",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "gemini-3-flash",
+            "display_name": "AG: Gemini 3 Flash",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gemini-2.5-flash",
+            "display_name": "AG: Gemini 2.5 Flash",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gemini-2.5-flash-lite",
+            "display_name": "AG: Gemini 2.5 Flash Lite",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "gemini-3-pro-high",
+            "display_name": "AG: Gemini 3 Pro High",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "claude-sonnet-4-6",
+            "display_name": "AG: Sonnet 4.6",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000
+          },
+          {
+            "name": "gpt-5.3-codex",
+            "display_name": "GH: GPT-5.3 Codex",
+            "max_tokens": 128000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 128000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
           }
         ]
       }
@@ -147,10 +196,10 @@
     }
   ],
   "icon_theme": "Zed (Default)",
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
   "agent": {
+    "tool_permissions": {
+      "default": "allow"
+    },
     "play_sound_when_agent_done": true,
     "profiles": {
       "write": {
@@ -409,17 +458,6 @@
               "resolve-library-id": true
             }
           },
-          "mcp-server-puppeteer": {
-            "tools": {
-              "puppeteer_click": false,
-              "puppeteer_evaluate": false,
-              "puppeteer_fill": false,
-              "puppeteer_navigate": false,
-              "puppeteer_hover": false,
-              "puppeteer_screenshot": false,
-              "puppeteer_select": false
-            }
-          },
           "Raycast Docs": {
             "tools": {
               "search_extensions_documentation": false,
@@ -552,15 +590,14 @@
         }
       }
     },
-    "always_allow_tool_actions": true,
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5"
+      "model": "claude-sonnet-4-5-20250929"
     },
-    "default_profile": "context-7",
+    "default_profile": "write",
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-opus-4.5"
+      "provider": "CLIProxyAPI",
+      "model": "claude-sonnet-4-6"
     }
   },
   "theme": {
@@ -587,14 +624,6 @@
         "javascript": { "useAliasesForRenames": false }
       }
     }
-    // "c-norminette": {
-    //   "initialization_options": {
-    //     "path": "/usr/local/bin/inject_42h",
-    //     "name": "niida",
-    //     "email": "niida@student.42tokyo.jp",
-    //     "offset": 9 // timezone offset to UTC. positive for +, negative for -
-    //   }
-    // }
   },
   "file_types": {
     "C": ["*.h"],
@@ -614,9 +643,6 @@
     "YAML": ["*.yaml", ".clang*"]
   },
   "languages": {
-    // "Python": {
-    //   "language_servers": ["pyrefly", "!pyright", "!pylsp"]
-    // },
     "YAML": {
       "tab_size": 2,
       "hard_tabs": false
@@ -633,27 +659,8 @@
     "JavaScript": { "formatter": { "language_server": { "name": "biome" } } },
     "TypeScript": { "formatter": { "language_server": { "name": "biome" } } },
     "TSX": { "formatter": { "language_server": { "name": "biome" } } }
-    // "HTML": {
-    //   "language_servers": ["vscode-html-language-server", "superhtml"],
-    //   // "formatter": { "language_server": { "name": "superhtml" } }
-    // }
   },
   "context_servers": {
-    // "clasp": {
-    //   "source": "custom",
-    //   "command": {
-    //     "path": "clasp",
-    //     "args": ["mcp"],
-    //     "env": null
-    //   },
-    //   "settings": {}
-    // },
-    // "browser-tools-context-server": {
-    //   "settings": {
-    //     "port": 3025,
-    //     "host": "127.0.0.1"
-    //   }
-    // },
     "browser-tools-context-server": {
       "enabled": true,
       "settings": {}
@@ -663,27 +670,6 @@
         "brave_api_key": "BSAjH1gzDsqCIM-HmrF-5XDdgjsj8KO"
       }
     },
-    // "karakeep Docs": {
-    //   "source": "custom",
-    //   "command": {
-    //     "path": "bunx",
-    //     "args": ["mcp-remote", "https://gitmcp.io/karakeep-app/karakeep"]
-    //   }
-    // },
-    // "Raycast Docs": {
-    //   "source": "custom",
-    //   "command": {
-    //     "path": "bunx",
-    //     "args": ["mcp-remote", "https://gitmcp.io/raycast/extensions"]
-    //   }
-    // },
-    // "Cockpit Docs": {
-    //   "source": "custom",
-    //   "command": {
-    //     "path": "bunx",
-    //     "args": ["mcp-remote", "https://gitmcp.io/cockpit-project/cockpit"]
-    //   }
-    // },
     "git-iris": {
       "command": "/Users/naokiiida/.local/share/cargo/bin/git-iris",
       "args": ["serve"]
