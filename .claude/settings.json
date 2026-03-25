@@ -4,7 +4,6 @@
     "DISABLE_AUTOUPDATER": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "teammateMode": "tmux",
   "permissions": {
     "allow": [
       "Read",
@@ -14,6 +13,9 @@
       "mcp__github__search_repositories",
       "mcp__context7__resolve-library-id",
       "mcp__context7__query-docs",
+      "mcp__claude_ai_Context7__query-docs",
+      "mcp__claude_ai_Context7__resolve-library-id",
+      "mcp__claude_ai_Grep_app__searchGitHub",
       "Skill",
       "WebFetch",
       "WebSearch",
@@ -62,6 +64,10 @@
       "Bash(gh pr view:*)",
       "Bash(gh pr list:*)",
       "Bash(gh api:*)",
+      "Bash(defuddle parse:*)",
+      "Bash(DiscordChatExporter.Cli channels:*)",
+      "Bash(DiscordChatExporter.Cli export:*)",
+      "Bash(DiscordChatExporter.Cli guilds:*)",
       "mcp__pencil"
     ],
     "deny": []
@@ -140,7 +146,8 @@
     "notion-workspace-plugin@notion-plugin-marketplace": true,
     "slack@claude-plugins-official": true,
     "worktrunk@worktrunk": true,
-    "json-lsp@local-marketplace": true
+    "json-lsp@local-marketplace": true,
+    "superpowers@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
     "worktrunk": {
@@ -159,41 +166,56 @@
   "language": "japanese",
   "sandbox": {
     "enabled": true,
-    "autoAllow": true,
-    "permissions": {
-      "network": {
-        "allowedHosts": [
-          "localhost",
-          "127.0.0.1",
-          "[::1]",
-          "host.docker.internal",
-          "github.com",
-          "*.github.com",
-          "api.github.com",
-          "raw.githubusercontent.com",
-          "registry.npmjs.org",
-          "registry.yarnpkg.com",
-          "pypi.org",
-          "files.pythonhosted.org",
-          "hub.docker.com",
-          "registry-1.docker.io",
-          "auth.docker.io",
-          "production.cloudflare.docker.com",
-          "crates.io",
-          "static.crates.io",
-          "index.crates.io",
-          "*.taiida.com"
-        ]
-      },
-      "disk": {
-        "write": [
-          "/var/run/docker.sock",
-          "/Users/naokiiida/.docker"
-        ]
-      }
-    }
+    "autoAllowBashIfSandboxed": true,
+    "network": {
+      "allowedDomains": [
+        "localhost",
+        "127.0.0.1",
+        "[::1]",
+        "host.docker.internal",
+        "*.anthropic.com",
+        "*.cloudflare.com",
+        "*.context7.com",
+        "*.crates.io",
+        "*.docker.io",
+        "*.github.com",
+        "*.githubusercontent.com",
+        "*.taiida.com",
+        "api.search.brave.com",
+        "files.pythonhosted.org",
+        "index.crates.io",
+        "jsoncanvas.org",
+        "mcp.notion.com",
+        "mcp.slack.com",
+        "mcp.slack.com",
+        "models.dev",
+        "pypi.org",
+        "registry.npmjs.org",
+        "registry.yarnpkg.com"
+      ]
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/Library/Caches/uv",
+        "~/.pnpm-store",
+        "~/.config/pnpm",
+        "~/.cargo",
+        "~/Library/Caches/go-build",
+        "~/go",
+        "~/Library/Developer/Xcode/DerivedData",
+        "~/Library/Caches/org.swift.swiftpm",
+        "~/.config/gh"
+      ],
+      "denyWrite": [
+        "~/.ssh",
+        "~/.gnupg",
+        "/etc"
+      ]
+    },
+    "enableWeakerNetworkIsolation": true
   },
   "voiceEnabled": true,
+  "teammateMode": "auto",
   "feedbackSurveyState": {
     "lastShownTime": 1754070234392
   }

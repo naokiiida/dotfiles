@@ -179,8 +179,37 @@ injection-regex = "md|markdown"
 file-types = ["md", "markdown", "mkd"]
 comment-tokens = ["-", "+", "*", "1.", ">", "- [ ]"]
 roots = [".moxide.toml", ".git"]
-language-servers = [ "markdown-oxide" ]
+language-servers = [ "markdown-oxide", "mpls" ]
 indent = { tab-width = 2, unit = "  " }
 
 [language-server.markdown-oxide]
 command = "markdown-oxide"
+
+[language-server.mpls]
+command = "mpls"
+args = ["--theme", "catppuccin-mocha", "--enable-emoji", "--enable-wikilinks", "--code-style", "catppuccin-mocha", "--no-auto"]
+
+[language-server.lemminx]
+command = "lemminx"
+
+# lemminx LSP has a built-in formatter (xml.format.*) with ~20 settings
+# (splitAttributes, maxLineWidth, emptyElements, grammarAwareFormatting, etc.)
+# and returns surgical TextEdits preserving cursor/undo.
+# :!xmllint --format % is simpler (C/libxml2, only XMLLINT_INDENT env var)
+# but replaces the whole buffer and can't do range formatting.
+# Using lemminx formatter by default; uncomment below to override with xmllint.
+
+[[language]]
+name = "xml"
+language-servers = ["lemminx"]
+#formatter = { command = "xmllint", args = ["--format", "-"] }
+auto-format = true
+
+[[language]]
+name = "svg"
+scope = "source.xml"
+grammar = "xml"
+file-types = ["svg"]
+language-servers = ["lemminx"]
+#formatter = { command = "xmllint", args = ["--format", "-"] }
+auto-format = true

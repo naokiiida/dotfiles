@@ -31,6 +31,16 @@ run  = 'shell "$SHELL" --block'
 desc = "Open $SHELL here"
 
 [[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin cmux-md --args=toggle"
+desc = "Toggle cmux markdown preview"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "b" ]
+run  = "plugin cmux-browser --args=toggle"
+desc = "Toggle cmux browser preview"
+
+[[mgr.prepend_keymap]]
 on   = [ "b", "d" ]
 run  = "plugin ghostty-split --args=right"
 desc = "Open in Ghostty right split"

@@ -42,8 +42,19 @@ G = [":sh ghostty -e glow -p \"$PWD/%{buffer_name}\""]
 
 B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
 
+# Yazi file picker (yazi.nvim style)
+e = [
+    ":write-all",
+    ":new",
+    ":insert-output ~/.config/helix/yazi_picker.sh",
+    ":buffer-close!",
+    ":open %sh{cat /tmp/helix-yazi-chosen 2>/dev/null || echo /dev/null}",
+    ":redraw",
+]
+
 # Markdown Helpers
 t = ["extend_to_line_bounds", ":pipe /Users/naokiiida/.config/helix/toggle_task.sh", ":write"]
+m = ":lsp-workspace-command open-preview"
 p = ":sh open %{buffer_name}"
 
 [keys.select."space"]

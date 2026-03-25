@@ -36,10 +36,23 @@ function set_glow_yazi_theme
     printf "%s\n" $replaced >$filepath
 end
 
+function set_mpls_theme
+    set -l theme (string replace '_' '-' $argv[1])
+    sed -i '' -E "s/(--theme\",? \")catppuccin-[a-z]+/\1$theme/g; s/(--code-style\",? \")catppuccin-[a-z]+/\1$theme/g" /Users/naokiiida/.config/helix/languages.toml
+end
+
 function set_helix_theme
     set -l theme $argv[1]
     sed -i '' "s/^theme = \".*\"/theme = \"$theme\"/" /Users/naokiiida/.config/helix/config.toml
     pkill -USR1 hx
+end
+
+function set_nvim_theme
+    set -l theme $argv[1]
+    # Find all running NeoVim server sockets under $TMPDIR/nvim.{user}/
+    for sock in (find $TMPDIR/nvim.* -name 'nvim.*' -type s 2>/dev/null)
+        nvim --server $sock --remote-send ":CatppuccinSet $theme<CR>" 2>/dev/null
+    end
 end
 
 function set_claude_theme
@@ -108,6 +121,8 @@ function theme_switch
     if test "$STYLE" = Dark
         echo "$STYLE mode detected."
         set_helix_theme $theme_dark_name
+        set_mpls_theme $theme_dark_name
+        set_nvim_theme $theme_dark_name
         switch_symlinks $theme_map_dark
         source_fzf_theme $theme_dark_name
         set_fish_theme $theme_dark_name
@@ -117,6 +132,8 @@ function theme_switch
     else
         echo "Light mode detected."
         set_helix_theme $theme_light_name
+        set_mpls_theme $theme_light_name
+        set_nvim_theme $theme_light_name
         switch_symlinks $theme_map_light
         source_fzf_theme $theme_light_name
         set_fish_theme $theme_light_name
@@ -130,6 +147,8 @@ end
 function update_theme --on-variable macOS_Theme
     if test "$macOS_Theme" = Dark
         set_helix_theme $theme_dark_name
+        set_mpls_theme $theme_dark_name
+        set_nvim_theme $theme_dark_name
         switch_symlinks $theme_map_dark
         source_fzf_theme $theme_dark_name
         set_fish_theme $theme_dark_name
@@ -138,6 +157,8 @@ function update_theme --on-variable macOS_Theme
         set_glow_yazi_theme dark
     else
         set_helix_theme $theme_light_name
+        set_mpls_theme $theme_light_name
+        set_nvim_theme $theme_light_name
         switch_symlinks $theme_map_light
         source_fzf_theme $theme_light_name
         set_fish_theme $theme_light_name

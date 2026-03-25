@@ -6,14 +6,16 @@ sort_reverse = true
 [opener]
 edit = [
 	{ run = '$EDITOR %s', block = true, for = "unix" },
+	{ run = 'nvim %s', block = true, for = "unix" },
 	{ run = "%EDITOR% %s",  block = true, for = "windows" },
 	{ run = 'zed %s', block = false, orphan = true, for = "unix" },
 	{ run = 'code %s', block = false, orphan = true, for = "unix" },
-	# { run = 'glow -p %s1', block = true}
 ]
 
 view = [
-	{ run = 'PAGER=moar glow -p -w 0 %s1', block = true}
+	{ run = 'cmux markdown open %s', block = false, orphan = true, for = "unix" },
+	{ run = 'markless %s1', block = true, for = "unix" },
+	{ run = 'PAGER=moar glow -p -w 0 %s1', block = true},
 ]
 
 play = [
@@ -24,8 +26,6 @@ play = [
 [open]
 prepend_rules = [
 	{ url = "*.json", use = "edit" },
-
-	# Multiple openers for a single rule
 	{ url = "*.html", use = [ "open", "edit" ] },
 	{ url = "*.csv", use = [ "open", "edit" ] },
 	{ url = "*.svg", use = [ "open", "edit" ] },
@@ -33,13 +33,9 @@ prepend_rules = [
 	{ url = "*.m3u8", use = ["play", "edit"] },
 ]
 
-# append_rules = [
-# 	{ name = "*/", use = [ "edit", "view" ]}
-# ]
-
 [[plugin.prepend_previewers]]
 url = "*.md"
-run  = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=light "$1"'
+run  = "cmux-md"
 
 [[plugin.prepend_previewers]]
 url = "*.2d"
@@ -47,9 +43,16 @@ run  = 'piper -- nu -c "source ~/.config/nushell/autoload/split2d.nu; 2d "$1""'
 
 [[plugin.prepend_previewers]]
 url = "*.mermaid"
-run = "mermaid"
+run = "cmux-browser"
 
 [[plugin.prepend_previewers]]
 url = "*.mmd"
-run = "mermaid"
+run = "cmux-browser"
 
+[[plugin.prepend_previewers]]
+url = "*.html"
+run = "cmux-browser"
+
+[[plugin.prepend_previewers]]
+url = "*.svg"
+run = "cmux-browser"

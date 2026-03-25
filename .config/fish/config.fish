@@ -15,9 +15,6 @@ set -gx INFOPATH /opt/homebrew/share/info $INFOPATH
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
-# bun
-fish_add_path "/Users/naokiiida/Library/Caches/XDG-cache/.bun/bin"
-
 # uv
 fish_add_path "/Users/naokiiida/.local/share/../bin"
 
@@ -40,7 +37,8 @@ fish_add_path /Users/naokiiida/.local/share/gem/bin
 # Added by Antigravity
 fish_add_path /Users/naokiiida/.antigravity/antigravity/bin
 
-# flutter
-fish_add_path /Users/naokiiida/.pub-cache/bin
-
 fish_add_path /Users/naokiiida/.config/emacs/bin
+
+fish_add_path /Applications/Obsidian.app/Contents/MacOS
+
+test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish

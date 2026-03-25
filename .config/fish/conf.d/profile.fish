@@ -42,27 +42,34 @@ set -x VAGRANT_HOME "$XDG_DATA_HOME"/vagrant
 set -x WAKATIME_HOME $XDG_CONFIG_HOME/wakatime
 
 # LLVM and C configuration
-set -x PATH /opt/homebrew/opt/llvm/bin $PATH
+# set -x PATH /opt/homebrew/opt/llvm/bin $PATH
+fish_add_path /opt/homebrew/opt/llvm/bin
 set -x LDFLAGS -L/opt/homebrew/opt/llvm/lib
 set -x CPPFLAGS -I/opt/homebrew/opt/llvm/include
 
+# minilibx
+set -x MANPATH $MANPATH /Users/naokiiida/Documents/42/42cursus/cub3d/minilibx_mms_20200219/man
+
 # go installed packages
-set -x PATH $PATH /Users/naokiiida/go/bin
+# set -x PATH $PATH /Users/naokiiida/go/bin
+fish_add_path /Users/naokiiida/go/bin
 set -x GOPATH /Users/naokiiida/go
 
-# # bun
+# bun
 # set -x BUN_INSTALL "$HOME/.bun"
 # set -x PATH "$PATH:$BUN_INSTALL/bin"
+fish_add_path "/Users/naokiiida/Library/Caches/XDG-cache/.bun/bin"
 
 # For Flutter Dev
+fish_add_path /Users/naokiiida/.pub-cache/bin
 set -x CHROME_EXECUTABLE "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev"
-set -x PATH $HOME/.cargo/bin $PATH
+
+# rust
+fish_add_path $HOME/.cargo/bin
 
 # fzf with fd
 set -x FZF_DEFAULT_COMMAND 'fd --type file'
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-# minilibx
-set -x MANPATH $MANPATH /Users/naokiiida/Documents/42/42cursus/cub3d/minilibx_mms_20200219/man
 
 set -x RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/config"
 set -Ux NULLCLAW_HOME "$XDG_CONFIG_HOME/nullclaw"
