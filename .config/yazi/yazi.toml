@@ -13,9 +13,8 @@ edit = [
 ]
 
 view = [
-	{ run = 'cmux markdown open %s', block = false, orphan = true, for = "unix" },
-	{ run = 'markless %s1', block = true, for = "unix" },
 	{ run = 'PAGER=moar glow -p -w 0 %s1', block = true},
+	{ run = 'cmux markdown open %s', block = false, orphan = true, for = "unix" }
 ]
 
 play = [

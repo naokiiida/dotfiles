@@ -73,4 +73,3 @@ set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
 set -x RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/config"
 set -Ux NULLCLAW_HOME "$XDG_CONFIG_HOME/nullclaw"
-set -x PATH $PATH /Applications/Obsidian.app/Contents/MacOS

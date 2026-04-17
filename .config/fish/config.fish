@@ -3,6 +3,10 @@ if status is-interactive
     # fish_vi_key_bindings
 end
 
+# Fish v4 compatibility: user completions take precedence over vendor completions
+# This ensures ~/.config/fish/completions/lefthook.fish is used instead of the broken vendor version
+set -gx fish_complete_path ~/.config/fish/completions ~/.local/share/fish/vendor_completions.d /opt/homebrew/share/fish/vendor_completions.d
+
 # homebrew configuration (manual setup for faster startup)
 fish_add_path --prepend /opt/homebrew/bin /opt/homebrew/sbin
 set -gx HOMEBREW_PREFIX /opt/homebrew
@@ -42,3 +46,6 @@ fish_add_path /Users/naokiiida/.config/emacs/bin
 fish_add_path /Applications/Obsidian.app/Contents/MacOS
 
 test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
+
+# Added by Antigravity
+fish_add_path /Users/naokiiida/.antigravity/antigravity/bin
