@@ -50,7 +50,7 @@ end
 function set_nvim_theme
     set -l theme $argv[1]
     # Find all running NeoVim server sockets under $TMPDIR/nvim.{user}/
-    for sock in (find $TMPDIR/nvim.* -name 'nvim.*' -type s 2>/dev/null)
+    for sock in (command find $TMPDIR -maxdepth 2 -name 'nvim.*' -type s 2>/dev/null)
         nvim --server $sock --remote-send ":CatppuccinSet $theme<CR>" 2>/dev/null
     end
 end

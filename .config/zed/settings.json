@@ -10,9 +10,9 @@
           {
             "name": "claude-opus-4-6",
             "display_name": "CC: Opus 4.6",
-            "max_tokens": 200000,
+            "max_tokens": 1000000,
             "max_output_tokens": 128000,
-            "max_completion_tokens": 200000,
+            "max_completion_tokens": 1000000,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -86,11 +86,50 @@
             }
           },
           {
+            "name": "claude-opus-4-20250514",
+            "display_name": "CC: Opus 4 (2025-05-14)",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "claude-3-7-sonnet-20250219",
+            "display_name": "CC: 3.7 Sonnet (2025-02-19)",
+            "max_tokens": 200000,
+            "max_output_tokens": 64000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "claude-3-5-haiku-20241022",
+            "display_name": "CC: 3.5 Haiku (2024-10-22)",
+            "max_tokens": 200000,
+            "max_output_tokens": 4096,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
             "name": "gemini-2.5-pro",
             "display_name": "Gemini 2.5 Pro",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -102,8 +141,8 @@
             "name": "gemini-3-pro-preview",
             "display_name": "Gemini 3 Pro",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -115,8 +154,8 @@
             "name": "gemini-3.1-pro-preview",
             "display_name": "Gemini 3.1 Pro Preview",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -128,8 +167,8 @@
             "name": "gemini-3-flash-preview",
             "display_name": "Gemini 3 Flash Preview",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -141,8 +180,8 @@
             "name": "gemini-flash-latest",
             "display_name": "Gemini Flash Latest",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -154,8 +193,8 @@
             "name": "gemini-flash-lite-latest",
             "display_name": "Gemini Flash-Lite Latest",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -167,8 +206,8 @@
             "name": "gemini-3-flash",
             "display_name": "AG: Gemini 3 Flash",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -180,11 +219,11 @@
             "name": "gemini-2.5-flash",
             "display_name": "AG: Gemini 2.5 Flash",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
             "capabilities": {
               "tools": true,
-              "images": false,
+              "images": true,
               "parallel_tool_calls": true,
               "prompt_cache_key": false
             }
@@ -193,8 +232,8 @@
             "name": "gemini-2.5-flash-lite",
             "display_name": "AG: Gemini 2.5 Flash Lite",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -206,7 +245,20 @@
             "name": "gemini-3-pro-high",
             "display_name": "AG: Gemini 3 Pro High",
             "max_tokens": 1048576,
-            "max_output_tokens": 32000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "claude-sonnet-4-5",
+            "display_name": "AG: Sonnet 4.5",
+            "max_tokens": 200000,
+            "max_output_tokens": 64000,
             "max_completion_tokens": 200000,
             "capabilities": {
               "tools": true,
@@ -219,8 +271,8 @@
             "name": "claude-sonnet-4-6",
             "display_name": "AG: Sonnet 4.6",
             "max_tokens": 1000000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
+            "max_output_tokens": 64000,
+            "max_completion_tokens": 1000000,
             "capabilities": {
               "tools": true,
               "images": true,
@@ -229,13 +281,169 @@
             }
           },
           {
+            "name": "claude-opus-4-6-thinking",
+            "display_name": "AG: Opus 4.6 (Think)",
+            "max_tokens": 1000000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 1000000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gpt-oss-120b-medium",
+            "display_name": "AG: GPT OSS 120B Medium",
+            "max_tokens": 131072,
+            "max_output_tokens": 40000,
+            "max_completion_tokens": 131072,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
             "name": "gpt-5.3-codex",
             "display_name": "GH: GPT-5.3 Codex",
+            "max_tokens": 200000,
+            "max_output_tokens": 100000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gpt-5.2",
+            "display_name": "GH: GPT-5.2",
+            "max_tokens": 200000,
+            "max_output_tokens": 100000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gpt-5.2-codex",
+            "display_name": "GH: GPT-5.2 Codex",
+            "max_tokens": 200000,
+            "max_output_tokens": 100000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gpt-5.1",
+            "display_name": "GH: GPT-5.1",
+            "max_tokens": 200000,
+            "max_output_tokens": 100000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gpt-5.1-codex",
+            "display_name": "GH: GPT-5.1 Codex",
+            "max_tokens": 200000,
+            "max_output_tokens": 100000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gpt-5.1-codex-max",
+            "display_name": "GH: GPT-5.1 Codex Max",
+            "max_tokens": 200000,
+            "max_output_tokens": 100000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gpt-5.1-codex-mini",
+            "display_name": "GH: GPT-5.1 Codex Mini",
+            "max_tokens": 128000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 128000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gpt-5-mini",
+            "display_name": "GH: GPT-5 Mini",
+            "max_tokens": 128000,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 128000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "gpt-4.1",
+            "display_name": "GH: GPT-4.1",
+            "max_tokens": 1047576,
+            "max_output_tokens": 32768,
+            "max_completion_tokens": 1047576,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "grok-code-fast-1",
+            "display_name": "GH: Grok Code Fast 1",
+            "max_tokens": 131072,
+            "max_output_tokens": 131072,
+            "max_completion_tokens": 131072,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "oswe-vscode-prime",
+            "display_name": "GH: OSWE VS Code Prime",
             "max_tokens": 128000,
             "max_output_tokens": 32000,
             "max_completion_tokens": 128000,
             "capabilities": {
-              "tools": true,
+              "tools": false,
               "images": false,
               "parallel_tool_calls": false,
               "prompt_cache_key": false

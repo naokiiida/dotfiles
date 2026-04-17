@@ -118,8 +118,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "/usr/local/bin/mini-ccstatus --simple --context-tokens --session-tokens --api-time-ratio --lines-ratio --input-output-ratio",
-    "padding": 0
+    "command": "~/.claude/cc_pure"
   },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,

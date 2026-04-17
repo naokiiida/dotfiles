@@ -34,7 +34,7 @@ alias dyt="cd /Users/naokiiida/Movies/yt-dlp"
 alias gsh='gcloud beta interactive'
 alias gam="/Users/naokiiida/bin/gam7/gam"
 
-alias adb='HOME="$XDG_DATA_HOME"/android adb'
+alias adb='HOME="$XDG_DATA_HOME"/android command adb'
 
 # Task Master aliases added on 6/24/2025
 alias tm='task-master'
@@ -47,3 +47,5 @@ alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
 alias tn='tmux new -s'
 alias tk='tmux kill-session -t'
+
+alias cm='cmux claude-teams --allow-dangerously-skip-permissions'

@@ -1,0 +1,63 @@
+theme = light:Catppuccin Latte,dark:Dracula
+window-theme = auto
+window-save-state = always
+keybind = cmd+p=write_screen_file:paste
+keybind = cmd+o=write_screen_file:open
+keybind = global:alt+j=toggle_quick_terminal
+font-family = "UDEV Gothic 35NFLG"
+quit-after-last-window-closed=true
+keybind = shift+enter=text:\n
+macos-option-as-alt = left
+
+background-opacity = 1.00
+
+# OSC 52 クリップボード (SSH越しコピー対応)
+clipboard-read = allow
+clipboard-write = allow
+
+# =============================================================================
+# tmux Integration Keybinds
+# Ghostty から直接 tmux 操作 (Cmd キーで直感的に)
+# C-a = tmux prefix (0x01)
+# =============================================================================
+
+# ペイン分割: Cmd+D (横), Cmd+Shift+D (縦)
+keybind = cmd+d=text:\x01|
+keybind = cmd+shift+d=text:\x01-
+
+# ペイン移動: Cmd+Arrow
+keybind = cmd+left=text:\x01h
+keybind = cmd+down=text:\x01j
+keybind = cmd+up=text:\x01k
+keybind = cmd+right=text:\x01l
+
+# ペイン閉じる: Cmd+W
+keybind = cmd+w=text:\x01x
+
+# ウィンドウ操作: Cmd+T (新規), Cmd+Shift+W (閉じる)
+keybind = cmd+t=text:\x01c
+keybind = cmd+shift+w=text:\x01&
+
+# ウィンドウ切り替え: Cmd+1-9
+keybind = cmd+one=text:\x011
+keybind = cmd+two=text:\x012
+keybind = cmd+three=text:\x013
+keybind = cmd+four=text:\x014
+keybind = cmd+five=text:\x015
+keybind = cmd+six=text:\x016
+keybind = cmd+seven=text:\x017
+keybind = cmd+eight=text:\x018
+keybind = cmd+nine=text:\x019
+
+# セッション: Cmd+S (選択), Cmd+Shift+S (最後のセッション)
+keybind = cmd+s=text:\x01s
+keybind = cmd+shift+s=text:\x01S
+
+# ペインzoom: Cmd+Shift+Enter
+keybind = cmd+shift+enter=text:\x01z
+
+# コピーモード: Cmd+Shift+C
+keybind = cmd+shift+c=text:\x01[
+
+# 設定リロード: Cmd+Shift+R
+keybind = cmd+shift+r=text:\x01r
