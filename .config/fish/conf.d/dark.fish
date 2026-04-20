@@ -30,10 +30,8 @@ end
 
 function set_glow_yazi_theme
     set -l theme $argv[1]
-    set filepath /Users/naokiiida/.config/yazi/yazi.toml
-    set regex '(run\s*=\s*'\''piper -- CLICOLOR_FORCE=1 glow -w=\$w -s=)\w+'
-    set replaced (cat $filepath | string replace -r $regex "\$1$theme")
-    printf "%s\n" $replaced >$filepath
+    set -l filepath /Users/naokiiida/.config/yazi/yazi.toml
+    sed -i '' -E "s/(glow -w=\\\$w -s=)[a-z]+/\1$theme/" $filepath
 end
 
 function set_mpls_theme
@@ -107,66 +105,43 @@ function source_fzf_theme
     end
 end
 
-function set_fish_theme
-    set -l theme $argv[1]
-    if test $theme = $theme_dark_name
-        fish -c yes | fish_config theme save 'Catppuccin Mocha'
-    else
-        fish -c yes | fish_config theme save 'Catppuccin Latte'
-    end
-end
-
-function theme_switch
-    set -l STYLE (defaults read NSGlobalDomain AppleInterfaceStyle 2>/dev/null)
-    if test "$STYLE" = Dark
-        echo "$STYLE mode detected."
-        set_helix_theme $theme_dark_name
-        set_mpls_theme $theme_dark_name
-        set_nvim_theme $theme_dark_name
+function _apply_theme --argument-names mode
+    if test $mode = dark
+        set -l cat_name $theme_dark_name
+        set_helix_theme $cat_name
+        set_mpls_theme $cat_name
+        set_nvim_theme $cat_name
         switch_symlinks $theme_map_dark
-        source_fzf_theme $theme_dark_name
-        set_fish_theme $theme_dark_name
+        source_fzf_theme $cat_name
         set_claude_theme dark
         set_gemini_theme dark
         set_glow_yazi_theme dark
     else
-        echo "Light mode detected."
-        set_helix_theme $theme_light_name
-        set_mpls_theme $theme_light_name
-        set_nvim_theme $theme_light_name
+        set -l cat_name $theme_light_name
+        set_helix_theme $cat_name
+        set_mpls_theme $cat_name
+        set_nvim_theme $cat_name
         switch_symlinks $theme_map_light
-        source_fzf_theme $theme_light_name
-        set_fish_theme $theme_light_name
+        source_fzf_theme $cat_name
         set_claude_theme light
         set_gemini_theme light
         set_glow_yazi_theme light
     end
 end
 
-# Hammerspoon triggers this by setting unverisal variable
-function update_theme --on-variable macOS_Theme
+function _on_color_theme_change --on-variable fish_terminal_color_theme
+    if test "$fish_terminal_color_theme" = light
+        _apply_theme light
+    else
+        _apply_theme dark
+    end
+end
+
+# Hammerspoon triggers this by setting universal variable
+function _on_macos_theme_change --on-variable macOS_Theme
     if test "$macOS_Theme" = Dark
-        set_helix_theme $theme_dark_name
-        set_mpls_theme $theme_dark_name
-        set_nvim_theme $theme_dark_name
-        switch_symlinks $theme_map_dark
-        source_fzf_theme $theme_dark_name
-        set_fish_theme $theme_dark_name
-        set_claude_theme dark
-        set_gemini_theme dark
-        set_glow_yazi_theme dark
+        _apply_theme dark
     else
-        set_helix_theme $theme_light_name
-        set_mpls_theme $theme_light_name
-        set_nvim_theme $theme_light_name
-        switch_symlinks $theme_map_light
-        source_fzf_theme $theme_light_name
-        set_fish_theme $theme_light_name
-        set_claude_theme light
-        set_gemini_theme light
-        set_glow_yazi_theme light
+        _apply_theme light
     end
 end
-
-alias dark=theme_switch
-# theme_switch

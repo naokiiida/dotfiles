@@ -1,6 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     # fish_vi_key_bindings
+    fish_config theme choose catppuccin-mocha
 end
 
 # Fish v4 compatibility: user completions take precedence over vendor completions
