@@ -1,0 +1,5 @@
+[services.fmva77hr]
+type     = "sftp"
+host     = "taiida.com"
+user     = "niida"
+port     = 22

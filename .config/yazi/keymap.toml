@@ -1,4 +1,14 @@
 [[mgr.prepend_keymap]]
+on   = [ "c", "c" ]
+run  = "plugin copy-path"
+desc = "Copy the file path"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "d" ]
+run  = "plugin copy-path --args=dir"
+desc = "Copy the directory path"
+
+[[mgr.prepend_keymap]]
 on   = [ "R" ]
 run  = "plugin rsync 'fmva77hr' -- --remember"
 desc = "rsync to remote (remember target)"
