@@ -26,8 +26,10 @@
 --sub-langs all,-live_chat
 --no-write-auto-subs
 
-# Convert Subs to srt
---convert-subs srt
+# Convert Subs to ass (preserves NHK ARIB B24 styles: position, speaker colors)
+# MP4 embedded subs lose ASS styles (converted to mov_text); external .ass files retain them
+# For full embedded style support, use --remux-video mkv instead of mp4
+--convert-subs ass
 
 # Remux the video into another container
 --remux-video mp4

@@ -1,6 +1,13 @@
-local get_hovered = ya.sync(function()
+local get_urls = ya.sync(function()
+	local selected = {}
+	for _, u in pairs(cx.active.selected) do
+		selected[#selected + 1] = tostring(u)
+	end
+	if #selected > 0 then
+		return selected
+	end
 	local h = cx.active.current.hovered
-	return h and tostring(h.url) or nil
+	return h and { tostring(h.url) } or {}
 end)
 
 local function raw_path(url_str)
@@ -33,24 +40,27 @@ end
 
 return {
 	entry = function(_, job)
-		local url = get_hovered()
-		if not url then
-			ya.notify { title = "Copy path", content = "No file hovered", timeout = 2, level = "warn" }
+		ya.mgr_emit("escape", { visual = true })
+		local urls = get_urls()
+		if #urls == 0 then
+			ya.notify { title = "Copy path", content = "No file selected", timeout = 2, level = "warn" }
 			return
 		end
 
-		local path = raw_path(url)
 		local mode = job.args[1] or "path"
-
-		local result
-		if mode == "dir" then
-			result = path:match("^(.*)/[^/]*$") or path
-		else
-			result = path
+		local results = {}
+		for _, url in ipairs(urls) do
+			local path = raw_path(url)
+			if mode == "dir" then
+				results[#results + 1] = path:match("^(.*)/[^/]*$") or path
+			else
+				results[#results + 1] = path
+			end
 		end
 
+		local result = table.concat(results, "\n")
 		if copy_to_clipboard(result) then
-			ya.notify { title = "Copy path", content = result, timeout = 2 }
+			ya.notify { title = "Copy path", content = #results .. " path(s) copied", timeout = 2 }
 		end
 	end,
 }

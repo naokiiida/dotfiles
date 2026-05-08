@@ -13,6 +13,18 @@
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
+# --- Catppuccin theme ---
+import catppuccin
+# Flavors: mocha (dark), macchiato, frappe, latte (light)
+catppuccin.setup(c, 'mocha', True)
+
+# --- Dark mode ---
+# Prefer sites' native dark mode CSS
+c.colors.webpage.preferred_color_scheme = 'dark'
+# QtWebEngine built-in dark mode for sites without native dark CSS
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
 # including IndexedDB, DOM storage, filesystem API, service workers, and
@@ -158,5 +170,18 @@ config.bind(',C', ':hint links userscript mpv-cookie')
 config.bind('xx', 'config-cycle tabs.show always never')
 config.bind('xz', 'config-cycle statusbar.show always in-mode')
 
+# Toggle dark/light mode
+# xd: toggle webpage dark mode rendering
+config.bind('xd', 'config-cycle colors.webpage.darkmode.enabled true false ;; config-cycle colors.webpage.preferred_color_scheme dark light ;; restart')
+
 # Populating font family aliases took 135 ms. Replace uses of missing font family "Sans-serif" with one that exists to avoid this cost.
 c.fonts.web.family.sans_serif = "Helvetica Neue"
+
+# performance
+c.qt.args = [
+    'enable-gpu-rasterization',
+    'enable-zero-copy',
+    'canvas-oop-rasterization',
+    'num-raster-threads=4',
+    'force-gpu-mem-available-mb=1024',
+]

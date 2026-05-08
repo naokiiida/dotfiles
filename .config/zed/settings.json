@@ -1,4 +1,16 @@
 {
+  "project_panel": {
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
   "edit_predictions": {
     "provider": "zed"
   },
@@ -471,14 +483,16 @@
   ],
   "icon_theme": "Zed (Default)",
   "agent": {
+    "dock": "left",
     "tool_permissions": {
       "default": "allow"
     },
-    "play_sound_when_agent_done": true,
+    "play_sound_when_agent_done": "always",
     "profiles": {
       "write": {
         "name": "Write",
         "tools": {
+          "search_web": true,
           "copy_path": true,
           "create_directory": true,
           "delete_path": true,
@@ -496,8 +510,7 @@
           "open": true,
           "grep": true,
           "terminal": true,
-          "thinking": true,
-          "web_search": true
+          "thinking": true
         },
         "enable_all_context_servers": true,
         "context_servers": {
@@ -584,6 +597,7 @@
       "memory": {
         "name": "memory",
         "tools": {
+          "search_web": true,
           "contents": true,
           "diagnostics": true,
           "fetch": true,
@@ -593,8 +607,7 @@
           "read_file": true,
           "open": true,
           "grep": true,
-          "thinking": true,
-          "web_search": true
+          "thinking": true
         },
         "enable_all_context_servers": false,
         "context_servers": {}
@@ -602,6 +615,7 @@
       "karakeep": {
         "name": "Karakeep",
         "tools": {
+          "search_web": true,
           "open": true,
           "copy_path": true,
           "create_directory": true,
@@ -617,8 +631,7 @@
           "read_file": true,
           "grep": true,
           "terminal": true,
-          "thinking": true,
-          "web_search": true
+          "thinking": true
         },
         "enable_all_context_servers": true,
         "context_servers": {
@@ -674,6 +687,7 @@
       "fast-write": {
         "name": "Fast Write",
         "tools": {
+          "search_web": true,
           "project_notifications": true,
           "open": true,
           "copy_path": true,
@@ -690,8 +704,7 @@
           "read_file": true,
           "grep": true,
           "terminal": true,
-          "thinking": true,
-          "web_search": true
+          "thinking": true
         },
         "enable_all_context_servers": true,
         "context_servers": {
