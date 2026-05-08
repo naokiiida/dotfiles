@@ -162,7 +162,6 @@
       }
     }
   },
-  "language": "japanese",
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,

@@ -1,0 +1,15 @@
+#!/bin/bash
+export PATH="/opt/homebrew/bin:/usr/bin:/bin"
+
+TMPDIR="${TMPDIR:-/tmp}"
+OUTFILE="$TMPDIR/qute-mpv-$$.mp4"
+
+# Try direct streaming first (works for non-DRM)
+mpv --ytdl-raw-options=cookies-from-browser=brave "$QUTE_URL" 2>/dev/null
+if [ $? -ne 0 ]; then
+    # Fallback: download then play (required for DRM content)
+    echo "message-info 'Downloading DRM content...'" >> "$QUTE_FIFO"
+    yt-dlp --cookies-from-browser brave -o "$OUTFILE" "$QUTE_URL" && \
+        mpv "$OUTFILE"
+    rm -f "$OUTFILE"
+fi
